@@ -1,5 +1,5 @@
 import { createStore, compose } from "redux";
-import rootReducer from "@reducers/index";
+import rootReducer from "./reducers/index";
 
 export default createStore (
   rootReducer, 
