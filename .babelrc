@@ -1,12 +1,12 @@
 {
     "plugins": [
       ["module-resolver", {
-        "root": ["./src"],
+        "root": ["."],
         "alias": {
           "@components":"./components",
           "@redux": "./redux",
           "@views": "./views",
-          "@reducers":"./redux/reducers"
+          "@reducers":"/src/redux/reducers"
         }
       }]
     ]

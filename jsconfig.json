@@ -1,12 +1,41 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "*": ["src/*"],
-      "@components":["./components"],
-      "@redux": ["./redux"],
-      "@views": ["./views"],
-      "@reducers":["./redux/reducers"]
-    }
-  }
+      "target": "ES6",
+      "module": "commonjs",
+      "allowSyntheticDefaultImports": false,
+      "baseUrl": ".",
+      "paths": {
+          "components/*": [
+              "src/components/*"
+          ],
+          "Constants": [
+              "src/constants.js"
+          ],
+          "screens/*": [
+              "src/screens/*"
+          ],
+          "state/*": [
+              "src/state/*"
+          ],
+          "services/*": [
+              "src/services/*"
+          ],
+          "assets/*": [
+              "src/assets/*"
+          ],
+          "navigation/*": [
+              "src/navigation/*"
+          ],
+          "appearance/*": [
+            "src/appearance/*"
+          ],
+          "Config": [
+              "config.js"
+          ]
+      }
+  },
+  "exclude": [
+      "node_modules",
+      "dist"
+  ]
 }
