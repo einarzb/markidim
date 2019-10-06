@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import usersReducer from "state/reducers/users";
-import dancesReducer from "state/reducers/dances";
+import usersReducer from "@state/reducers/users";
+import dancesReducer from "@state/reducers/dances";
 
 
 const reducers = combineReducers({ 

@@ -311,6 +311,7 @@ module.exports = function(webpackEnv) {
         '@navigation': path.resolve(__dirname, '../src/navigation'),
         '@services': path.resolve(__dirname, '../src/services'),
         '@state': path.resolve(__dirname, '../src/state'),
+        '@assets': path.resolve(__dirname, '../src/assets'),
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
