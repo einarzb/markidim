@@ -16,3 +16,11 @@ export const myTheme = {
   }
   }
 };
+
+export const Tab = styled.li`
+  list-style-type:none;
+  display:inline-flex;
+  flex-direction:row;
+  width:100px;
+  justify-content:space-between;
+`;
