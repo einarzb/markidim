@@ -1,18 +1,18 @@
 import React from 'react';
-
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 //screens
 import SongsScreen from '@screens/SongsScreen';
 import AboutScreen from '@screens/AboutScreen';
 
+//style
 import { Tab } from '@appearance/styled';
 
 
 const NavigationRouter = () => (
       <Router>
           <div>
-            <nav>
+            <nav style={{textAlign:'left'}}>
               <ul>
                 <Tab>
                   <Link to="/">ראשי</Link>
@@ -25,10 +25,9 @@ const NavigationRouter = () => (
                 </Tab>
               </ul>
             </nav>
-              <Route path="/about" component={AboutScreen}></Route>
+            <Route path="/about" component={AboutScreen}></Route>
               <Route path="/songs" component={SongsScreen}></Route>
-              <Route path="/">
-              </Route>
+              <Route path="/"></Route>
           </div>
     </Router>
 )

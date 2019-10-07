@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 //styling
 import {Grommet} from 'grommet/components/Grommet';
-import { myTheme } from '@appearance/styled';
+import { myTheme, Header } from '@appearance/styled';
 import './App.css';
 
 import NavigationRouter from '@navigation/NavigationRouter';
@@ -11,7 +11,11 @@ class App extends Component {
   render(){
     return (
       <Grommet theme={myTheme} className="App">
+        <Header>
+          <h2>ארגון המדריכים והיוצרים לריקודי עם</h2>
+        </Header>
         <NavigationRouter/>
+
       </Grommet>
     );
   }
