@@ -3,13 +3,15 @@ import React, { Component } from 'react';
 import { SongsWrapper } from '@appearance/styled';
 import ButtonsGroup from '@components/ButtonsGroup';
 
+let songsCounter = 2; 
+
 export default class SongsScreen extends React.Component{ 
   constructor(){
     super()
     this.state = {
-      songsNum: null,
+      songsCounter: 3,
       mainButtons : [
-        {label: 'רישום שיר חדש', span:'עוד ' + this.fetchSongsCounter(3) + ' שירים', onClick:this.registerSong, bgColor:'#ffb639'},
+        {label: 'רישום שיר חדש', span:'עוד ' + songsCounter + ' שירים', onClick:this.registerSong, bgColor:'#ffb639'},
         {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#aa60b5'},
       ]
     }
@@ -17,12 +19,11 @@ export default class SongsScreen extends React.Component{
 
   registerSong = () => {
     alert('register song here')
-   // this.fetchSongsCounter(3);
+    //this.updateSongsCounter(3);
   }
 
-  fetchSongsCounter = (num) => {
-    this.setState({songsNum:num})
-    return num;
+  updateSongsCounter = (num) => {
+    this.setState({songsCounter:num})
   }
 
   payMembershipFee = () => {
