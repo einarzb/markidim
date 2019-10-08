@@ -40,8 +40,10 @@ export const SongsWrapper = styled.div`
   width:100%;
   justify-content:space-between;
   padding: 0 2rem;
-  border:1px solid green;
   margin: 2rem 0;
+  align-items: center;
+  border-top: 1px solid grey;
+
 `;
 
 export const ButtonsFlexer = styled.div`

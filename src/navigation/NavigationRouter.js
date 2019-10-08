@@ -9,7 +9,7 @@ import AboutScreen from '@screens/AboutScreen';
 import { Tab } from '@appearance/styled';
 
 const NavigationRouter = () => (
-      <Router style={{height:'100%'}}>
+      <Router>
           <div>
             <nav style={{textAlign:'left'}}>
               <ul>
