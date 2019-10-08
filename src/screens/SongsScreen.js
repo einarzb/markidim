@@ -198,6 +198,9 @@ export const SelectBtn = styled.div`
   font-weight:300;
   margin:0px 4px;
   color:#000000;
+  @media (max-width: 768px) {
+    width: 100px;
+  }
   & input {
     border:1px solid grey;
     padding: 10px;

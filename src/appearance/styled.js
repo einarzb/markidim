@@ -32,6 +32,9 @@ export const Header = styled.div`
   width:auto;
   justify-content:space-between;
   text-align:right;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const SongsWrapper = styled.div`
@@ -43,6 +46,10 @@ export const SongsWrapper = styled.div`
   margin: 2rem 0;
   align-items: center;
   border-top: 1px solid grey;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 0;
+  }
 
 `;
 
