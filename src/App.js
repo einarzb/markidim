@@ -14,7 +14,11 @@ class App extends Component {
         <Header>
           <h2>ארגון המדריכים והיוצרים לריקודי עם</h2>
         </Header>
-        <NavigationRouter/>
+        <div style={{border:'1px solid blue'}}>
+           <NavigationRouter/>
+
+        </div>
+   
 
       </Grommet>
     );

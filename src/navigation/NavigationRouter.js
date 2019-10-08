@@ -8,9 +8,8 @@ import AboutScreen from '@screens/AboutScreen';
 //style
 import { Tab } from '@appearance/styled';
 
-
 const NavigationRouter = () => (
-      <Router>
+      <Router style={{height:'100%'}}>
           <div>
             <nav style={{textAlign:'left'}}>
               <ul>
@@ -25,10 +24,10 @@ const NavigationRouter = () => (
                 </Tab>
               </ul>
             </nav>
-            <Route path="/about" component={AboutScreen}></Route>
-              <Route path="/songs" component={SongsScreen}></Route>
-              <Route path="/"></Route>
-          </div>
+       </div>
+       <Route path="/about" component={AboutScreen}></Route>
+       <Route path="/songs" component={SongsScreen}></Route>
+       <Route path="/"></Route>
     </Router>
 )
 
