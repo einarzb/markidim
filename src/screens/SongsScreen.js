@@ -3,13 +3,15 @@ import ReactSearchBox from 'react-search-box'
 import Select from 'react-select';
 
 import styled from 'styled-components';
-import CREDIT_CARD from '@assets/index';
+import CREDIT_CARD from '../assets/credit-card.svg';
+import PLUS from '../assets/plus.svg';
+
 import { SongsWrapper } from '@appearance/styled';
 import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
 
 //TODO: import assets 
-
+console.log(CREDIT_CARD);
 let songsCounter = 2; 
 
 export default class SongsScreen extends React.Component{ 
@@ -103,8 +105,8 @@ export default class SongsScreen extends React.Component{
       songsCounter: 3,
       //add icon to the object property
       mainButtons : [
-        {label: 'רישום שיר חדש', span:'עוד ' + songsCounter + ' שירים', onClick:this.registerSong, bgColor:'#ffb639'},
-        {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#aa60b5'},
+        {label: 'רישום שיר חדש', span:'עוד ' + songsCounter + ' שירים', onClick:this.registerSong, bgColor:'#ffb639', icon:PLUS},
+        {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#aa60b5', icon:CREDIT_CARD},
       ]
     }
   }
@@ -236,7 +238,7 @@ export default class SongsScreen extends React.Component{
         />
 
       </SongsWrapper>
-      <MainSongsTable showMore="showMore">
+      <MainSongsTable showMore={showMore}>
 
       </MainSongsTable>
     </div>

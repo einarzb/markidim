@@ -5,10 +5,10 @@ import {TableHeader}from 'grommet/components/TableHeader';
 import {TableRow}from 'grommet/components/TableRow';
 import {TableCell}from 'grommet/components/TableCell';
 import {TableBody}from 'grommet/components/TableBody';
-
+import styled from 'styled-components';
 
 const MainSongsTable = ({showMore}) => {
-  
+  console.log({showMore})
   return(
      <Table style={{width:'80%', fontSize:'14px', display:'block', margin:'0px auto'}}> 
         <TableHeader>
@@ -49,12 +49,12 @@ const MainSongsTable = ({showMore}) => {
               סטטוס
             </TableCell>
           </TableRow>
-      </TableHeader>
+        </TableHeader>
       <TableBody>
         {/** item */}
-        <TableRow border="all">
+        <TableRow border="all" style={{backgroundColor:'#f1eaea'}}>
           <TableCell scope="row">
-            <span style={{fontSize:'12px', lineHeight:'1'}}> עוד {showMore}</span>
+            <span style={{fontSize:'12px', lineHeight:'1'}}> </span>
           </TableCell>
           <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
             90134
@@ -86,11 +86,14 @@ const MainSongsTable = ({showMore}) => {
           <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
                תמיר שרצר
           </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
+          <TableCell border="bottom" scope="row" style={{textAlign:'center', borderRadius:'5em', backgroundColor:'#4bf14b'}}>
                 מאושר
           </TableCell>
         </TableRow>
         {/** item 2 */}
+        <ExpandedData>
+          hidden
+        </ExpandedData>
         <TableRow>
           <TableCell scope="row">
             
@@ -135,3 +138,8 @@ const MainSongsTable = ({showMore}) => {
 }
 
 export default MainSongsTable;
+
+const ExpandedData = styled.div`
+
+
+`;

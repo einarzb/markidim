@@ -6,7 +6,10 @@ const ButtonsGroup = ({btnsArr, songsCounter}) => {
     
   let buttonComponents = btnsArr.map(function(button, i) {
     return <MainButton key={i} onClick={button.onClick} style={{backgroundColor:button.bgColor}}>
-           {button.label}
+        <div style={{display:"inline-flex", flexDirection:"row-reverse"}}> 
+        {button.label} <img src={button.icon} style={{margin:'3px 5px',width:'20px', height:'20px'}}/>
+        </div>
+   
            
            {/** {songsCounter} */}
            <span> {button.span}</span>
