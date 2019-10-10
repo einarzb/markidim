@@ -21,6 +21,7 @@ export default class SongsScreen extends React.Component{
           background: "#FFFFFF",
           fontSize:"13px",
           fontColor:"grey",
+          direction:"rtl",
           lineHeight:1,
           borderColor: state.isFocused ? "grey" : "grey",
           boxShadow: state.isFocused ? null : null,
@@ -33,7 +34,32 @@ export default class SongsScreen extends React.Component{
         {value: 1, label:'מאושר'},
         {value: 2, label: 'לא מאושר'},
         {value: 3, label: 'בבדיקה'}  
-      ],      
+      ],    
+      songs:[
+        {value: 1, label:'שיר1'},
+        {value: 2, label: 'שיר2'},
+        {value: 3, label: 'שיר3'}  
+      ],  
+      performers: [
+        {value: 1, label:'מבצע1'},
+        {value: 2, label: 'מבצע2'},
+        {value: 3, label: 'מבצע3'} 
+      ],   
+      composers: [
+        {value: 1, label:'מלחין1'},
+        {value: 2, label: 'מלחין2'},
+        {value: 3, label: 'מלחין3'} 
+      ],  
+      writers: [
+        {value: 1, label:'משורר1'},
+        {value: 2, label: 'משורר2'},
+        {value: 3, label: 'משורר3'} 
+      ],  
+      choreographers: [
+        {value: 1, label:'כוראוגרף1'},
+        {value: 2, label: 'כוראוגרף2'},
+        {value: 3, label: 'כוראוגרף3'} 
+      ], 
       search: '',
       data: [
         {
@@ -90,8 +116,24 @@ export default class SongsScreen extends React.Component{
     this.setState({ selectedDanceStatusOption });
   };
 
+  songChange = (selectedSongOption) => {
+    this.setState({ selectedSongOption });
+  };
+  performerChange = (selectedPerformerOption) => {
+    this.setState({ selectedPerformerOption });
+  };
+  composersChange = (selectedComposerOption) => {
+    this.setState({ selectedComposerOption });
+  };
+  choreographersChange = (selectedChoreographerOption) => {
+    this.setState({ selectedChoreographerOption });
+  };
+  writersChange = (selectedWritersOption) => {
+    this.setState({ selectedWritersOption });
+  };
+
   render(){
-    let {mainButtons, search, data, customStyles, selectedDanceStatusOption, danceStatuses} = this.state;
+    let {mainButtons, search, data, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption } = this.state;
     return(
       <SongsWrapper>
         <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
@@ -113,10 +155,10 @@ export default class SongsScreen extends React.Component{
                   <Select
                     styles={customStyles} 
                     autoFocus
-                    placeholder='סטטוס ריקוד'
-                    value={selectedDanceStatusOption}
-                    onChange={this.danceStatusChange}
-                    options={danceStatuses}
+                    placeholder='שם שיר'
+                    value={selectedSongOption}
+                    onChange={this.songChange}
+                    options={songs}
                     name="dance-status-select"
                   /> 
               </SelectBtn>
@@ -124,10 +166,10 @@ export default class SongsScreen extends React.Component{
                   <Select
                     styles={customStyles} 
                     autoFocus
-                    placeholder='סטטוס ריקוד'
-                    value={selectedDanceStatusOption}
-                    onChange={this.danceStatusChange}
-                    options={danceStatuses}
+                    placeholder='שם מבצע'
+                    value={selectedPerformerOption}
+                    onChange={this.performerChange}
+                    options={performers}
                     name="dance-status-select"
                   /> 
               </SelectBtn>
@@ -137,10 +179,10 @@ export default class SongsScreen extends React.Component{
                   <Select
                     styles={customStyles} 
                     autoFocus
-                    placeholder='סטטוס ריקוד'
-                    value={selectedDanceStatusOption}
-                    onChange={this.danceStatusChange}
-                    options={danceStatuses}
+                    placeholder='שם מלחין'
+                    value={selectedComposerOption}
+                    onChange={this.composersChange}
+                    options={composers}
                     name="dance-status-select"
                   /> 
               </SelectBtn>
@@ -148,21 +190,21 @@ export default class SongsScreen extends React.Component{
                   <Select
                     styles={customStyles} 
                     autoFocus
-                    placeholder='סטטוס ריקוד'
-                    value={selectedDanceStatusOption}
-                    onChange={this.danceStatusChange}
-                    options={danceStatuses}
+                    placeholder='שם משורר'
+                    value={selectedWritersOption}
+                    onChange={this.writersChange}
+                    options={writers}
                     name="dance-status-select"
                   /> 
               </SelectBtn>
               <SelectBtn>
                   <Select
                     styles={customStyles} 
-                    autoFocus
-                    placeholder='סטטוס ריקוד'
-                    value={selectedDanceStatusOption}
-                    onChange={this.danceStatusChange}
-                    options={danceStatuses}
+                    autoFocus 
+                    placeholder='שם מזמין'
+                    value={selectedChoreographerOption}
+                    onChange={this.choreographersChange}
+                    options={choreographers}
                     name="dance-status-select"
                   /> 
               </SelectBtn>
@@ -188,7 +230,7 @@ export const SelectWrapper = styled.div`
 
 export const SelectRow = styled.div`
   display:inline-flex;
-  flex-direction:row;
+  flex-direction:row-reverse;
   margin: 0.5rem 0;
 `;
 
