@@ -3,7 +3,7 @@ import ReactSearchBox from 'react-search-box'
 import Select from 'react-select';
 
 import styled from 'styled-components';
-
+import CREDIT_CARD from '@assets/index';
 import { SongsWrapper } from '@appearance/styled';
 import ButtonsGroup from '@components/ButtonsGroup';
 
@@ -29,6 +29,21 @@ export default class SongsScreen extends React.Component{
             borderColor: "#fd7c20"
           }
         })},
+      customStylesSearch: {
+        control: (base, state) => ({
+          ...base,
+          background: "#FFFFFF",
+          fontSize:"13px",
+          fontColor:"grey",
+          direction:"rtl",
+          lineHeight:1,
+          borderColor: state.isFocused ? "grey" : "grey",
+          boxShadow: state.isFocused ? null : null,
+          "&:hover": {
+            borderColor: "#fd7c20"
+          }
+        })
+      },  
       selectedDanceStatusOption:null,
       danceStatuses:[
         {value: 1, label:'מאושר'},
@@ -133,7 +148,7 @@ export default class SongsScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, search, data, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption } = this.state;
+    let {mainButtons, search, data, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, customStylesSearch } = this.state;
     return(
       <SongsWrapper>
         <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
@@ -211,7 +226,7 @@ export default class SongsScreen extends React.Component{
           </SelectRow>
         </SelectWrapper>
         <ReactSearchBox
-        styles={customStyles}
+        styles={customStylesSearch}
             placeholder="חיפוש חופשי..."
             onChangeText={()=>this.updateSearch(search)}
             value={search}
