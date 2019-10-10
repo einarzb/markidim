@@ -6,10 +6,11 @@ import {TableRow}from 'grommet/components/TableRow';
 import {TableCell}from 'grommet/components/TableCell';
 import {TableBody}from 'grommet/components/TableBody';
 
-const MainSongsTable = ({}) => {
 
+const MainSongsTable = ({showMore}) => {
+  
   return(
-     <Table style={{width:'76%', fontSize:'14px', display:'block', margin:'0px auto'}}> 
+     <Table style={{width:'80%', fontSize:'14px', display:'block', margin:'0px auto'}}> 
         <TableHeader>
           <TableRow>
             <TableCell scope="col" border="all">
@@ -41,19 +42,19 @@ const MainSongsTable = ({}) => {
             <TableCell scope="col" border="all">
               שם ריקוד
             </TableCell>
-            <TableCell scope="col" border="all">
+            <TableCell scope="col" border="all" style={{textAlign:'center'}}>
               מוזמן ע״י 
             </TableCell>
-            <TableCell scope="col" border="all">
+            <TableCell scope="col" border="all" style={{textAlign:'center'}}>
               סטטוס
             </TableCell>
           </TableRow>
       </TableHeader>
       <TableBody>
         {/** item */}
-        <TableRow>
+        <TableRow border="all">
           <TableCell scope="row">
-            
+            <span style={{fontSize:'12px', lineHeight:'1'}}> עוד {showMore}</span>
           </TableCell>
           <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
             90134

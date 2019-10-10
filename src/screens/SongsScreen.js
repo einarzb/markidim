@@ -45,6 +45,7 @@ export default class SongsScreen extends React.Component{
           }
         })
       },  
+      showMore:false,
       selectedDanceStatusOption:null,
       danceStatuses:[
         {value: 1, label:'מאושר'},
@@ -149,7 +150,7 @@ export default class SongsScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, search, data, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, customStylesSearch } = this.state;
+    let {mainButtons, search, data, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, customStylesSearch, showMore } = this.state;
     return(
       <div>
       <SongsWrapper>
@@ -235,7 +236,7 @@ export default class SongsScreen extends React.Component{
         />
 
       </SongsWrapper>
-      <MainSongsTable>
+      <MainSongsTable showMore="showMore">
 
       </MainSongsTable>
     </div>
