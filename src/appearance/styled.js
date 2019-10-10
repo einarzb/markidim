@@ -41,11 +41,13 @@ export const SongsWrapper = styled.div`
   display:inline-flex;
   flex-direction:row;
   width:100%;
-  justify-content:space-between;
-  padding: 0 2rem;
+  justify-content:space-evenly;
+  padding: 0.5rem 7rem;
   margin: 2rem 0;
   align-items: center;
   border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 0;

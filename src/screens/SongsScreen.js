@@ -154,7 +154,6 @@ export default class SongsScreen extends React.Component{
       <div>
       <SongsWrapper>
         <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
-       
         <SelectWrapper>
           <SelectRow>
               <SelectBtn>
