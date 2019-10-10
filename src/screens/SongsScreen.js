@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import CREDIT_CARD from '@assets/index';
 import { SongsWrapper } from '@appearance/styled';
 import ButtonsGroup from '@components/ButtonsGroup';
+import MainSongsTable from '@components/MainSongsTable';
 
 //TODO: import assets 
 
@@ -150,6 +151,7 @@ export default class SongsScreen extends React.Component{
   render(){
     let {mainButtons, search, data, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, customStylesSearch } = this.state;
     return(
+      <div>
       <SongsWrapper>
         <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
        
@@ -232,7 +234,12 @@ export default class SongsScreen extends React.Component{
             value={search}
             data={data}
         />
+
       </SongsWrapper>
+      <MainSongsTable>
+
+      </MainSongsTable>
+    </div>
     )
   }
 }
