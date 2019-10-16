@@ -22,7 +22,7 @@ export const Tab = styled.li`
   list-style-type:none;
   display:inline-flex;
   flex-direction:row;
-  width:100px;
+  width:50px;
   margin: 10px;
   justify-content:space-between;
   color: #FFFFFF;
@@ -31,6 +31,7 @@ export const Tab = styled.li`
     color: #FFFFFF;
     text-decoration:none;
     text-align:center;
+    width: 100%;
   }
 `;
 

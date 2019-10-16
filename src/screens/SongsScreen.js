@@ -31,22 +31,6 @@ export default class SongsScreen extends React.Component{
             borderColor: "#fd7c20"
           }
         })},
-      customStylesSearch: {
-        control: (base, state) => ({
-          ...base,
-          background: "#FFFFFF",
-          fontSize:"13px",
-          fontColor:"grey",
-          direction:"rtl",
-          lineHeight:1,
-          borderColor: state.isFocused ? "grey" : "grey",
-          boxShadow: state.isFocused ? null : null,
-          "&:hover": {
-            borderColor: "#fd7c20"
-          }
-        })
-      },  
-      showMore:false,
       selectedDanceStatusOption:null,
       danceStatuses:[
         {value: 1, label:'מאושר'},
@@ -229,7 +213,6 @@ export default class SongsScreen extends React.Component{
           </SelectRow>
         </SelectWrapper>
         <ReactSearchBox
-        styles={customStylesSearch}
             placeholder="חיפוש חופשי..."
             onChangeText={()=>this.updateSearch(search)}
             value={search}
