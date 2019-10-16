@@ -5,7 +5,6 @@ import Select from 'react-select';
 import styled from 'styled-components';
 import CREDIT_CARD from '../assets/credit-card.svg';
 import PLUS from '../assets/plus.svg';
-
 import { SongsWrapper } from '@appearance/styled';
 import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
@@ -105,8 +104,8 @@ export default class SongsScreen extends React.Component{
       songsCounter: 3,
       //add icon to the object property
       mainButtons : [
-        {label: 'רישום שיר חדש', span:'עוד ' + songsCounter + ' שירים', onClick:this.registerSong, bgColor:'#ffb639', icon:PLUS},
-        {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#aa60b5', icon:CREDIT_CARD},
+        {label: 'רישום שיר חדש', span:'עוד ' + songsCounter + ' שירים', onClick:this.registerSong, bgColor:'rgb(83,71,103)', icon:PLUS},
+        {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#192F3A', icon:CREDIT_CARD},
       ]
     }
   }
@@ -248,7 +247,7 @@ export default class SongsScreen extends React.Component{
 
 export const SelectWrapper = styled.div`
   display:inline-flex;
-  flex-direction:column;
+  flex-direction:row-reverse;
 `;
 
 
@@ -259,7 +258,7 @@ export const SelectRow = styled.div`
 `;
 
 export const SelectBtn = styled.div`
-  width:140px;
+  width:112px;
   font-size: 13px;
   font-weight:300;
   margin:0px 4px;

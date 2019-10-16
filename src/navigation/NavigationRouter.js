@@ -7,8 +7,10 @@ import AboutScreen from '@screens/AboutScreen';
 
 //style
 import { Tab } from '@appearance/styled';
+import styled from 'styled-components';
 
 const NavigationRouter = () => (
+    <Bar>
       <Router>
           <div>
             <nav style={{textAlign:'left'}}>
@@ -29,6 +31,14 @@ const NavigationRouter = () => (
        <Route path="/songs" component={SongsScreen}></Route>
        <Route path="/"></Route>
     </Router>
+    </Bar>
 )
 
 export default NavigationRouter; 
+//rgb(25, 47, 58); dark blue
+
+export const Bar = styled.div`
+  background-color:rgb(83, 71, 103);
+  max-height:50px;
+  width:100%;
+  `;

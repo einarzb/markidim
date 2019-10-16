@@ -23,7 +23,15 @@ export const Tab = styled.li`
   display:inline-flex;
   flex-direction:row;
   width:100px;
+  margin: 10px;
   justify-content:space-between;
+  color: #FFFFFF;
+  text-align:center;
+  & a {
+    color: #FFFFFF;
+    text-decoration:none;
+    text-align:center;
+  }
 `;
 
 export const Header = styled.div`
@@ -42,11 +50,12 @@ export const SongsWrapper = styled.div`
   flex-direction:row;
   width:100%;
   justify-content:space-evenly;
-  padding: 0.5rem 7rem;
-  margin: 2rem 0;
+  padding: 0.5rem 0rem;
+  margin: -1rem 0 1rem;
   align-items: center;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  background-color:#ebebeb;
 
   @media (max-width: 768px) {
     flex-direction: column;

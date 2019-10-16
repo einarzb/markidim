@@ -6,9 +6,11 @@ import {TableRow}from 'grommet/components/TableRow';
 import {TableCell}from 'grommet/components/TableCell';
 import {TableBody}from 'grommet/components/TableBody';
 import styled from 'styled-components';
+import MORE from '../assets/more.svg';
 
 const MainSongsTable = ({showMore}) => {
-  console.log({showMore})
+ 
+ 
   return(
      <Table style={{width:'80%', fontSize:'14px', display:'block', margin:'0px auto'}}> 
         <TableHeader>
@@ -54,7 +56,7 @@ const MainSongsTable = ({showMore}) => {
         {/** item */}
         <TableRow border="all" style={{backgroundColor:'#f1eaea'}}>
           <TableCell scope="row">
-            <span style={{fontSize:'12px', lineHeight:'1'}}> </span>
+        
           </TableCell>
           <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
             90134
@@ -91,9 +93,7 @@ const MainSongsTable = ({showMore}) => {
           </TableCell>
         </TableRow>
         {/** item 2 */}
-        <ExpandedData>
-          hidden
-        </ExpandedData>
+      
         <TableRow>
           <TableCell scope="row">
             
@@ -139,7 +139,3 @@ const MainSongsTable = ({showMore}) => {
 
 export default MainSongsTable;
 
-const ExpandedData = styled.div`
-
-
-`;
