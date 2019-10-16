@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 
 import styled from 'styled-components';
-import CREDIT_CARD from '@assets/credit-card.svg';
-import PLUS from '@assets/plus.svg';
+import {CREDIT_CARD, PLUS} from '@assets/index.js';
 
 import { SongsWrapper } from '@appearance/styled';
 import ButtonsGroup from '@components/ButtonsGroup';
@@ -204,7 +203,7 @@ export default class SongsScreen extends React.Component{
             </SelectRow>
           </SelectWrapper>
         </SongsWrapper>
-        
+  
         <MainSongsTable></MainSongsTable>
       </Wrapper> 
     )
@@ -213,13 +212,18 @@ export default class SongsScreen extends React.Component{
 
 export const Wrapper = styled.div`
   background-color:#ebebeb;
+  padding: 0rem 0 2rem 0rem;
 `;
 
 export const SelectWrapper = styled.div`
   display:inline-flex;
-  flex-direction:row-reverse;
+  flex-direction:row-reverse; 
 `;
 
+export const Tags = styled.div`
+  display:inline-flex;
+  flex-direction:row;
+`;
 
 export const SelectRow = styled.div`
   display:inline-flex;
