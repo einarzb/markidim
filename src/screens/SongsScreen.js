@@ -126,92 +126,94 @@ export default class SongsScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, search, data, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, customStylesSearch, showMore } = this.state;
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption } = this.state;
     return(
-      <div>
-      <SongsWrapper>
-        <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
-        <SelectWrapper>
-          <SelectRow>
-              <SelectBtn>
-                  <Select
-                    styles={customStyles} 
-                    autoFocus
-                    placeholder='סטטוס ריקוד'
-                    value={selectedDanceStatusOption}
-                    onChange={this.danceStatusChange}
-                    options={danceStatuses}
-                    name="dance-status-select"
-                  /> 
-              </SelectBtn>
-              <SelectBtn>
-                  <Select
-                    styles={customStyles} 
-                    autoFocus
-                    placeholder='שם שיר'
-                    value={selectedSongOption}
-                    onChange={this.songChange}
-                    options={songs}
-                    name="dance-status-select"
-                  /> 
-              </SelectBtn>
-              <SelectBtn>
-                  <Select
-                    styles={customStyles} 
-                    autoFocus
-                    placeholder='שם מבצע'
-                    value={selectedPerformerOption}
-                    onChange={this.performerChange}
-                    options={performers}
-                    name="dance-status-select"
-                  /> 
-              </SelectBtn>
-          </SelectRow>
-          <SelectRow>
-              <SelectBtn>
-                  <Select
-                    styles={customStyles} 
-                    autoFocus
-                    placeholder='שם מלחין'
-                    value={selectedComposerOption}
-                    onChange={this.composersChange}
-                    options={composers}
-                    name="dance-status-select"
-                  /> 
-              </SelectBtn>
-              <SelectBtn>
-                  <Select
-                    styles={customStyles} 
-                    autoFocus
-                    placeholder='שם משורר'
-                    value={selectedWritersOption}
-                    onChange={this.writersChange}
-                    options={writers}
-                    name="dance-status-select"
-                  /> 
-              </SelectBtn>
-              <SelectBtn>
-                  <Select
-                    styles={customStyles} 
-                    autoFocus 
-                    placeholder='שם מזמין'
-                    value={selectedChoreographerOption}
-                    onChange={this.choreographersChange}
-                    options={choreographers}
-                    name="dance-status-select"
-                  /> 
-              </SelectBtn>
-          </SelectRow>
-        </SelectWrapper>
-  
-      </SongsWrapper>
-      <MainSongsTable showMore={showMore}>
-
-      </MainSongsTable>
-    </div>
+      <Wrapper> 
+        <SongsWrapper>
+          <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
+          <SelectWrapper>
+            <SelectRow>
+                <SelectBtn>
+                    <Select
+                      styles={customStyles} 
+                      autoFocus
+                      placeholder='סטטוס ריקוד'
+                      value={selectedDanceStatusOption}
+                      onChange={this.danceStatusChange}
+                      options={danceStatuses}
+                      name="dance-status-select"
+                    /> 
+                </SelectBtn>
+                <SelectBtn>
+                    <Select
+                      styles={customStyles} 
+                      autoFocus
+                      placeholder='שם שיר'
+                      value={selectedSongOption}
+                      onChange={this.songChange}
+                      options={songs}
+                      name="dance-status-select"
+                    /> 
+                </SelectBtn>
+                <SelectBtn>
+                    <Select
+                      styles={customStyles} 
+                      autoFocus
+                      placeholder='שם מבצע'
+                      value={selectedPerformerOption}
+                      onChange={this.performerChange}
+                      options={performers}
+                      name="dance-status-select"
+                    /> 
+                </SelectBtn>
+            </SelectRow>
+            <SelectRow>
+                <SelectBtn>
+                    <Select
+                      styles={customStyles} 
+                      autoFocus
+                      placeholder='שם מלחין'
+                      value={selectedComposerOption}
+                      onChange={this.composersChange}
+                      options={composers}
+                      name="dance-status-select"
+                    /> 
+                </SelectBtn>
+                <SelectBtn>
+                    <Select
+                      styles={customStyles} 
+                      autoFocus
+                      placeholder='שם משורר'
+                      value={selectedWritersOption}
+                      onChange={this.writersChange}
+                      options={writers}
+                      name="dance-status-select"
+                    /> 
+                </SelectBtn>
+                <SelectBtn>
+                    <Select
+                      styles={customStyles} 
+                      autoFocus 
+                      placeholder='שם מזמין'
+                      value={selectedChoreographerOption}
+                      onChange={this.choreographersChange}
+                      options={choreographers}
+                      name="dance-status-select"
+                    /> 
+                </SelectBtn>
+            </SelectRow>
+          </SelectWrapper>
+        </SongsWrapper>
+        
+        <MainSongsTable></MainSongsTable>
+      </Wrapper> 
     )
   }
 }
+
+export const Wrapper = styled.div`
+  background-color:#ebebeb;
+`;
 
 export const SelectWrapper = styled.div`
   display:inline-flex;
