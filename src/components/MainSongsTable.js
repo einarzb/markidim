@@ -8,7 +8,7 @@ import {TableBody}from 'grommet/components/TableBody';
 import styled from 'styled-components';
 import MORE from '../assets/more.svg';
 
-const MainSongsTable = ({showMore}) => {
+const MainSongsTable = ({}) => {
  
  
   return(

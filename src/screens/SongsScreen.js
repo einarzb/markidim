@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import ReactSearchBox from 'react-search-box'
 import Select from 'react-select';
 
 import styled from 'styled-components';
-import CREDIT_CARD from '../assets/credit-card.svg';
-import PLUS from '../assets/plus.svg';
+import CREDIT_CARD from '@assets/credit-card.svg';
+import PLUS from '@assets/plus.svg';
+
 import { SongsWrapper } from '@appearance/styled';
 import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
 
-//TODO: import assets 
-console.log(CREDIT_CARD);
 let songsCounter = 2; 
 
 export default class SongsScreen extends React.Component{ 
@@ -106,13 +104,6 @@ export default class SongsScreen extends React.Component{
   payMembershipFee = () => {
     alert('pay membership fee here')
   }
-
-  updateSearch = (search) => {
-    console.log('yo');
-    console.log(search);
-    
-    this.setState({ search });
-  };
 
   danceStatusChange = (selectedDanceStatusOption) => {
     this.setState({ selectedDanceStatusOption });
@@ -212,13 +203,7 @@ export default class SongsScreen extends React.Component{
               </SelectBtn>
           </SelectRow>
         </SelectWrapper>
-        <ReactSearchBox
-            placeholder="חיפוש חופשי..."
-            onChangeText={()=>this.updateSearch(search)}
-            value={search}
-            data={data}
-        />
-
+  
       </SongsWrapper>
       <MainSongsTable showMore={showMore}>
 
@@ -238,6 +223,9 @@ export const SelectRow = styled.div`
   display:inline-flex;
   flex-direction:row-reverse;
   margin: 0.5rem 0;
+  @media (max-width: 768px) {
+    flex-direction:column;
+  }
 `;
 
 export const SelectBtn = styled.div`
