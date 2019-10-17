@@ -41,6 +41,7 @@ export const Header = styled.div`
   width:auto;
   justify-content:space-between;
   text-align:right;
+  padding-top: 0.5rem;
   @media (max-width: 768px) {
     text-align: center;
   }

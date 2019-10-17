@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import {Grommet} from 'grommet/components/Grommet';
 import { myTheme, Header } from '@appearance/styled';
 import './App.css';
+import {LOGO} from '@assets/index.js';
 
 import NavigationRouter from '@navigation/NavigationRouter';
 
@@ -12,7 +13,8 @@ class App extends Component {
     return (
       <Grommet theme={myTheme} className="App">
         <Header>
-          <h2>ארגון המדריכים והיוצרים לריקודי עם</h2>
+          <h2 style={{color:'#521d50',fontWeight:'400'}}>ארגון המרקידים והכוריאוגרפים לריקודי עם בישראל ובתפוצות</h2>
+          <img src={LOGO}/>
         </Header>
            <NavigationRouter/>
 
