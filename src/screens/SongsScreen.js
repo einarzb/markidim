@@ -87,7 +87,36 @@ export default class SongsScreen extends React.Component{
       mainButtons : [
         {label: 'רישום שיר חדש', span:'עוד ' + songsCounter + ' שירים', onClick:this.registerSong, bgColor:'rgb(83,71,103)', icon:PLUS},
         {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#192F3A', icon:CREDIT_CARD},
+      ],
+      headerCells: [
+        {label: ''},
+        {label: 'מס׳ אקו״ם'},
+        {label: 'שנת יצירה'},
+        {label: 'מחברים נוספים'},
+        {label: 'סוג ריקוד'},
+        {label: 'שם שיר מקורי'},
+        {label: 'שם משורר'},
+        {label: 'שם מלחין'},
+        {label: 'שם מבצע'},
+        {label: 'שם ריקוד'},
+        {label: 'מוזמן ע״י'},
+        {label: 'סטטוס'}        
+      ],
+      mockSongData: [
+        {label: ''},
+        {label: '90134'},
+        {label: '1964'},
+        {label: 'עינר גל, עידן חיל'},
+        {label: 'זוגות'},
+        {label: 'אהבתיה'},
+        {label: 'תרצה אתר'},
+        {label: 'יעקב הולנדר'},
+        {label: 'שלמה ארצי'},
+        {label: 'פתאום עכשיו פתאום היום'},
+        {label: 'תמיר שרצר'},
+        {label: 'מאושר', borderRadius:'5em', backgroundColor:'#4bf14b'}
       ]
+      
     }
   }
 
@@ -125,7 +154,7 @@ export default class SongsScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption } = this.state;
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData } = this.state;
     return(
       <Wrapper> 
         <SongsWrapper>
@@ -204,7 +233,7 @@ export default class SongsScreen extends React.Component{
           </SelectWrapper>
         </SongsWrapper>
   
-        <MainSongsTable></MainSongsTable>
+        <MainSongsTable cellsArr={headerCells} data={mockSongData}></MainSongsTable>
       </Wrapper> 
     )
   }
