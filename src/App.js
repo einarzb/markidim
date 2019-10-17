@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 //styling
 import {Grommet} from 'grommet/components/Grommet';
-import { myTheme, Header } from '@appearance/styled';
+import { myTheme, Header, EnglishHeader } from '@appearance/styled';
 import './App.css';
 import {LOGO} from '@assets/index.js';
 
@@ -13,13 +13,11 @@ class App extends Component {
     return (
       <Grommet theme={myTheme} className="App">
         <Header>
-          <h2 style={{color:'#521d50',fontWeight:'400'}}>ארגון המרקידים והכוריאוגרפים לריקודי עם בישראל ובתפוצות</h2>
+          <h2>ארגון המרקידים והכוריאוגרפים לריקודי עם בישראל ובתפוצות</h2>
           <img src={LOGO}/>
         </Header>
-           <NavigationRouter/>
-
-   
-
+        <EnglishHeader>Association of Folk Dance instructors & choreographers in Israel and abroad</EnglishHeader>
+        <NavigationRouter/>
       </Grommet>
     );
   }

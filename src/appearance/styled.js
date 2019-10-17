@@ -42,9 +42,21 @@ export const Header = styled.div`
   justify-content:space-between;
   text-align:right;
   padding-top: 0.5rem;
+  & h2 {
+    color:#521d50;
+    fontWeight:400;
+  }
   @media (max-width: 768px) {
     text-align: center;
   }
+`;
+
+export const EnglishHeader = styled.div`
+  display:block;
+  margin:-1rem 0rem 0 -2rem;
+  color:rgb(152, 135, 152);
+  width:100%;
+  text-align:center;
 `;
 
 export const SongsWrapper = styled.div`
