@@ -103,3 +103,23 @@ export const MainButton = styled(Button)`
     font-size: 14px;
   }
 `;
+
+{/**
+
+export const MainButton = styled(Button)` 
+  background-color:#ffb639;
+  color:#FFFFFF;
+  border:1px solid transparent;
+  border-radius: 1rem;
+  display:inline-flex;
+  flex-direction:column;
+  color: #00000;
+  width: auto;
+  padding: 5px 10px;
+  margin: 10px;
+  align-items:center; 
+  & span {
+    font-size: 14px;
+  }
+`;
+ */}

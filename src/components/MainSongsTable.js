@@ -7,9 +7,11 @@ import {TableRow}from 'grommet/components/TableRow';
 import {TableCell}from 'grommet/components/TableCell';
 import {TableBody}from 'grommet/components/TableBody';
 
-//data2 & mockDataCells2 is temp 
-const MainSongsTable = ({cellsArr, data, btns, data2}) => {
-     
+import EditSongScreen from '@screens/EditSongScreen';
+
+
+//data2 & mockDataCells2 is temp and will be deleted
+const MainSongsTable = ({cellsArr, data, btns, data2, editToggle}) => {       
   let tableHeaderCells = cellsArr.map(function(cell, i) {
     return <TableCell key={i} scope="col" border="bottom" style={{textAlign: 'center', alignItems: 'center', whiteSpace: 'nowrap'}}>{cell.label}</TableCell>
   })
@@ -32,9 +34,15 @@ const MainSongsTable = ({cellsArr, data, btns, data2}) => {
     </TableCell>
   })
 
+   
 
  
   return(
+    <div>
+      { editToggle 
+      ?
+     <EditSongScreen /> 
+      :
      <Table style={{ width:'86%', fontSize:'13px', margin:'0px auto'}}> 
         <TableHeader style={{backgroundColor:'rgb(247, 239, 239)', fontWeight:'bold'}}>
           <TableRow>{tableHeaderCells}</TableRow>
@@ -50,6 +58,8 @@ const MainSongsTable = ({cellsArr, data, btns, data2}) => {
           <TableRow style={{backgroundColor:'white'}} border="all"> {mockDataCells}</TableRow>
         </TableBody>
      </Table>
+         }
+     </div>
   )
 }
 

@@ -136,14 +136,16 @@ export default class SongsScreen extends React.Component{
       btns:[
         {icon:APPROVE, onClick:this.toggleApprove},
         {icon:EDIT, onClick:this.toggleEdit}
-      ]
+      ],
+      editFlag:false
      //        
  
     }
   }
   
   toggleEdit = () => {
-    alert('edit song here')
+    console.log('toggle edit');       
+    this.setState({editFlag:true});
   }
 
   showMore = () => {
@@ -188,7 +190,7 @@ export default class SongsScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2 } = this.state;
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag } = this.state;
     return(
       <Wrapper> 
         <SongsWrapper>
@@ -267,7 +269,7 @@ export default class SongsScreen extends React.Component{
           </SelectWrapper>
         </SongsWrapper>
   
-        <MainSongsTable cellsArr={headerCells} data={mockSongData} btns={btns} data2={mockSongData2}></MainSongsTable>
+        <MainSongsTable cellsArr={headerCells} data={mockSongData} btns={btns} data2={mockSongData2} editToggle={editFlag}></MainSongsTable>
       </Wrapper> 
     )
   }
