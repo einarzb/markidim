@@ -13,7 +13,7 @@ import styled from 'styled-components';
 
 //mock data
 export const filterOptions = [
-  { value: 'זוגות', label: 'זוגות', color: '#FFFFFF', isFixed: true },
+  { value: 'זוגות', label: 'זוגות', color: '#FFFFFF', isFixed: false },
   { value: 'לא מאושר', label: 'לא מאושר', color: '#FFFFFF' },
   { value: 'תמיר שרצר', label: 'תמיר שרצר', color: '#FFFFFF' }
 ];
@@ -57,11 +57,12 @@ const NavigationRouter = () => (
                 </Tab>
                 <Tab style={{width:'auto',marginTop:'4px', float:'right'}}>
                   <Select
-                      placeholder='חיפוש חופשי'
+                      defaultValue='חיפוש חופשי'
                       styles={customStyles} 
                       closeMenuOnSelect={false}
                       components={animatedComponents}
-                      defaultValue={[filterOptions[0], filterOptions[1]]}
+                      
+                     // defaultValue={[filterOptions[0], filterOptions[1]]}
                       isMulti
                       options={filterOptions}
                     />

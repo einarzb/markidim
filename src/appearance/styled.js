@@ -18,10 +18,6 @@ export const myTheme = {
   }
 };
 
-export const SongsTable = styled.div`
-  display:block;
-`;
-
 export const Tab = styled.li`
   list-style-type:none;
   display:inline-flex;

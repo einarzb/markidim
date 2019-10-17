@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 
 import styled from 'styled-components';
-import {CREDIT_CARD, PLUS} from '@assets/index.js';
+import {CREDIT_CARD, PLUS, APPROVE, EDIT, MORE} from '@assets/index.js';
 
 import { SongsWrapper } from '@appearance/styled';
 import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
 
 let songsCounter = 2; 
+let moreIcon = <img src={MORE} width="20"/>
 
 export default class SongsScreen extends React.Component{ 
   constructor(){
@@ -90,6 +91,7 @@ export default class SongsScreen extends React.Component{
       ],
       headerCells: [
         {label: ''},
+        {label: ''},
         {label: 'מס׳ אקו״ם'},
         {label: 'שנת יצירה'},
         {label: 'מחברים נוספים'},
@@ -104,6 +106,7 @@ export default class SongsScreen extends React.Component{
       ],
       mockSongData: [
         {label: ''},
+        {label: moreIcon, onClick:this.showMore},
         {label: '90134'},
         {label: '1964'},
         {label: 'עינר גל, עידן חיל'},
@@ -115,9 +118,40 @@ export default class SongsScreen extends React.Component{
         {label: 'פתאום עכשיו פתאום היום'},
         {label: 'תמיר שרצר'},
         {label: 'מאושר', borderRadius:'5em', backgroundColor:'#4bf14b'}
+      ],
+      mockSongData2: [
+        {label: moreIcon, onClick:this.showMore},
+        {label: '90134'},
+        {label: '1964'},
+        {label: 'עינר גל, עידן חיל'},
+        {label: 'זוגות'},
+        {label: 'אהבתיה'},
+        {label: 'תרצה אתר'},
+        {label: 'יעקב הולנדר'},
+        {label: 'שלמה ארצי'},
+        {label: 'פתאום עכשיו פתאום היום'},
+        {label: 'תמיר שרצר'},
+        {label: 'ממתין לאישור', borderRadius:'5em', backgroundColor:'rgb(241, 206, 82)', whiteSpace: 'nowrap', padding:'0 5px'}
+      ],
+      btns:[
+        {icon:APPROVE, onClick:this.toggleApprove},
+        {icon:EDIT, onClick:this.toggleEdit}
       ]
-      
+     //        
+ 
     }
+  }
+  
+  toggleEdit = () => {
+    alert('edit song here')
+  }
+
+  showMore = () => {
+    alert('more here')
+  }
+
+  toggleApprove = () => {
+    alert('approve song here')
   }
 
   registerSong = () => {
@@ -154,7 +188,7 @@ export default class SongsScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData } = this.state;
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2 } = this.state;
     return(
       <Wrapper> 
         <SongsWrapper>
@@ -233,7 +267,7 @@ export default class SongsScreen extends React.Component{
           </SelectWrapper>
         </SongsWrapper>
   
-        <MainSongsTable cellsArr={headerCells} data={mockSongData}></MainSongsTable>
+        <MainSongsTable cellsArr={headerCells} data={mockSongData} btns={btns} data2={mockSongData2}></MainSongsTable>
       </Wrapper> 
     )
   }

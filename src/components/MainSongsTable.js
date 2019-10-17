@@ -1,88 +1,55 @@
-
 import React from 'react';
+
+//STYLING
 import {Table} from 'grommet/components/Table';
 import {TableHeader}from 'grommet/components/TableHeader';
 import {TableRow}from 'grommet/components/TableRow';
 import {TableCell}from 'grommet/components/TableCell';
 import {TableBody}from 'grommet/components/TableBody';
-import styled from 'styled-components';
-import {APPROVE, EDIT} from '@assets/index.js';
-import {ButtonsFlexer, SongsTable} from '@appearance/styled.js';
 
-const MainSongsTable = ({cellsArr, data}) => {
+//data2 & mockDataCells2 is temp 
+const MainSongsTable = ({cellsArr, data, btns, data2}) => {
      
   let tableHeaderCells = cellsArr.map(function(cell, i) {
-    return <TableCell key={i} scope="col" border="bottom" style={{textAlign: 'center', alignItems: 'center',  overflow: 'hidden', whiteSpace: 'nowrap', lineHeight: '1.5em', height: '2em'}}>{cell.label}</TableCell>
+    return <TableCell key={i} scope="col" border="bottom" style={{textAlign: 'center', alignItems: 'center', whiteSpace: 'nowrap'}}>{cell.label}</TableCell>
   })
 
   let mockDataCells = data.map(function(song, i) {
-    return <TableCell key={i} scope="row" border="bottom" style={{textAlign:'center', direction:'rtl', whiteSpace: 'nowrap', borderRadius:song.borderRadius, backgroundColor:song.backgroundColor}}>{song.label}</TableCell>
+    return <TableCell key={i} scope="row" border="bottom" onClick={song.onClick} style={{textAlign:'center', direction:'rtl', whiteSpace: song.whiteSpace, borderRadius:song.borderRadius, backgroundColor:song.backgroundColor}}>{song.label} 
+    </TableCell>
   })
+
+  let mockDataCells2 = data2.map(function(song, i) {
+    return <TableCell key={i} scope="row" border="bottom" onClick={song.onClick} style={{width:'auto',textAlign:'center', direction:'rtl', whiteSpace: song.whiteSpace, borderRadius:song.borderRadius, padding:song.padding,backgroundColor:song.backgroundColor}}>{song.label} 
+    </TableCell>
+  })
+
+  let editOrapproveBtns = btns.map(function(btn, i){
+    return  <TableCell key={i} scope="col" >              
+    <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0"}} onClick={btn.onClick}>
+        <img src={btn.icon} width="15" height="15"/>
+    </button>
+    </TableCell>
+  })
+
+
  
   return(
-    <SongsTable>
-
-     <Table style={{ width:'86%', fontSize:'14px', margin:'0px auto'}}> 
+     <Table style={{ width:'86%', fontSize:'13px', margin:'0px auto'}}> 
         <TableHeader style={{backgroundColor:'rgb(247, 239, 239)', fontWeight:'bold'}}>
-          <TableRow>
-             {tableHeaderCells}
-          </TableRow>
+          <TableRow>{tableHeaderCells}</TableRow>
         </TableHeader>
-
-      <TableBody>
-         <TableRow border="all"> 
-            {mockDataCells}
-        </TableRow>
-       
-        <TableRow>
-          <TableCell scope="row" border="bottom">
-             <ButtonsFlexer style={{width:'38px', margin:'0'}}>
-                <img src={APPROVE} width="15" height="15"/>
-                <img src={EDIT} width="15" height="15"/>
-             </ButtonsFlexer>
-          </TableCell>
-          
-
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-            90134
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-            1964
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-            עינר גל, עידן חיל
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-              זוגות
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-              אהבתיה
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-              תרצה אתר
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-               יעקב הולנדר
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-               שלמה ארצי
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-               אהבתיה
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}}>
-               תמיר שרצר
-          </TableCell>
-          <TableCell border="bottom" scope="row" style={{textAlign:'center'}} style={{textAlign:'center', borderRadius:'5em', backgroundColor:'rgb(241, 206, 82)', padding:'0.5rem', 
-    width: '130px',
-    lineHeight: '0.8'}}>
-                ממתין לאישור
-          </TableCell>
-        </TableRow>
-      </TableBody>
+        <TableBody>
+          <TableRow style={{backgroundColor:'white',  whiteSpace:'nowrap'}} border="all"> {mockDataCells}</TableRow>
+          <TableRow>
+            <TableCell scope="row" border="bottom">
+              {editOrapproveBtns} 
+            </TableCell>
+            {mockDataCells2}
+          </TableRow>
+          <TableRow style={{backgroundColor:'white'}} border="all"> {mockDataCells}</TableRow>
+        </TableBody>
      </Table>
-   </SongsTable>
-
   )
 }
 
