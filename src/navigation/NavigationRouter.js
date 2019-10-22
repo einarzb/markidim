@@ -42,9 +42,6 @@ export const customStyles = {
 };
 
 
-
-
-
 export default class NavigationRouter extends React.Component {
   state = {
     dropdownVisible: false,
@@ -73,8 +70,8 @@ export default class NavigationRouter extends React.Component {
                 </Tab>
                 <RightPart>
                   <NavButton onClick={this.toggleDropDown}/>
-                  <Dropdown show={this.state.dropdownVisible}/>
-                  {this.props.children}
+                  <Dropdown show={this.state.dropdownVisible}/> 
+
                
                     <Tab style={{width:'auto',marginTop:'4px', float:'right'}}>
                       <Select
