@@ -4,8 +4,9 @@ import Select from 'react-select';
 
 //components
 import LanguagesButton from '@components/LanguagesButton';
-import Dropdown from '@components/Dropdown';
-
+import DropdownLanguages from '@components/DropdownLanguages';
+import UserButton from '@components/UserButton';
+import DropDownLogin from '@components/DropDownLogin';
 //screens
 import SongsScreen from '@screens/SongsScreen';
 import AboutScreen from '@screens/AboutScreen';
@@ -25,12 +26,20 @@ export const filterOptions = [
 class NavigationRouter extends React.Component {
   state = {
     dropdownVisible: false,
+    dropdownVisibleUser: false,
   };
 
-  toggleDropDown = () => 
+  toggleDropDownLang = () => 
     this.setState({
-      dropdownVisible: !this.state.dropdownVisible
+      dropdownVisible: !this.state.dropdownVisible,
     })
+
+    toggleDropDownUser = () => 
+    this.setState({
+      dropdownVisibleUser: !this.state.dropdownVisibleUser,
+    })
+
+
 
     render() {
       return (
@@ -49,10 +58,12 @@ class NavigationRouter extends React.Component {
                   <Link to="/songs">שירים</Link>
                 </Tab>
                 <RightPart>
-                  <LanguagesButton onClick={this.toggleDropDown}/>
-                  <Dropdown show={this.state.dropdownVisible}/> 
+                  <UserButton onClick={this.toggleDropDownUser}/>
+                  <DropDownLogin show={this.state.dropdownVisibleUser}/> 
 
-               
+                  <LanguagesButton onClick={this.toggleDropDownLang}/>
+                  <DropdownLanguages show={this.state.dropdownVisible}/> 
+                     
                     <Tab style={{width:'auto',marginTop:'4px', float:'right'}}>
                       <Select
                           placeholder='חיפוש חופשי'

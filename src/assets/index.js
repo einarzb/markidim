@@ -5,7 +5,7 @@ import edit from './edit.svg'
 import approve from './approved.svg'
 import logo from './logo.jpg'
 import globe from './globe.svg'
-
+import user from './user.svg'
 
 export const CREDIT_CARD = credit;
 export const PLUS = plus;
@@ -14,3 +14,4 @@ export const EDIT = edit;
 export const APPROVE = approve;
 export const LOGO = logo;
 export const GLOBE = globe;
+export const USER = user;
