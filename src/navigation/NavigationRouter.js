@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Select from 'react-select';
 
 //components
-import NavButton from '@components/NavButton';
+import LanguagesButton from '@components/LanguagesButton';
 import Dropdown from '@components/Dropdown';
 
 //screens
@@ -21,28 +21,8 @@ export const filterOptions = [
   { value: 'תמיר שרצר', label: 'תמיר שרצר', color: '#FFFFFF' }
 ];
 
-export const customStyles = {
-  control: (base, state) => ({
-    ...base,
-    backgroundColor: "rgba(255,255,255,0.9)",
-    fontSize:"16px",
-    height:"40px",
-    fontColor:"white",
-    borderColor:"transparent",
-    width:"300px",
-    direction:"rtl",
-    lineHeight:1,
-    height:"auto",
-   // borderColor: state.isFocused ? "grey" : "grey",
-   // boxShadow: state.isFocused ? null : null,
-    "&:hover": {
-      borderColor: "#fd7c20"
-    }
-  })
-};
 
-
-export default class NavigationRouter extends React.Component {
+class NavigationRouter extends React.Component {
   state = {
     dropdownVisible: false,
   };
@@ -69,7 +49,7 @@ export default class NavigationRouter extends React.Component {
                   <Link to="/songs">שירים</Link>
                 </Tab>
                 <RightPart>
-                  <NavButton onClick={this.toggleDropDown}/>
+                  <LanguagesButton onClick={this.toggleDropDown}/>
                   <Dropdown show={this.state.dropdownVisible}/> 
 
                
@@ -97,7 +77,7 @@ export default class NavigationRouter extends React.Component {
   }
 }
 
-//export default NavigationRouter; 
+export default NavigationRouter; 
 //rgb(25, 47, 58); dark blue
 
 export const Bar = styled.div`
@@ -114,5 +94,24 @@ export const Bar = styled.div`
     float:right;
   `;
 
+  export const customStyles = {
+    control: (base, state) => ({
+      ...base,
+      backgroundColor: "rgba(255,255,255,0.9)",
+      fontSize:"16px",
+      height:"40px",
+      fontColor:"white",
+      borderColor:"transparent",
+      width:"300px",
+      direction:"rtl",
+      lineHeight:1,
+      height:"auto",
+     // borderColor: state.isFocused ? "grey" : "grey",
+     // boxShadow: state.isFocused ? null : null,
+      "&:hover": {
+        borderColor: "#fd7c20"
+      }
+    })
+  };
 
   

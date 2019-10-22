@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-import styled from 'styled-components';
-import {CREDIT_CARD, PLUS, APPROVE, EDIT, MORE} from '@assets/index.js';
-
-import { SongsWrapper } from '@appearance/styled';
+import {CREDIT_CARD, PLUS, APPROVE, EDIT} from '@assets/index.js';
+import ExpandingButton from '@components/ExpandingButton';
+import ExpandedRow from '@components/ExpandedRow';
 import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
 
+import styled from 'styled-components';
+import { SongsWrapper } from '@appearance/styled';
+
 let songsCounter = 2; 
-let moreIcon = <img src={MORE} width="20"/>
+//let moreIcon = <img src={MORE} width="20"/>
 
 export default class SongsScreen extends React.Component{ 
   constructor(){
@@ -29,6 +31,7 @@ export default class SongsScreen extends React.Component{
             borderColor: "#fd7c20"
           }
         })},
+        expandedRowVisible:false,
       selectedDanceStatusOption:null,
       danceStatuses:[
         {value: 1, label:'מאושר'},
@@ -92,6 +95,8 @@ export default class SongsScreen extends React.Component{
       headerCells: [
         {label: ''},
         {label: ''},
+        {label: ''},
+        {label: ''},
         {label: 'מס׳ אקו״ם'},
         {label: 'שנת יצירה'},
         {label: 'מחברים נוספים'},
@@ -106,7 +111,7 @@ export default class SongsScreen extends React.Component{
       ],
       mockSongData: [
         {label: ''},
-        {label: moreIcon, onClick:this.showMore},
+        {label:<ExpandingButton onClick={this.showMore}/>},
         {label: '90134'},
         {label: '1964'},
         {label: 'עינר גל, עידן חיל'},
@@ -120,7 +125,7 @@ export default class SongsScreen extends React.Component{
         {label: 'מאושר', borderRadius:'5em', backgroundColor:'#4bf14b'}
       ],
       mockSongData2: [
-        {label: moreIcon, onClick:this.showMore},
+        {label:<ExpandingButton onClick={this.showMore}/>},
         {label: '90134'},
         {label: '1964'},
         {label: 'עינר גל, עידן חיל'},
@@ -149,7 +154,9 @@ export default class SongsScreen extends React.Component{
   }
 
   showMore = () => {
-    alert('more here')
+    this.setState({
+      expandedRowVisible: !this.state.expandedRowVisible
+    })    
   }
 
   toggleApprove = () => {
@@ -190,7 +197,7 @@ export default class SongsScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag } = this.state;
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible } = this.state;
     return(
       <Wrapper> 
         <SongsWrapper>
@@ -269,7 +276,7 @@ export default class SongsScreen extends React.Component{
           </SelectWrapper>
         </SongsWrapper>
   
-        <MainSongsTable cellsArr={headerCells} data={mockSongData} btns={btns} data2={mockSongData2} editToggle={editFlag}></MainSongsTable>
+        <MainSongsTable expanderFlag={expandedRowVisible} cellsArr={headerCells} data={mockSongData} btns={btns} data2={mockSongData2} editToggle={editFlag}></MainSongsTable>
       </Wrapper> 
     )
   }
