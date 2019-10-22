@@ -19,7 +19,9 @@ export class EditSongScreen extends React.Component{
            </ButtonsFlexer>
            <ButtonsFlexer>
              <div>שם ריקוד</div>
+             <div>אהבתיה</div>
              <div>מוזמן ע״י</div>
+             <div>תמיר שרצר</div>
            </ButtonsFlexer>
            <ButtonsFlexer>
              <div>שם שיר מקורי</div>
@@ -79,7 +81,6 @@ const ButtonsFlexer = styled.div`
     direction:rtl;
     & div {
       width: 50%;
-      border:1px solid red;
       text-align:right;
       margin: 0.5rem 0;
     }

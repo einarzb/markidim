@@ -33,6 +33,28 @@ export const Tab = styled.li`
     text-align:center;
     width: 100%;
   }
+  & button {
+    background-color:transparent;
+    border:none;
+    cursor:pointer;
+    width: 30px;
+    color:#FFFFFF;
+    font-family:'Arial';
+    display:inline-flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+  } & 
+   img {
+    width: 15px;
+    height: auto;
+  } & span {
+    margin: 0px 8px;
+    font-size: 15px;
+    border:1px solid #FFFFFF;
+    padding: 5px;
+    
+  }
 `;
 
 export const Header = styled.div`

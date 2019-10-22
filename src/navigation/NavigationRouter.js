@@ -10,6 +10,7 @@ import AboutScreen from '@screens/AboutScreen';
 //style
 import { Tab } from '@appearance/styled';
 import styled from 'styled-components';
+import {GLOBE} from '@assets/index.js';
 
 //mock data
 export const filterOptions = [
@@ -21,12 +22,12 @@ export const filterOptions = [
 export const customStyles = {
   control: (base, state) => ({
     ...base,
-    backgroundColor: "rgba(255,255,255,0.2)",
+    backgroundColor: "rgba(255,255,255,0.9)",
     fontSize:"16px",
     height:"40px",
-    fontColor:"#FFFFFF",
+    fontColor:"white",
     borderColor:"transparent",
-    width:"auto",
+    width:"300px",
     direction:"rtl",
     lineHeight:1,
     height:"auto",
@@ -55,18 +56,30 @@ const NavigationRouter = () => (
                 <Tab>
                   <Link to="/songs">שירים</Link>
                 </Tab>
-                <Tab style={{width:'auto',marginTop:'4px', float:'right'}}>
-                  <Select
-                      defaultValue='חיפוש חופשי'
-                      styles={customStyles} 
-                      closeMenuOnSelect={false}
-                      components={animatedComponents}
-                      
-                     // defaultValue={[filterOptions[0], filterOptions[1]]}
-                      isMulti
-                      options={filterOptions}
-                    />
-                </Tab>
+                <RightPart>
+                    <Tab>
+                      <button>
+                          <img src={GLOBE}/> <span>עב</span>
+                      </button>
+                      <Dropdown>
+                        <a href="#">עברית</a>
+                        <a href="#">אנגלית</a>
+ֿ                      </Dropdown>
+                    </Tab>
+                    <Tab style={{width:'auto',marginTop:'4px', float:'right'}}>
+                      <Select
+                          placeholder='חיפוש חופשי'
+                          styles={customStyles} 
+                          closeMenuOnSelect={false}
+                          components={animatedComponents}
+                          
+                        // defaultValue={[filterOptions[0], filterOptions[1]]}
+                          isMulti
+                          options={filterOptions}
+                        />
+                    </Tab>
+                </RightPart>
+             
               </ul>
             </nav>
        </div>
@@ -84,4 +97,21 @@ export const Bar = styled.div`
   background-color:rgb(83, 71, 103);
   max-height:55px;
   width:100%;
+  `;
+
+
+  export const RightPart = styled.div`
+    width: auto;
+    display:inline-flex;
+    flex-direction: row;
+    float:right;
+  `;
+
+  export const Dropdown = styled.div`
+    display:none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
   `;
