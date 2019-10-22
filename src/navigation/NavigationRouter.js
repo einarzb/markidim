@@ -47,7 +47,7 @@ class NavigationRouter extends React.Component {
       <Router>
           <div>
             <nav style={{textAlign:'left'}}>
-              <ul style={{padding:'5px'}}>
+              <ul style={{padding:'5px', fontSize:"15px"}}>
                 <Tab>
                   <Link to="/">ראשי</Link>
                 </Tab>

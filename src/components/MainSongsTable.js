@@ -60,7 +60,7 @@ const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2})
             {mockDataCells2}
           </TableRow>
        */}
-          <TableRow style={{backgroundColor:'white'}} border="all"> {mockDataCells}</TableRow>
+      
         </TableBody>
      </Table>
          }
