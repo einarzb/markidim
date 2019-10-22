@@ -1,7 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
+
+//components
+import NavButton from '@components/NavButton';
+import Dropdown from '@components/Dropdown';
 
 //screens
 import SongsScreen from '@screens/SongsScreen';
@@ -10,7 +13,6 @@ import AboutScreen from '@screens/AboutScreen';
 //style
 import { Tab } from '@appearance/styled';
 import styled from 'styled-components';
-import {GLOBE} from '@assets/index.js';
 
 //mock data
 export const filterOptions = [
@@ -39,9 +41,22 @@ export const customStyles = {
   })
 };
 
-const animatedComponents = makeAnimated();
 
-const NavigationRouter = () => (
+
+
+
+export default class NavigationRouter extends React.Component {
+  state = {
+    dropdownVisible: false,
+  };
+
+  toggleDropDown = () => 
+    this.setState({
+      dropdownVisible: !this.state.dropdownVisible
+    })
+
+    render() {
+      return (
     <Bar>
       <Router>
           <div>
@@ -57,22 +72,15 @@ const NavigationRouter = () => (
                   <Link to="/songs">שירים</Link>
                 </Tab>
                 <RightPart>
-                    <Tab>
-                      <button>
-                          <img src={GLOBE}/> <span>עב</span>
-                      </button>
-                      <Dropdown>
-                        <a href="#">עברית</a>
-                        <a href="#">אנגלית</a>
-ֿ                      </Dropdown>
-                    </Tab>
+                  <NavButton onClick={this.toggleDropDown}/>
+                  <Dropdown show={this.state.dropdownVisible}/>
+                  {this.props.children}
+               
                     <Tab style={{width:'auto',marginTop:'4px', float:'right'}}>
                       <Select
                           placeholder='חיפוש חופשי'
                           styles={customStyles} 
-                          closeMenuOnSelect={false}
-                          components={animatedComponents}
-                          
+                          closeMenuOnSelect={false}                          
                         // defaultValue={[filterOptions[0], filterOptions[1]]}
                           isMulti
                           options={filterOptions}
@@ -88,9 +96,11 @@ const NavigationRouter = () => (
        <Route path="/"></Route>
     </Router>
     </Bar>
-)
+    )
+  }
+}
 
-export default NavigationRouter; 
+//export default NavigationRouter; 
 //rgb(25, 47, 58); dark blue
 
 export const Bar = styled.div`
@@ -107,11 +117,5 @@ export const Bar = styled.div`
     float:right;
   `;
 
-  export const Dropdown = styled.div`
-    display:none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  `;
+
+  
