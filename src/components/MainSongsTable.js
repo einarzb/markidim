@@ -43,13 +43,23 @@ const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2})
       ?
      <EditSongScreen /> 
       :
-     <Table style={{ width:'72%', fontSize:'13px', margin:'0px auto', display:'inline-flex', flexDirection:'column'}}> 
+     <Table style={{ tableLayout: 'fixed', width:'81%', fontSize:'13px', margin:'0px auto', borderCollapse: 'collapse', borderSpacing: '0' }}> 
         <TableHeader style={{backgroundColor:'rgb(247, 239, 239)', fontWeight:'bold'}}>
           <TableRow>{tableHeaderCells}</TableRow>
         </TableHeader>
         <TableBody>
           <RowWrapper>
             <TableRow style={{backgroundColor:'white',  whiteSpace:'nowrap'}} border="all"> {mockDataCells}</TableRow>
+            <ExpandedRow style={{border:"1px solid red", width:"100%"}} show={expanderFlag}/> 
+          </RowWrapper>
+          <RowWrapper>
+            <TableRow style={{backgroundColor:'white',  whiteSpace:'nowrap'}} border="all">
+              <TableCell scope="row" border="bottom">
+                {editOrapproveBtns} 
+              </TableCell>
+              {mockDataCells2}
+            </TableRow>
+
             <ExpandedRow style={{border:"1px solid red", width:"100%"}} show={expanderFlag}/> 
           </RowWrapper>
           {/** 

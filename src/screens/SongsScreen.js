@@ -9,6 +9,7 @@ import MainSongsTable from '@components/MainSongsTable';
 
 import styled from 'styled-components';
 import { SongsWrapper } from '@appearance/styled';
+import EditSongScreen from './EditSongScreen';
 
 let songsCounter = 2; 
 //let moreIcon = <img src={MORE} width="20"/>
@@ -31,7 +32,7 @@ export default class SongsScreen extends React.Component{
             borderColor: "#fd7c20"
           }
         })},
-        expandedRowVisible:false,
+      expandedRowVisible:false,
       selectedDanceStatusOption:null,
       danceStatuses:[
         {value: 1, label:'מאושר'},
@@ -95,8 +96,6 @@ export default class SongsScreen extends React.Component{
       headerCells: [
         {label: ''},
         {label: ''},
-        {label: ''},
-        {label: ''},
         {label: 'מס׳ אקו״ם'},
         {label: 'שנת יצירה'},
         {label: 'מחברים נוספים'},
@@ -110,8 +109,9 @@ export default class SongsScreen extends React.Component{
         {label: 'סטטוס'}        
       ],
       mockSongData: [
-        {label: ''},
         {label:<ExpandingButton onClick={this.showMore}/>},
+        {label: ''},
+        {label: ''},
         {label: '90134'},
         {label: '1964'},
         {label: 'עינר גל, עידן חיל'},
@@ -197,8 +197,14 @@ export default class SongsScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible } = this.state;
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible } = this.state;   
     return(
+      <div>
+        {
+          editFlag
+        ?
+        <EditSongScreen/>
+        :
       <Wrapper> 
         <SongsWrapper>
           <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
@@ -276,8 +282,10 @@ export default class SongsScreen extends React.Component{
           </SelectWrapper>
         </SongsWrapper>
   
-        <MainSongsTable expanderFlag={expandedRowVisible} cellsArr={headerCells} data={mockSongData} btns={btns} data2={mockSongData2} editToggle={editFlag}></MainSongsTable>
+        <MainSongsTable expanderFlag={expandedRowVisible} cellsArr={headerCells} data={mockSongData} btns={btns} data2={mockSongData2}></MainSongsTable>
       </Wrapper> 
+      }
+      </div>
     )
   }
 }
