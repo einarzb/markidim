@@ -8,7 +8,7 @@ import DropdownLanguages from '@components/DropdownLanguages';
 import UserButton from '@components/UserButton';
 import DropDownLogin from '@components/DropDownLogin';
 //screens
-import SongsScreen from '@screens/SongsScreen';
+import DancesScreen from '@screens/DancesScreen';
 import AboutScreen from '@screens/AboutScreen';
 
 //style
@@ -55,7 +55,7 @@ class NavigationRouter extends React.Component {
                   <Link to="/about">אודות</Link>
                 </Tab>
                 <Tab>
-                  <Link to="/songs">שירים</Link>
+                  <Link to="/dances">ריקודים</Link>
                 </Tab>
                 <RightPart>
                   <UserButton onClick={this.toggleDropDownUser}/>
@@ -80,7 +80,7 @@ class NavigationRouter extends React.Component {
             </nav>
        </div>
        <Route path="/about" component={AboutScreen}></Route>
-       <Route path="/songs" component={SongsScreen}></Route>
+       <Route path="/dances" component={DancesScreen}></Route>
        <Route path="/"></Route>
     </Router>
     </Bar>

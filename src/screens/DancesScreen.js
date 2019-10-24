@@ -3,7 +3,6 @@ import Select from 'react-select';
 
 import {CREDIT_CARD, PLUS, APPROVE, EDIT} from '@assets/index.js';
 import ExpandingButton from '@components/ExpandingButton';
-import ExpandedRow from '@components/ExpandedRow';
 import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
 
@@ -11,10 +10,10 @@ import styled from 'styled-components';
 import { SongsWrapper } from '@appearance/styled';
 import EditSongScreen from './EditSongScreen';
 
-let songsCounter = 2; 
+let dancesCounter = 2; 
 //let moreIcon = <img src={MORE} width="20"/>
 
-export default class SongsScreen extends React.Component{ 
+export default class DancesScreen extends React.Component{ 
   constructor(){
     super()
     this.state = {
@@ -39,7 +38,7 @@ export default class SongsScreen extends React.Component{
         {value: 2, label: 'לא מאושר'},
         {value: 3, label: 'בבדיקה'}  
       ],    
-      songs:[
+      dances:[
         {value: 1, label:'שיר1'},
         {value: 2, label: 'שיר2'},
         {value: 3, label: 'שיר3'}  
@@ -87,10 +86,10 @@ export default class SongsScreen extends React.Component{
           value: 'Karius',
         },
       ],
-      songsCounter: 3,
+      dancesCounter: 3,
       //add icon to the object property
       mainButtons : [
-        {label: 'רישום שיר חדש', span:'עוד ' + songsCounter + ' שירים', onClick:this.registerSong, bgColor:'rgb(83,71,103)', icon:PLUS},
+        {label: 'רישום שיר חדש', span:'עוד ' + dancesCounter + ' שירים', onClick:this.registerDance, bgColor:'rgb(83,71,103)', icon:PLUS},
         {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#192F3A', icon:CREDIT_CARD},
       ],
       headerCells: [
@@ -163,13 +162,13 @@ export default class SongsScreen extends React.Component{
     alert('approve song here')
   }
 
-  registerSong = () => {
+  registerDance = () => {
     alert('register song here')
     //this.updateSongsCounter(3);
   }
 
-  updateSongsCounter = (num) => {
-    this.setState({songsCounter:num})
+  updateDancesCounter = (num) => {
+    this.setState({dancesCounter:num})
   }
 
   payMembershipFee = () => {
@@ -180,7 +179,7 @@ export default class SongsScreen extends React.Component{
     this.setState({ selectedDanceStatusOption });
   };
 
-  songChange = (selectedSongOption) => {
+  danceChange = (selectedSongOption) => {
     this.setState({ selectedSongOption });
   };
   performerChange = (selectedPerformerOption) => {
@@ -197,7 +196,7 @@ export default class SongsScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, songs, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible } = this.state;   
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible } = this.state;   
     return(
       <div>
         {
@@ -227,8 +226,8 @@ export default class SongsScreen extends React.Component{
                       autoFocus
                       placeholder='שם שיר'
                       value={selectedSongOption}
-                      onChange={this.songChange}
-                      options={songs}
+                      onChange={this.danceChange}
+                      options={dances}
                       name="dance-status-select"
                     /> 
                 </SelectBtn>
