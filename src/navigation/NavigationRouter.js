@@ -7,6 +7,7 @@ import LanguagesButton from '@components/LanguagesButton';
 import DropdownLanguages from '@components/DropdownLanguages';
 import UserButton from '@components/UserButton';
 import DropDownLogin from '@components/DropDownLogin';
+
 //screens
 import DancesScreen from '@screens/DancesScreen';
 import AboutScreen from '@screens/AboutScreen';
@@ -15,12 +16,6 @@ import AboutScreen from '@screens/AboutScreen';
 import { Tab } from '@appearance/styled';
 import styled from 'styled-components';
 
-//mock data
-export const filterOptions = [
-  { value: 'זוגות', label: 'זוגות', color: '#FFFFFF', isFixed: false },
-  { value: 'לא מאושר', label: 'לא מאושר', color: '#FFFFFF' },
-  { value: 'תמיר שרצר', label: 'תמיר שרצר', color: '#FFFFFF' }
-];
 
 
 class NavigationRouter extends React.Component {
@@ -63,17 +58,7 @@ class NavigationRouter extends React.Component {
 
                   <LanguagesButton onClick={this.toggleDropDownLang}/>
                   <DropdownLanguages show={this.state.dropdownVisible}/> 
-                     
-                    <Tab style={{width:'auto',marginTop:'4px', float:'right'}}>
-                      <Select
-                          placeholder='חיפוש חופשי'
-                          styles={customStyles} 
-                          closeMenuOnSelect={false}                          
-                        // defaultValue={[filterOptions[0], filterOptions[1]]}
-                          isMulti
-                          options={filterOptions}
-                        />
-                    </Tab>
+          
                 </RightPart>
              
               </ul>

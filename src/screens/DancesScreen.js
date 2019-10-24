@@ -9,6 +9,7 @@ import MainSongsTable from '@components/MainSongsTable';
 import styled from 'styled-components';
 import { SongsWrapper, SelectBtn } from '@appearance/styled';
 import EditSongScreen from './EditSongScreen';
+import ConfirmSongScreen from './ConfirmSongScreen';
 
 let dancesCounter = 2; 
 //let moreIcon = <img src={MORE} width="20"/>
@@ -141,12 +142,26 @@ export default class DancesScreen extends React.Component{
         {icon:APPROVE, onClick:this.toggleApprove},
         {icon:EDIT, onClick:this.toggleEdit}
       ],
-      editFlag:false
-     //        
+      editFlag:false,
+      approveFlag:false,
+      //mock data
+      filterOptions:[
+        { value: 'זוגות', label: 'זוגות', color: '#FFFFFF', isFixed: false },
+        { value: 'לא מאושר', label: 'לא מאושר', color: '#FFFFFF' },
+        { value: 'תמיר שרצר', label: 'תמיר שרצר', color: '#FFFFFF' }
+      ]
+
+
+      
  
     }
   }
   
+  toggleApprove = () => {
+    console.log('toggle edit');       
+    this.setState({approveFlag:true});
+  }
+
   toggleEdit = () => {
     console.log('toggle edit');       
     this.setState({editFlag:true});
@@ -158,9 +173,6 @@ export default class DancesScreen extends React.Component{
     })    
   }
 
-  toggleApprove = () => {
-    alert('approve song here')
-  }
 
   registerDance = () => {
     alert('register song here')
@@ -196,19 +208,29 @@ export default class DancesScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible } = this.state;   
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible, approveFlag, filterOptions } = this.state;   
     return(
       <div>
-        {
-          editFlag
-        ?
-        <EditSongScreen/>
-        :
+        {      
+        editFlag ? <EditSongScreen toggle={this.toggleEdit} /> :
+        approveFlag ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
       <Wrapper> 
         <SongsWrapper>
           <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
           <SelectWrapper>
             <SelectRow>
+            <SelectBtn style={{width:'200px'}}>
+
+            <Select
+                          placeholder='סינון חופשי'
+                          styles={customStyles} 
+                          closeMenuOnSelect={false}                          
+                        // defaultValue={[filterOptions[0], filterOptions[1]]}
+                          isMulti
+                          options={filterOptions}
+                        />
+                                        </SelectBtn>
+
                 <SelectBtn>
                     <Select
                       styles={customStyles} 
