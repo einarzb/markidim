@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Select from 'react-select';
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 
 //components
 import LanguagesButton from '@components/LanguagesButton';
@@ -67,6 +66,8 @@ class NavigationRouter extends React.Component {
        <Route path="/about" component={AboutScreen}></Route>
        <Route path="/dances" component={DancesScreen}></Route>
        <Route path="/"></Route>
+       <Redirect from="/" to="dances" />
+
     </Router>
     </Bar>
     )
