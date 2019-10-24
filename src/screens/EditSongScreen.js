@@ -9,8 +9,8 @@ import styled from 'styled-components';
 
 class EditSongScreen extends React.Component{
          state = {
-            toggleEditScreen: true,
             selectedDanceNameValue:"",
+            editFlag:true,
             danceStatuses:[
               {value: 1, label:'מאושר'},
               {value: 2, label: 'לא מאושר'},
@@ -19,13 +19,10 @@ class EditSongScreen extends React.Component{
           };
     
 
-    toggleEdit = () => {
-      console.log('im toggle');
-      
+    toggleEdit = () => {      
       this.setState({
-        toggleEditScreen: !this.state.toggleEditScreen,
+        editFlag: !this.state.editFlag,
       })
-      console.log(this.state.toggleEditScreen);
       
     }
        
@@ -231,7 +228,7 @@ class EditSongScreen extends React.Component{
            
            </MainRow>
            <ControlButtons>
-              <Button onClick={this.toggleEdit}> ביטול </Button>
+              <Button onClick={this.toggleEdit} > ביטול </Button>
               <Button> שמירה </Button>
           </ControlButtons>
         </WrapperDiv>
