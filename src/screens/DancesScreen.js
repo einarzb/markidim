@@ -7,7 +7,7 @@ import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
 
 import styled from 'styled-components';
-import { SongsWrapper } from '@appearance/styled';
+import { SongsWrapper, SelectBtn } from '@appearance/styled';
 import EditSongScreen from './EditSongScreen';
 
 let dancesCounter = 2; 
@@ -312,18 +312,3 @@ export const SelectRow = styled.div`
     flex-direction:column;
   }
 `;
-
-export const SelectBtn = styled.div`
-  width:112px;
-  font-size: 13px;
-  font-weight:300;
-  margin:0px 4px;
-  color:#000000;
-  @media (max-width: 768px) {
-    width: 100px;
-  }
-  & input {
-    border:1px solid grey;
-    padding: 10px;
-`;
-

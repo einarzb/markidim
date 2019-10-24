@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import { TextInput } from 'grommet/components/TextInput';
+import Select from 'react-select';
+import { SelectBtn } from '@appearance/styled';
+
 
 // STYLING
 import styled from 'styled-components';
 
 class EditSongScreen extends React.Component{
          state = {
-            toggleEditScreen: true
+            toggleEditScreen: true,
+            selectedDanceNameValue:"",
+            danceStatuses:[
+              {value: 1, label:'מאושר'},
+              {value: 2, label: 'לא מאושר'},
+              {value: 3, label: 'בבדיקה'}  
+            ],  
           };
     
 
@@ -19,69 +29,206 @@ class EditSongScreen extends React.Component{
       
     }
        
+    setDanceNameValue = (e) => {      
+      this.setState({
+        selectedDanceNameValue:e
+      })
+    }
 
+    danceStatusChange = (selectedDanceStatusOption) => {
+      this.setState({ selectedDanceStatusOption });
+    };
    
     render(){
+        let {selectedDanceNameValue, selectedDanceStatusOption, danceStatuses} = this.state;
         return (
+
         <WrapperDiv>
            <h2>עריכת פרטי ריקוד</h2>
-           <ButtonsFlexer>
-             סטטוס: 
-           </ButtonsFlexer>
+        
            <MainRow>
               <FormCol>
                   <ButtonsFlexer>
-                    <div>שם ריקוד: </div>
-                    <div>אהבתיה</div>
+                          <label>סטטוס
+                            <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
+                            <Select
+                                autoFocus
+                                placeholder='סטטוס ריקוד'
+                                value={selectedDanceStatusOption}
+                                onChange={this.danceStatusChange}
+                                options={danceStatuses}
+                                name="dance-status-select"
+                              /> 
+                            </SelectBtn>
+                              </label>
+                  </ButtonsFlexer>
+              </FormCol>
+              <FormCol>
+                  <ButtonsFlexer>
+                    <label>תאריך הזמנה
+                      <TextInput
+                          placeholder="11/1984"
+                          value={selectedDanceNameValue}
+                          onChange={ event => this.setDanceNameValue(event.target.value) }
+                        />
+                    </label>
+                  </ButtonsFlexer>
+              </FormCol>
+              <FormCol>
+                  <ButtonsFlexer>
+                    <label>תאריך הפיכה לריקוד קיים
+                        <TextInput
+                          placeholder="06/2019"
+                          value={selectedDanceNameValue}
+                          onChange={ event => this.setDanceNameValue(event.target.value) }
+                        />
+                    </label>
+                  </ButtonsFlexer>
+              </FormCol>
+           </MainRow>
+
+           <MainRow>
+              <FormCol>
+                  <ButtonsFlexer>
+                    <label>שם ריקוד: 
+                    <TextInput
+                            placeholder="פתאום עכשיו פתאום היום"
+                            value={selectedDanceNameValue}
+                            onChange={ event => this.setDanceNameValue(event.target.value) }
+                    />
+                    </label>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                     <div>מוזמן ע״י: </div>
-                      <div>תמיר שרצר</div>
+                     <label>מוזמן ע״י:
+                     <TextInput
+                            placeholder="תמיר שרצר"
+                            value={selectedDanceNameValue}
+                            onChange={ event => this.setDanceNameValue(event.target.value) }
+                    />
+                     </label>
                   </ButtonsFlexer>
 
                   <ButtonsFlexer>
-                    <div>שם שיר מקורי: </div>
-                    <div> אהבתיה </div>
+                    <label>שם שיר מקורי: 
+                    <TextInput
+                            placeholder="אהבתיה"
+                            value={selectedDanceNameValue}
+                            onChange={ event => this.setDanceNameValue(event.target.value) }
+                    />
+                    </label>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                    <div> שם מלחין</div>
-                    <div> יעקב הולנדר </div>
+                    <label> שם מלחין
+                    <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
+                            <Select
+                                autoFocus
+                                placeholder='יעקב הולנדר'
+                                value={selectedDanceStatusOption}
+                                onChange={this.danceStatusChange}
+                                options={danceStatuses}
+                                name="dance-status-select"
+                              /> 
+                            </SelectBtn>
+                    </label>
                   </ButtonsFlexer>
 
+                 
+              </FormCol>
+
+              <FormCol>
+              <ButtonsFlexer>
+                      <label>מס יצירה אקו״ם
+                          <TextInput
+                                  placeholder="935785"
+                                  value={selectedDanceNameValue}
+                                  onChange={ event => this.setDanceNameValue(event.target.value) }
+                          />
+                      </label>
+                    </ButtonsFlexer>
+                    <ButtonsFlexer>
+                       <label> שם משורר
+                       <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
+                            <Select
+                                autoFocus
+                                placeholder='תרצה אתר'
+                                value={selectedDanceStatusOption}
+                                onChange={this.danceStatusChange}
+                                options={danceStatuses}
+                                name="dance-status-select"
+                              /> 
+                            </SelectBtn>
+                       </label>
+                    </ButtonsFlexer>
+
                   <ButtonsFlexer>
-                    <div>מס יצירה אקו״ם</div>
-                    <div> שם משורר</div>
+                     <label>  מחברים נוספים
+                       <TextInput
+                                  placeholder="עינר גל"
+                                  value={selectedDanceNameValue}
+                                  onChange={ event => this.setDanceNameValue(event.target.value) }
+                          />
+                       </label>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                    <div>מחברים נוספים</div>
-                    <div> שם מבצע</div>
+                     <label>  שם מבצע
+                     <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
+                            <Select
+                                autoFocus
+                                placeholder='שלמה ארצי'
+                                value={selectedDanceStatusOption}
+                                onChange={this.danceStatusChange}
+                                options={danceStatuses}
+                                name="dance-status-select"
+                              /> 
+                            </SelectBtn>
+                       </label>
                   </ButtonsFlexer>
               </FormCol>
               <FormCol>
               <ButtonsFlexer>
-                <div> שנת יצירה</div>
-                <div> שם יצירה מקורי</div>
-              </ButtonsFlexer>
+                <label>  שם יצירה מקורי
+                  <TextInput
+                            placeholder="אהבתיה"
+                            value={selectedDanceNameValue}
+                            onChange={ event => this.setDanceNameValue(event.target.value) }
+                    />
+                </label>
+               </ButtonsFlexer>
+           
               <ButtonsFlexer>
-                <div>  מס׳ יצירה מקורי אקו״ם </div>
+                  <label>
+                      לינק לסרטון שיר מקורי 
+                     <TextInput
+                            placeholder="שלמה ארצי"
+                            value={selectedDanceNameValue}
+                            onChange={ event => this.setDanceNameValue(event.target.value) }
+                    />
+                 </label>
               </ButtonsFlexer>
-              <ButtonsFlexer>
-                <div>לינק לסרטון שיר מקורי </div>
-              </ButtonsFlexer>
-              <ButtonsFlexer>
-                <div>לינק לסרטון ריקוד </div>
-              </ButtonsFlexer>
-              <ButtonsFlexer>
-                <div>לינק למילות שיר </div>
-              </ButtonsFlexer>
-              <ButtonsFlexer>
-                    <div> תאריך הזמנה</div>
-                    <div> 21/06/19</div>
-                  </ButtonsFlexer>
 
-                  <div>תאריך הפיכה לריקוד קיים</div>
+              <ButtonsFlexer>
+                 <label>
+                    לינק לסרטון ריקוד
+                    <TextInput
+                        placeholder="שלמה ארצי"
+                        value={selectedDanceNameValue}
+                        onChange={ event => this.setDanceNameValue(event.target.value) }
+                      />
+                 </label>
+              </ButtonsFlexer>
 
-            </FormCol>
+              <ButtonsFlexer>
+                <label>לינק למילות שיר 
+                <TextInput
+                        placeholder="שלמה ארצי"
+                        value={selectedDanceNameValue}
+                        onChange={ event => this.setDanceNameValue(event.target.value) }
+                      />
+                </label>
+              </ButtonsFlexer>
+              </FormCol>
+       
+           
            </MainRow>
            <ControlButtons>
               <Button onClick={this.toggleEdit}> ביטול </Button>
@@ -113,13 +260,23 @@ const WrapperDiv = styled.div`
 const ButtonsFlexer = styled.div`
     display: inline-flex;
     flex-direction:row;
-    width: 50%;
-    margin:0px auto;
+    width: 100%;
     direction:rtl;
+    align-items:center;
+    font-size: 15px;
+    & label {
+      text-align:right;
+      margin: 5px 0px;
+      color:rgb(152,135,152);
+    }
     & div {
       text-align:right;
-      margin: 0.5rem;
+      width: auto;
+      & input{
+        font-weight:100;
+      }
     }
+  
 `;
 
 const ControlButtons = styled.div`
@@ -127,6 +284,7 @@ const ControlButtons = styled.div`
     flex-direction:row;
     width: auto;
     margin: 1rem 0;
+    justify-content:center;
 `;
 
 const Button = styled.div`
@@ -145,13 +303,13 @@ const Button = styled.div`
 const FormCol = styled.div`
     display:inline-flex;
     flex-direction:column;
-    width:50%;
+    width:33%;
 
 `; 
 
 const MainRow = styled.div`
 display:inline-flex;
 flex-direction:row-reverse;
-width:70%;
+width:55%;
 
 `;
