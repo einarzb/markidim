@@ -149,7 +149,13 @@ export default class DancesScreen extends React.Component{
         { value: 'זוגות', label: 'זוגות', color: '#FFFFFF', isFixed: false },
         { value: 'לא מאושר', label: 'לא מאושר', color: '#FFFFFF' },
         { value: 'תמיר שרצר', label: 'תמיר שרצר', color: '#FFFFFF' }
-      ]
+      ],
+      tagStatus:"",
+      tagSongName:"",
+      tagPerformer:"",
+      tagComposer:"",
+      tagWriter:"",
+      tagChoreographer:""
 
 
       
@@ -188,27 +194,28 @@ export default class DancesScreen extends React.Component{
   }
 
   danceStatusChange = (selectedDanceStatusOption) => {
-    this.setState({ selectedDanceStatusOption });
+    this.setState({ selectedDanceStatusOption, tagStatus:<Tag>{selectedDanceStatusOption.label }</Tag>});
   };
 
   danceChange = (selectedSongOption) => {
-    this.setState({ selectedSongOption });
+    this.setState({ selectedSongOption, tagSongName:<Tag>{selectedSongOption.label }</Tag>});
   };
   performerChange = (selectedPerformerOption) => {
-    this.setState({ selectedPerformerOption });
+    this.setState({ selectedPerformerOption, tagPerformer:<Tag>{selectedPerformerOption.label}</Tag> });
   };
   composersChange = (selectedComposerOption) => {
-    this.setState({ selectedComposerOption });
+    this.setState({ selectedComposerOption, tagComposer:<Tag>{selectedComposerOption.label }</Tag>});
   };
   choreographersChange = (selectedChoreographerOption) => {
-    this.setState({ selectedChoreographerOption });
+    this.setState({ selectedChoreographerOption, tagChoreographer:<Tag>{selectedChoreographerOption.label }</Tag>});
   };
   writersChange = (selectedWritersOption) => {
-    this.setState({ selectedWritersOption });
+    this.setState({ selectedWritersOption, tagWriter:<Tag>{selectedWritersOption.label }</Tag>});
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible, approveFlag, filterOptions } = this.state;   
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible, approveFlag, filterOptions, tagStatus, tagSongName, tagPerformer, tagComposer, tagWriter, tagChoreographer } = this.state;   
+
     return(
       <div>
         {      
@@ -317,9 +324,21 @@ export default class DancesScreen extends React.Component{
               </SelectBtn>
               </label> 
             </SelectRow>
+
+          
+
           </SelectWrapper>
+      
         </SongsWrapper>
-  
+        <Tags>
+           {tagChoreographer}
+            {tagWriter}
+           {tagComposer}
+            {tagPerformer}
+           {tagSongName}
+            {tagStatus}
+      
+        </Tags>
         <MainSongsTable expanderFlag={expandedRowVisible} cellsArr={headerCells} data={mockSongData} btns={btns} data2={mockSongData2}></MainSongsTable>
       </Wrapper> 
       }
@@ -341,6 +360,21 @@ export const SelectWrapper = styled.div`
 export const Tags = styled.div`
   display:inline-flex;
   flex-direction:row;
+  justify-content:space-between;
+  width:auto;
+
+`;
+
+export const Tag = styled.div`
+  width: 100px;
+  font-size: 14px;
+  color: grey;
+  background-color: rgba(225,225,225, 0.6);
+  padding: 0px 2px;
+  margin: 0rem 0.5rem 2rem;
+  border-radius: 5em;
+  display: block;
+  border: 1px solid grey;
 `;
 
 export const SelectRow = styled.div`
