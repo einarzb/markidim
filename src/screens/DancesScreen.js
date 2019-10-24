@@ -219,18 +219,20 @@ export default class DancesScreen extends React.Component{
           <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
           <SelectWrapper>
             <SelectRow>
-            <SelectBtn style={{width:'200px'}}>
-
-            <Select
-                          placeholder='סינון חופשי'
-                          styles={customStyles} 
-                          closeMenuOnSelect={false}                          
-                        // defaultValue={[filterOptions[0], filterOptions[1]]}
-                          isMulti
-                          options={filterOptions}
-                        />
-                                        </SelectBtn>
-
+              <label> &nbsp;
+              <SelectBtn style={{width:'200px'}}>
+                  <Select
+                    placeholder='סינון חופשי'
+                    styles={customStyles} 
+                    closeMenuOnSelect={false}                          
+                  // defaultValue={[filterOptions[0], filterOptions[1]]}
+                    isMulti
+                    options={filterOptions}
+                  />
+              </SelectBtn>
+              </label>
+              <label>
+                סטטוס ריקוד
                 <SelectBtn>
                     <Select
                       styles={customStyles} 
@@ -242,18 +244,23 @@ export default class DancesScreen extends React.Component{
                       name="dance-status-select"
                     /> 
                 </SelectBtn>
+              </label>
+              <label> שם שיר
                 <SelectBtn>
-                    <Select
-                      styles={customStyles} 
-                      autoFocus
-                      placeholder='שם שיר'
-                      value={selectedSongOption}
-                      onChange={this.danceChange}
-                      options={dances}
-                      name="dance-status-select"
-                    /> 
-                </SelectBtn>
-                <SelectBtn>
+                      <Select
+                        styles={customStyles} 
+                        autoFocus
+                        placeholder='שם שיר'
+                        value={selectedSongOption}
+                        onChange={this.danceChange}
+                        options={dances}
+                        name="dance-status-select"
+                      /> 
+                  </SelectBtn>
+              </label>
+              <label>
+                 שם מבצע 
+                 <SelectBtn>
                     <Select
                       styles={customStyles} 
                       autoFocus
@@ -264,20 +271,26 @@ export default class DancesScreen extends React.Component{
                       name="dance-status-select"
                     /> 
                 </SelectBtn>
+              </label>             
             </SelectRow>
             <SelectRow>
-                <SelectBtn>
-                    <Select
-                      styles={customStyles} 
-                      autoFocus
-                      placeholder='שם מלחין'
-                      value={selectedComposerOption}
-                      onChange={this.composersChange}
-                      options={composers}
-                      name="dance-status-select"
-                    /> 
-                </SelectBtn>
-                <SelectBtn>
+              <label>
+              שם מלחין
+              <SelectBtn>
+                  <Select
+                    styles={customStyles} 
+                    autoFocus
+                    placeholder='שם מלחין'
+                    value={selectedComposerOption}
+                    onChange={this.composersChange}
+                    options={composers}
+                    name="dance-status-select"
+                  /> 
+              </SelectBtn>
+              </label>
+              <label>
+                שם משורר
+              <SelectBtn>
                     <Select
                       styles={customStyles} 
                       autoFocus
@@ -287,8 +300,11 @@ export default class DancesScreen extends React.Component{
                       options={writers}
                       name="dance-status-select"
                     /> 
-                </SelectBtn>
-                <SelectBtn>
+              </SelectBtn>
+               </label>
+               <label>
+                  שם מזמין  
+              <SelectBtn>
                     <Select
                       styles={customStyles} 
                       autoFocus 
@@ -298,7 +314,8 @@ export default class DancesScreen extends React.Component{
                       options={choreographers}
                       name="dance-status-select"
                     /> 
-                </SelectBtn>
+              </SelectBtn>
+              </label> 
             </SelectRow>
           </SelectWrapper>
         </SongsWrapper>
@@ -330,6 +347,11 @@ export const SelectRow = styled.div`
   display:inline-flex;
   flex-direction:row-reverse;
   margin: 0.5rem 0;
+  & label {
+    font-size: 12px;
+    text-align:right;
+    color:rgb(152,135,152);
+  }
   @media (max-width: 768px) {
     flex-direction:column;
   }
