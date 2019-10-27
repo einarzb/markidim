@@ -18,7 +18,7 @@ import ExpandedRow from '@components/ExpandedRow';
 const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2}) => {       
   
   let tableHeaderCells = cellsArr.map(function(cell, i) {
-    return <TableCell key={i} scope="col" border="bottom" style={{textAlign: 'center', alignItems: 'center', whiteSpace: 'nowrap'}}>{cell.label}</TableCell>
+    return <TableCell key={i} scope="col" border="bottom" style={{fontSize:'15px', width:'200px' ,textAlign: 'center', alignItems: 'center', whiteSpace: 'nowrap'}}>{cell.label}</TableCell>
   })
 
   let mockDataCells = data.map(function(song, i) {
@@ -26,7 +26,7 @@ const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2})
     </TableCell>
   })
   let mockDataCells2 = data2.map(function(song, i) {
-    return <TableCell key={i} scope="row" size="large" border="bottom" onClick={song.onClick} style={{width:'auto',textAlign:'center', direction:'rtl', whiteSpace: song.whiteSpace, borderRadius:song.borderRadius, width:song.width,backgroundColor:song.backgroundColor}}>{song.label} 
+    return <TableCell key={i} scope="row" border="bottom" onClick={song.onClick} style={{width:'auto',textAlign:'center', direction:'rtl', whiteSpace: song.whiteSpace, borderRadius:song.borderRadius, width:song.width,backgroundColor:song.backgroundColor}}>{song.label} 
     </TableCell>
   })
   let editOrapproveBtns = btns.map(function(btn, i){

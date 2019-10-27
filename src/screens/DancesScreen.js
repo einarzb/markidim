@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import { SongsWrapper, SelectBtn } from '@appearance/styled';
 import EditSongScreen from './EditSongScreen';
 import ConfirmSongScreen from './ConfirmSongScreen';
+import RegisterSongScreen from './RegisterSongScreen';
 
 let dancesCounter = 2; 
 //let moreIcon = <img src={MORE} width="20"/>
@@ -142,6 +143,7 @@ export default class DancesScreen extends React.Component{
       ],
       editFlag:false,
       approveFlag:false,
+      registerFlag:false,
       //mock data
       filterOptions:[
         { value: 'זוגות', label: 'זוגות', color: '#FFFFFF', isFixed: false },
@@ -153,7 +155,8 @@ export default class DancesScreen extends React.Component{
       tagPerformer:"",
       tagComposer:"",
       tagWriter:"",
-      tagChoreographer:""
+      tagChoreographer:"",
+      allTags: []
 
 
       
@@ -179,8 +182,9 @@ export default class DancesScreen extends React.Component{
 
 
   registerDance = () => {
-    alert('register song here')
-    //this.updateSongsCounter(3);
+    console.log('register song');
+    this.setState({registerFlag:true});
+        //this.updateSongsCounter(3);
   }
 
   updateDancesCounter = (num) => {
@@ -212,13 +216,14 @@ export default class DancesScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible, approveFlag, filterOptions, tagStatus, tagSongName, tagPerformer, tagComposer, tagWriter, tagChoreographer } = this.state;   
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible, approveFlag, filterOptions, tagStatus, tagSongName, tagPerformer, tagComposer, tagWriter, tagChoreographer, registerFlag } = this.state;   
     
     return(
       <div>
         {      
         editFlag ? <EditSongScreen toggle={this.toggleEdit} /> :
         approveFlag ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
+        registerFlag ? <RegisterSongScreen toggle={this.toggleRegister}/> :
       <Wrapper> 
         <SongsWrapper>
           <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
