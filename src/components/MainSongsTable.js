@@ -18,7 +18,7 @@ import ExpandedRow from '@components/ExpandedRow';
 const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2}) => {       
   
   let tableHeaderCells = cellsArr.map(function(cell, i) {
-    return <TableCell key={i} scope="col" border="bottom" style={{fontSize:'15px', width:'200px' ,textAlign: 'center', alignItems: 'center', whiteSpace: 'nowrap'}}>{cell.label}</TableCell>
+    return <TableCell key={i} scope="col" border="bottom">{cell.label}</TableCell>
   })
 
   let mockDataCells = data.map(function(song, i) {
@@ -29,6 +29,7 @@ const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2})
     return <TableCell key={i} scope="row" border="bottom" onClick={song.onClick} style={{width:'auto',textAlign:'center', direction:'rtl', whiteSpace: song.whiteSpace, borderRadius:song.borderRadius, width:song.width,backgroundColor:song.backgroundColor}}>{song.label} 
     </TableCell>
   })
+  //delete
   let editOrapproveBtns = btns.map(function(btn, i){
     return  <TableCell key={i} scope="col" >              
     <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0"}} onClick={btn.onClick}>
@@ -46,7 +47,7 @@ const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2})
       :
      <Table style={{ tableLayout: 'fixed', width:'81%', fontSize:'13px', margin:'0px auto', borderCollapse: 'collapse', borderSpacing: '0' }}> 
        
-        <TableHeader style={{backgroundColor:'rgb(247, 239, 239)', fontWeight:'bold'}}>
+        <TableHeader style={{backgroundColor:'rgb(247, 239, 239)', fontWeight:'bold', fontSize:'14px', margin: '0 1rem', display:'inline-block'}}>
           <TableRow style={{ width:'100px'}}>{tableHeaderCells}</TableRow>
         </TableHeader>
 
@@ -59,7 +60,7 @@ const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2})
                 </TableCell>
                 {mockDataCells}
             </TableRow>
-            <ExpandedRow style={{border:"1px solid red", width:"100%"}} show={expanderFlag}/> 
+            <ExpandedRow show={expanderFlag}/> 
            
           </RowWrapper>
         
@@ -70,7 +71,7 @@ const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2})
               </TableCell>
               {mockDataCells2}
             </TableRow>
-            <ExpandedRow style={{border:"1px solid red", width:"100%"}} show={expanderFlag}/> 
+            <ExpandedRow show={expanderFlag}/> 
           </RowWrapper>
           {/** 
           <TableRow>

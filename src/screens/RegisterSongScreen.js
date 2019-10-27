@@ -10,7 +10,7 @@ import styled from 'styled-components';
 class RegisterSongScreen extends React.Component{
          state = {
             selectedDanceNameValue:"",
-            editFlag:true,
+            showFlag:true,
             danceStatuses:[
               {value: 1, label:'מוזמן'},
               {value: 2, label:'מאושר'},
@@ -24,9 +24,9 @@ class RegisterSongScreen extends React.Component{
     toy = (e) => {
       this.setState({textAreaText:e})
     }   
-    toggleEdit = () => {      
+    toggleRegister = () => {      
       this.setState({
-        editFlag: !this.state.editFlag,
+        showFlag: !this.state.showFlag,
       })
       
     }
@@ -90,16 +90,6 @@ class RegisterSongScreen extends React.Component{
               </FormCol>
            </MainRow>
 
-{/**
-
-   <label>תאריך הפיכה לריקוד קיים
-                        <TextInput
-                          placeholder=""
-                          value={selectedDanceNameValue}
-                          onChange={ event => this.setDanceNameValue(event.target.value) }
-                        />
-                    </label>
-*/}
            <MainRow>
               <FormCol>
                   <ButtonsFlexer>
@@ -215,32 +205,16 @@ class RegisterSongScreen extends React.Component{
                               /> 
                             </SelectBtn>
                      </label>
-                {/** 
-              
-                */}
-               
                </ButtonsFlexer>
            
               <ButtonsFlexer>
-              <label>  מספר יצירה מקורי באקו״ם
-                            
-                            <TextInput
-                                      placeholder="#"
-                                      value={selectedDanceNameValue}
-                                      onChange={ event => this.setDanceNameValue(event.target.value) }
-                              />
-                          </label>
-                          {/**
-                  <label>
-                      לינק לסרטון שיר מקורי 
-                     <TextInput
-                            placeholder="שלמה ארצי"
-                            value={selectedDanceNameValue}
-                            onChange={ event => this.setDanceNameValue(event.target.value) }
-                    />
-                 </label>
-                                            */}
-
+                  <label>  מספר יצירה מקורי באקו״ם
+                        <TextInput
+                                  placeholder="#"
+                                  value={selectedDanceNameValue}
+                                  onChange={ event => this.setDanceNameValue(event.target.value) }
+                          />
+                  </label>
               </ButtonsFlexer>
 
               <ButtonsFlexer>
@@ -256,16 +230,6 @@ class RegisterSongScreen extends React.Component{
                               /> 
                             </SelectBtn>
                        </label>
-                       {/**
-                 <label>
-                    לינק לסרטון ריקוד
-                    <TextInput
-                        placeholder="שלמה ארצי"
-                        value={selectedDanceNameValue}
-                        onChange={ event => this.setDanceNameValue(event.target.value) }
-                      />
-                 </label>
-                  */}
               </ButtonsFlexer>
 
               <ButtonsFlexer>
@@ -301,7 +265,7 @@ class RegisterSongScreen extends React.Component{
               />
            </MainRow>
            <ControlButtons>
-              <Button onClick={this.toggleEdit} > ביטול </Button>
+              <Button onClick={this.toggleRegister} > ביטול </Button>
               <Button> שמירה </Button>
           </ControlButtons>
         </WrapperDiv>
