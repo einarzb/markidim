@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput } from 'grommet/components/TextInput';
+import { TextInput, TextArea } from 'grommet';
 import Select from 'react-select';
 import { SelectBtn } from '@appearance/styled';
 
@@ -14,13 +14,16 @@ class RegisterSongScreen extends React.Component{
             danceStatuses:[
               {value: 1, label:'מוזמן'},
               {value: 2, label:'מאושר'},
-              {value: 3, label: 'ריקוד קיים'}
-              //{value: 4, label: 'נמחק'}  
+              {value: 3, label: 'ריקוד קיים'},
+              {value: 4, label: 'נמחק', hidden:'hidden'}  
             ],  
             selectedDanceOwnerValue:"תמיר שרצר",
+            textAreaText:"",
           };
     
-
+    toy = (e) => {
+      this.setState({textAreaText:e})
+    }   
     toggleEdit = () => {      
       this.setState({
         editFlag: !this.state.editFlag,
@@ -41,7 +44,7 @@ class RegisterSongScreen extends React.Component{
  
    
     render(){
-        let {selectedDanceNameValue, selectedDanceStatusOption, danceStatuses, selectedDanceOwnerValue} = this.state;
+        let {selectedDanceNameValue, selectedDanceStatusOption, danceStatuses, selectedDanceOwnerValue, value} = this.state;
         return (
 
         <WrapperDiv>
@@ -140,6 +143,15 @@ class RegisterSongScreen extends React.Component{
                             </SelectBtn>
                     </label>
                   </ButtonsFlexer>
+                  <ButtonsFlexer>
+                    <label>  תאריך ושעת הזמנה 
+                      <TextInput
+                              placeholder=""
+                              value={selectedDanceNameValue}
+                              onChange={ event => this.setDanceNameValue(event.target.value) }
+                            />
+                     </label>
+                  </ButtonsFlexer>
               </FormCol>
 
               <FormCol>
@@ -156,21 +168,13 @@ class RegisterSongScreen extends React.Component{
                               /> 
                             </SelectBtn>
                        </label>
-                       {/** 
-                      <label>מס יצירה אקו״ם
-                          <TextInput
-                                  placeholder="935785"
-                                  value={selectedDanceNameValue}
-                                  onChange={ event => this.setDanceNameValue(event.target.value) }
-                          />
-                      </label>
-                      */}
+           
                     </ButtonsFlexer>
                     <ButtonsFlexer>
                           <label>  מספר יצירה באקו״ם
                             
                         <TextInput
-                                  placeholder="אהבתיה"
+                                  placeholder="#"
                                   value={selectedDanceNameValue}
                                   onChange={ event => this.setDanceNameValue(event.target.value) }
                           />
@@ -180,23 +184,21 @@ class RegisterSongScreen extends React.Component{
                   <ButtonsFlexer>
                   <label>  שם יצירה מקורי
                   <TextInput
-                            placeholder="אהבתיה"
+                            placeholder=""
                             value={selectedDanceNameValue}
                             onChange={ event => this.setDanceNameValue(event.target.value) }
                     />
                 </label>
-                {/**
-                     <label>  מחברים נוספים
-                       <TextInput
-                                  placeholder="עינר גל"
-                                  value={selectedDanceNameValue}
-                                  onChange={ event => this.setDanceNameValue(event.target.value) }
-                          />
-                       </label>
-                        */}
+             
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                    
+                    <label>  תאריך הפיכה לריקוד קיים
+                      <TextInput
+                              placeholder=""
+                              value={selectedDanceNameValue}
+                              onChange={ event => this.setDanceNameValue(event.target.value) }
+                            />
+                     </label>
                   </ButtonsFlexer>
               </FormCol>
               <FormCol>
@@ -223,7 +225,7 @@ class RegisterSongScreen extends React.Component{
               <label>  מספר יצירה מקורי באקו״ם
                             
                             <TextInput
-                                      placeholder="אהבתיה"
+                                      placeholder="#"
                                       value={selectedDanceNameValue}
                                       onChange={ event => this.setDanceNameValue(event.target.value) }
                               />
@@ -267,9 +269,9 @@ class RegisterSongScreen extends React.Component{
               </ButtonsFlexer>
 
               <ButtonsFlexer>
-                <label>לינק למילות שיר 
+                <label>קישור לסרטון הריקוד 
                 <TextInput
-                        placeholder="שלמה ארצי"
+                        placeholder=""
                         value={selectedDanceNameValue}
                         onChange={ event => this.setDanceNameValue(event.target.value) }
                       />
@@ -278,6 +280,25 @@ class RegisterSongScreen extends React.Component{
               </FormCol>
        
            
+           </MainRow>
+           <MainRow>
+              <ButtonsFlexer>
+                  <label> לינק חופשי 
+                    <TextInput
+                            placeholder=""
+                            value={selectedDanceNameValue}
+                            onChange={ event => this.setDanceNameValue(event.target.value) }
+                          />
+                    </label>
+                </ButtonsFlexer>
+           </MainRow>
+           <MainRow>
+              <TextArea
+                style={{width:'711px', minHeight:'200px', direction:'rtl', textAlign:'right', margin: '2rem 0'}}
+                placeholder="הערות"
+                value={value}
+                onChange={e => this.toy(e.target.value)}
+              />
            </MainRow>
            <ControlButtons>
               <Button onClick={this.toggleEdit} > ביטול </Button>
