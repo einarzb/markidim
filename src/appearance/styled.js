@@ -86,7 +86,7 @@ export const SongsWrapper = styled.div`
   flex-direction:row;
   width:100%;
   justify-content:space-evenly;
-  padding: 0.5rem 0rem 10px;
+  padding: 0.5rem 0rem 0px;
   margin: -1rem 0 0rem;
   align-items: center;
   border-top: 1px solid #ebebeb;

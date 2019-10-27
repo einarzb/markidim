@@ -106,12 +106,10 @@ export default class DancesScreen extends React.Component{
         {label: 'שם מבצע'},
         {label: 'שם ריקוד'},
         {label: 'מוזמן ע״י'},
-        {label: 'סטטוס'}        
+        {label: 'סטטוס', width:'93px'}        
       ],
       mockSongData: [
         {label:<ExpandingButton onClick={this.showMore}/>},
-        {label: ''},
-        {label: ''},
         {label: '90134'},
         {label: '1964'},
         {label: 'עינר גל, עידן חיל'},
@@ -122,7 +120,7 @@ export default class DancesScreen extends React.Component{
         {label: 'שלמה ארצי'},
         {label: 'פתאום עכשיו פתאום היום'},
         {label: 'תמיר שרצר'},
-        {label: 'מאושר', borderRadius:'5em', backgroundColor:'#4bf14b'}
+        {label: 'מאושר', borderRadius:'5em', backgroundColor:'#4bf14b', width:'93px'}
       ],
       mockSongData2: [
         {label:<ExpandingButton onClick={this.showMore}/>},
@@ -136,7 +134,7 @@ export default class DancesScreen extends React.Component{
         {label: 'שלמה ארצי'},
         {label: 'פתאום עכשיו פתאום היום'},
         {label: 'תמיר שרצר'},
-        {label: 'ממתין לאישור', borderRadius:'5em', backgroundColor:'rgb(241, 206, 82)', whiteSpace: 'nowrap', padding:'0 5px'}
+        {label: 'ממתין לאישור', borderRadius:'5em', backgroundColor:'rgb(241, 206, 82)', whiteSpace: 'nowrap', width:'93px'}
       ],
       btns:[
         {icon:APPROVE, onClick:this.toggleApprove},
@@ -215,7 +213,7 @@ export default class DancesScreen extends React.Component{
 
   render(){
     let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible, approveFlag, filterOptions, tagStatus, tagSongName, tagPerformer, tagComposer, tagWriter, tagChoreographer } = this.state;   
-
+    
     return(
       <div>
         {      
@@ -362,6 +360,7 @@ export const Tags = styled.div`
   flex-direction:row;
   justify-content:space-between;
   width:auto;
+  align-items:flex-start;
 
 `;
 

@@ -16,14 +16,18 @@ import { Tab } from '@appearance/styled';
 import styled from 'styled-components';
 
 
-
 class NavigationRouter extends React.Component {
   state = {
     dropdownVisible: false,
     dropdownVisibleUser: false,
+    open:false
   };
 
-  toggleDropDownLang = () => 
+    toggleDropdown() {
+      this.setState({ open: !this.state.open });
+    }
+
+   toggleDropDownLang = () => 
     this.setState({
       dropdownVisible: !this.state.dropdownVisible,
     })
@@ -33,45 +37,41 @@ class NavigationRouter extends React.Component {
       dropdownVisibleUser: !this.state.dropdownVisibleUser,
     })
 
-
-
     render() {
       return (
-    <Bar>
-      <Router>
-          <div>
-            <nav style={{textAlign:'left'}}>
-              <ul style={{padding:'5px', fontSize:"15px"}}>
-                <Tab>
-                  <Link to="/">ראשי</Link>
-                </Tab>
-                <Tab>
-                  <Link to="/about">אודות</Link>
-                </Tab>
-                <Tab>
-                  <Link to="/dances">ריקודים</Link>
-                </Tab>
-                <RightPart>
-                  <UserButton onClick={this.toggleDropDownUser}/>
-                  <DropDownLogin show={this.state.dropdownVisibleUser}/> 
+        <Bar>
+          <Router>
+              <div>
+                <nav style={{textAlign:'left'}}>
+                  <ul style={{padding:'5px', fontSize:"15px"}}>
+                    <Tab>
+                      <Link to="/">ראשי</Link>
+                    </Tab>
+                    <Tab>
+                      <Link to="/about">אודות</Link>
+                    </Tab>
+                    <Tab>
+                      <Link to="/dances">ריקודים</Link>
+                    </Tab>
+                    <RightPart>
+                          <UserButton onClick={this.toggleDropDownUser}/>
+                          <DropDownLogin show={this.state.dropdownVisibleUser}/> 
 
-                  <LanguagesButton onClick={this.toggleDropDownLang}/>
-                  <DropdownLanguages show={this.state.dropdownVisible}/> 
-          
-                </RightPart>
-             
-              </ul>
-            </nav>
-       </div>
-       <Route path="/about" component={AboutScreen}></Route>
-       <Route path="/dances" component={DancesScreen}></Route>
-       <Route path="/"></Route>
-       <Redirect from="/" to="dances" />
-
-    </Router>
-    </Bar>
-    )
-  }
+                          <LanguagesButton onClick={this.toggleDropDownLang}/>
+                          <DropdownLanguages show={this.state.dropdownVisible}/> 
+                    </RightPart>
+                
+                  </ul>
+                </nav>
+              </div>
+              <Route path="/about" component={AboutScreen}></Route>
+              <Route path="/dances" component={DancesScreen}></Route>
+              <Route path="/"></Route>
+              <Redirect from="/" to="dances" />
+          </Router>
+        </Bar>
+      )
+     }
 }
 
 export default NavigationRouter; 
@@ -84,31 +84,31 @@ export const Bar = styled.div`
   `;
 
 
-  export const RightPart = styled.div`
-    width: auto;
-    display:inline-flex;
-    flex-direction: row;
-    float:right;
-  `;
+export const RightPart = styled.div`
+  width: auto;
+  display:inline-flex;
+  flex-direction: row;
+  float:right;
+`;
 
-  export const customStyles = {
-    control: (base, state) => ({
-      ...base,
-      backgroundColor: "rgba(255,255,255,0.9)",
-      fontSize:"16px",
-      height:"40px",
-      fontColor:"white",
-      borderColor:"transparent",
-      width:"300px",
-      direction:"rtl",
-      lineHeight:1,
-      height:"auto",
-     // borderColor: state.isFocused ? "grey" : "grey",
-     // boxShadow: state.isFocused ? null : null,
-      "&:hover": {
-        borderColor: "#fd7c20"
-      }
-    })
-  };
+export const customStyles = {
+  control: (base, state) => ({
+    ...base,
+    backgroundColor: "rgba(255,255,255,0.9)",
+    fontSize:"16px",
+    height:"40px",
+    fontColor:"white",
+    borderColor:"transparent",
+    width:"300px",
+    direction:"rtl",
+    lineHeight:1,
+    height:"auto",
+    // borderColor: state.isFocused ? "grey" : "grey",
+    // boxShadow: state.isFocused ? null : null,
+    "&:hover": {
+      borderColor: "#fd7c20"
+    }
+  })
+};
 
   
