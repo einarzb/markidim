@@ -95,10 +95,7 @@ export default class DancesScreen extends React.Component{
         {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#192F3A', icon:CREDIT_CARD},
       ],
       headerCells: [
-        {label: ''},
-        {label: ''},
         {label: 'מס׳ אקו״ם'},
-        {label: 'שנת יצירה'},
         {label: 'מחברים נוספים'},
         {label: 'סוג ריקוד'},
         {label: 'שם שיר מקורי'},
@@ -112,7 +109,6 @@ export default class DancesScreen extends React.Component{
       mockSongData: [
         {label:<ExpandingButton onClick={this.showMore}/>},
         {label: '90134'},
-        {label: '1964'},
         {label: 'עינר גל, עידן חיל'},
         {label: 'זוגות'},
         {label: 'אהבתיה'},
@@ -126,7 +122,6 @@ export default class DancesScreen extends React.Component{
       mockSongData2: [
         {label:<ExpandingButton onClick={this.showMore}/>},
         {label: '90134'},
-        {label: '1964'},
         {label: 'עינר גל, עידן חיל'},
         {label: 'זוגות'},
         {label: 'אהבתיה'},

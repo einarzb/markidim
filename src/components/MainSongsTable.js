@@ -2,91 +2,148 @@ import React from 'react';
 
 //STYLING
 import styled from 'styled-components';
-import {Table} from 'grommet/components/Table';
-import {TableHeader}from 'grommet/components/TableHeader';
-import {TableRow}from 'grommet/components/TableRow';
-import {TableCell}from 'grommet/components/TableCell';
-import {TableBody}from 'grommet/components/TableBody';
+import { Table, TableBody, TableCell, TableFooter, TableHeader, TableRow, Text } from 'grommet';
+import {CREDIT_CARD, PLUS, APPROVE, EDIT} from '@assets/index.js';
 
-//screen
+//screens
 import EditSongScreen from '@screens/EditSongScreen';
 
 //components
 import ExpandedRow from '@components/ExpandedRow';
 
+
+const approveBtn =
+    <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0", cursor:'pointer'}} onClick>  
+      <img src={APPROVE} width="15" height="15"/>
+    </button>;
+const editBtn = 
+    <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0",cursor:'pointer'}} onClick>  
+         <img src={EDIT} width="15" height="15"/>
+    </button>;
+
+const DATA = [
+  {
+    id: 1, owner: 'עינר גל', status: `מאושר`, danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר',writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568'    
+  },
+  {
+    id: 2, owner: 'תמיר שרצר', status: ` לא מאושר`, danceName:'אהבתיה',performer:'שלמה ארצי',composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', editSong: editBtn, approveSong:approveBtn
+  },
+  {
+    id: 3, owner: 'עידן חיל', status: `מאושר`, danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568'
+  },
+];
+
+const COLUMNS = [
+  {
+    property: 'approveSong',
+    label: '',
+    align: 'center'
+  },
+  {
+    property: 'editSong',
+    label: '',
+    align: 'center'
+  },
+  {
+    property: 'acumNum',
+    label: 'מס׳ אקו״ם',
+    align: 'center'
+  },
+  {
+    property: 'coChoreographers',
+    label: 'מחברים נוספים',
+    align: 'center'
+  },
+  {
+    property: 'danceType',
+    label: 'סוג ריקוד',
+    align: 'center'
+  },
+  {
+    property: 'originalSongName',
+    label: 'שם שיר מקורי',
+    align: 'center'
+  },
+  {
+    property: 'writer',
+    label: 'שם משורר',
+    align: 'center'
+  },
+  {
+    property: 'composer',
+    label: 'שם מלחין',
+    align: 'center'
+  },
+  {
+    property: 'performer',
+    label: 'שם מבצע',
+    align: 'center'
+  },
+  {
+    property: 'danceName',
+    label: 'שם ריקוד',
+    align: 'center'
+  },
+  {
+    property: 'owner',
+    label: 'מוזמן ע״י',
+    align: 'center'
+
+  },
+  {
+    property: 'status',
+    label: 'סטטוס',
+    dataScope: 'row',
+    align: 'center'
+  }
+];
+
+
+
+
 //data2 & mockDataCells2 is temp and will be deleted
-const MainSongsTable = ({cellsArr, data, btns, editToggle, expanderFlag, data2}) => {       
-  
-  let tableHeaderCells = cellsArr.map(function(cell, i) {
-    return <TableCell key={i} scope="col" border="bottom">{cell.label}</TableCell>
-  })
+class MainSongsTable extends React.Component{
+  state={}
+  render() {
+    let {editToggle} = this.state
 
-  let mockDataCells = data.map(function(song, i) {
-    return <TableCell key={i} scope="row" border="bottom" onClick={song.onClick} style={{textAlign:'center', direction:'rtl', whiteSpace: song.whiteSpace, borderRadius:song.borderRadius, backgroundColor:song.backgroundColor, width:song.width}}>{song.label} 
-    </TableCell>
-  })
-  let mockDataCells2 = data2.map(function(song, i) {
-    return <TableCell key={i} scope="row" border="bottom" onClick={song.onClick} style={{width:'auto',textAlign:'center', direction:'rtl', whiteSpace: song.whiteSpace, borderRadius:song.borderRadius, width:song.width,backgroundColor:song.backgroundColor}}>{song.label} 
-    </TableCell>
-  })
-  //delete
-  let editOrapproveBtns = btns.map(function(btn, i){
-    return  <TableCell key={i} scope="col" >              
-    <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0"}} onClick={btn.onClick}>
-        <img src={btn.icon} width="15" height="15"/>
-    </button>
-    </TableCell>
-  })
-
-   
   return(
     <div>
-      { editToggle 
+      { 
+      editToggle 
       ?
      <EditSongScreen /> 
       :
-     <Table style={{ tableLayout: 'fixed', width:'81%', fontSize:'13px', margin:'0px auto', borderCollapse: 'collapse', borderSpacing: '0' }}> 
-       
-        <TableHeader style={{backgroundColor:'rgb(247, 239, 239)', fontWeight:'bold', fontSize:'14px', margin: '0 1rem', display:'inline-block'}}>
-          <TableRow style={{ width:'100px'}}>{tableHeaderCells}</TableRow>
-        </TableHeader>
-
-        <TableBody>
-
-          <RowWrapper>
-            <TableRow style={{backgroundColor:'white',  whiteSpace:'nowrap'}} border="all"> 
-                <TableCell scope="row" border="bottom" size="large">
-                  {editOrapproveBtns} 
-                </TableCell>
-                {mockDataCells}
-            </TableRow>
-            <ExpandedRow show={expanderFlag}/> 
-           
-          </RowWrapper>
-        
-          <RowWrapper>
-            <TableRow style={{backgroundColor:'white',  whiteSpace:'nowrap'}} border="all">
-              <TableCell scope="row" border="bottom">
-                {editOrapproveBtns} 
+      <Table style={{margin:'1rem auto'}}>
+        <TableHeader>
+          <TableRow style={{backgroundColor:'rgb(152,135,152)'}} align="end" >
+            {COLUMNS.map(c => (
+              <TableCell key={c.property} scope='col' border='bottom' align={c.align} style={{ fontSize:'10px'}}>
+                <Text style={{fontSize:'14px', fontWeight:'bold', color:'#FFFFFF'}}>{c.label}</Text>
               </TableCell>
-              {mockDataCells2}
-            </TableRow>
-            <ExpandedRow show={expanderFlag}/> 
-          </RowWrapper>
-          {/** 
-          <TableRow>
-            <TableCell scope="row" border="bottom">
-              {editOrapproveBtns} 
-            </TableCell>
-            {mockDataCells2}
+            ))}
           </TableRow>
-       */}
-      
+        </TableHeader>
+        <TableBody>
+          {DATA.map(datum => (
+            <TableRow style={{backgroundColor:'#FFFFFF', fontSize:'12px'}} border='bottom' key={datum.id}>
+              {COLUMNS.map(c => (
+                <TableCell key={c.property} scope={c.dataScope} align={c.align} border='bottom'>
+                  <Text style={{fontSize:'14px'}}>
+                    {datum[c.property]}
+                  </Text>
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
         </TableBody>
-     </Table>
+    </Table>
+
          }
      </div>
   )
+}
+
 }
 
 export default MainSongsTable;
