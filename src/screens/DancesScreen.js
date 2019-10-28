@@ -11,7 +11,6 @@ import { SongsWrapper, SelectBtn } from '@appearance/styled';
 import RegisterSongScreen from './RegisterSongScreen';
 
 let dancesCounter = 2; 
-//let moreIcon = <img src={MORE} width="20"/>
 
 export default class DancesScreen extends React.Component{ 
   constructor(){
@@ -159,7 +158,7 @@ export default class DancesScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, expandedRowVisible, filterOptions, tagStatus, tagSongName, tagPerformer, tagComposer, tagWriter, tagChoreographer, registerFlag } = this.state;   
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, expandedRowVisible, filterOptions, tagStatus, tagSongName, tagPerformer, tagComposer, tagWriter, tagChoreographer, registerFlag } = this.state;   
     
     return(
       <div>
