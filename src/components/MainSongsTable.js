@@ -3,7 +3,7 @@ import React from 'react';
 //STYLING
 import styled from 'styled-components';
 import { Table, TableBody, TableCell, TableHeader, TableRow, Text } from 'grommet';
-import {CREDIT_CARD, PLUS, APPROVE, EDIT} from '@assets/index.js';
+import { APPROVE, EDIT } from '@assets/index.js';
 
 //screens
 import EditSongScreen from '@screens/EditSongScreen';
@@ -13,23 +13,17 @@ import ConfirmSongScreen from '@screens/ConfirmSongScreen';
 import ExpandedRow from '@components/ExpandedRow';
 
 
-
-
-
-
-
 class MainSongsTable extends React.Component{
   constructor(){
     super()
+    
     const approveBtn =
     <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0", cursor:'pointer'}} onClick={this.toggleApprove}>  
       <img src={APPROVE} width="15" height="15"/>
     </button>;
   
-  const editBtn = 
-    <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0",cursor:'pointer'}} onClick={this.toggleEdit}>  
-         <img src={EDIT} width="15" height="15"/>
-    </button>;
+    const editBtn = <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0",cursor:'pointer'}} onClick={this.toggleEdit}> <img src={EDIT} width="15" height="15"/></button>;
+    
     this.state = {
       columns: [
         {
@@ -128,9 +122,10 @@ class MainSongsTable extends React.Component{
 
   return(
     <div>
-      { 
+        { 
       editFlag ? <EditSongScreen toggle={this.toggleEdit} /> :
       approveFlag ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
+
       <Table style={{margin:'1rem auto'}}>
         <TableHeader>
           <TableRow style={{backgroundColor:'rgb(152,135,152)'}} align="end" >
@@ -154,9 +149,8 @@ class MainSongsTable extends React.Component{
             </TableRow>
           ))}
         </TableBody>
-    </Table>
-
-         }
+      </Table>
+        }
      </div>
   )
 }

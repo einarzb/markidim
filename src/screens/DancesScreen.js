@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-import {CREDIT_CARD, PLUS, APPROVE, EDIT} from '@assets/index.js';
+import {CREDIT_CARD, PLUS } from '@assets/index.js';
 import ExpandingButton from '@components/ExpandingButton';
 import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
@@ -283,7 +283,7 @@ export default class DancesScreen extends React.Component{
             {tagStatus}
       
         </Tags>
-        <MainSongsTable expanderFlag={expandedRowVisible} cellsArr={headerCells} data={mockSongData} btns={btns} data2={mockSongData2}></MainSongsTable>
+        <MainSongsTable expanderFlag={expandedRowVisible} ></MainSongsTable>
       </Wrapper> 
       }
       </div>
