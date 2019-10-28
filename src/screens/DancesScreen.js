@@ -8,8 +8,6 @@ import MainSongsTable from '@components/MainSongsTable';
 
 import styled from 'styled-components';
 import { SongsWrapper, SelectBtn } from '@appearance/styled';
-import EditSongScreen from './EditSongScreen';
-import ConfirmSongScreen from './ConfirmSongScreen';
 import RegisterSongScreen from './RegisterSongScreen';
 
 let dancesCounter = 2; 
@@ -94,50 +92,9 @@ export default class DancesScreen extends React.Component{
         {label: 'רישום שיר חדש', span:'עוד ' + dancesCounter + ' שירים', onClick:this.registerDance, bgColor:'rgb(83,71,103)', icon:PLUS},
         {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#192F3A', icon:CREDIT_CARD},
       ],
-      headerCells: [
-        {label: 'מס׳ אקו״ם'},
-        {label: 'מחברים נוספים'},
-        {label: 'סוג ריקוד'},
-        {label: 'שם שיר מקורי'},
-        {label: 'שם משורר'},
-        {label: 'שם מלחין'},
-        {label: 'שם מבצע'},
-        {label: 'שם ריקוד'},
-        {label: 'מוזמן ע״י'},
-        {label: 'סטטוס', width:'93px'}        
-      ],
-      mockSongData: [
-        {label:<ExpandingButton onClick={this.showMore}/>},
-        {label: '90134'},
-        {label: 'עינר גל, עידן חיל'},
-        {label: 'זוגות'},
-        {label: 'אהבתיה'},
-        {label: 'תרצה אתר'},
-        {label: 'יעקב הולנדר'},
-        {label: 'שלמה ארצי'},
-        {label: 'פתאום עכשיו פתאום היום'},
-        {label: 'תמיר שרצר'},
-        {label: 'מאושר', borderRadius:'5em', backgroundColor:'#4bf14b', width:'93px'}
-      ],
-      mockSongData2: [
-        {label:<ExpandingButton onClick={this.showMore}/>},
-        {label: '90134'},
-        {label: 'עינר גל, עידן חיל'},
-        {label: 'זוגות'},
-        {label: 'אהבתיה'},
-        {label: 'תרצה אתר'},
-        {label: 'יעקב הולנדר'},
-        {label: 'שלמה ארצי'},
-        {label: 'פתאום עכשיו פתאום היום'},
-        {label: 'תמיר שרצר'},
-        {label: 'ממתין לאישור', borderRadius:'5em', backgroundColor:'rgb(241, 206, 82)', whiteSpace: 'nowrap', width:'93px'}
-      ],
-      btns:[
-        {icon:APPROVE, onClick:this.toggleApprove},
-        {icon:EDIT, onClick:this.toggleEdit}
-      ],
-      editFlag:false,
-      approveFlag:false,
+ 
+ 
+   
       registerFlag:false,
       //mock data
       filterOptions:[
@@ -159,15 +116,6 @@ export default class DancesScreen extends React.Component{
     }
   }
   
-  toggleApprove = () => {
-    console.log('toggle edit');       
-    this.setState({approveFlag:true});
-  }
-
-  toggleEdit = () => {
-    console.log('toggle edit');       
-    this.setState({editFlag:true});
-  }
 
   showMore = () => {
     this.setState({
@@ -211,13 +159,11 @@ export default class DancesScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, editFlag, expandedRowVisible, approveFlag, filterOptions, tagStatus, tagSongName, tagPerformer, tagComposer, tagWriter, tagChoreographer, registerFlag } = this.state;   
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, headerCells, mockSongData, btns, mockSongData2, expandedRowVisible, filterOptions, tagStatus, tagSongName, tagPerformer, tagComposer, tagWriter, tagChoreographer, registerFlag } = this.state;   
     
     return(
       <div>
         {      
-        editFlag ? <EditSongScreen toggle={this.toggleEdit} /> :
-        approveFlag ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
         registerFlag ? <RegisterSongScreen toggle={this.toggleRegister}/> :
       <Wrapper> 
         <SongsWrapper>
