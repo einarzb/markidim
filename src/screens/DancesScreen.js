@@ -30,7 +30,6 @@ export default class DancesScreen extends React.Component{
             borderColor: "#fd7c20"
           }
         })},
-      expandedRowVisible:false,
       selectedDanceStatusOption:null,
       danceStatuses:[
         {value: 1, label:'מאושר'},
@@ -100,14 +99,7 @@ export default class DancesScreen extends React.Component{
         { value: 'זוגות', label: 'זוגות', color: '#FFFFFF', isFixed: false },
         { value: 'לא מאושר', label: 'לא מאושר', color: '#FFFFFF' },
         { value: 'תמיר שרצר', label: 'תמיר שרצר', color: '#FFFFFF' }
-      ],
-      tagStatus:"",
-      tagSongName:"",
-      tagPerformer:"",
-      tagComposer:"",
-      tagWriter:"",
-      tagChoreographer:"",
-      allTags: []
+      ]
 
 
       
@@ -116,11 +108,6 @@ export default class DancesScreen extends React.Component{
   }
   
 
-  showMore = () => {
-    this.setState({
-      expandedRowVisible: !this.state.expandedRowVisible
-    })    
-  }
 
 
   registerDance = () => {
@@ -137,32 +124,36 @@ export default class DancesScreen extends React.Component{
     alert('pay membership fee here')
   }
 
+  //TODO : make a generic function that get params
+
   danceStatusChange = (selectedDanceStatusOption) => {
-    this.setState({ selectedDanceStatusOption, tagStatus:<Tag>{selectedDanceStatusOption.label }</Tag>});
+    this.setState({ selectedDanceStatusOption});
   };
 
   danceChange = (selectedSongOption) => {
-    this.setState({ selectedSongOption, tagSongName:<Tag>{selectedSongOption.label }</Tag>});
+    this.setState({ selectedSongOption});
   };
   performerChange = (selectedPerformerOption) => {
-    this.setState({ selectedPerformerOption, tagPerformer:<Tag>{selectedPerformerOption.label}</Tag> });
+    this.setState({ selectedPerformerOption,});
   };
   composersChange = (selectedComposerOption) => {
-    this.setState({ selectedComposerOption, tagComposer:<Tag>{selectedComposerOption.label }</Tag>});
+    this.setState({ selectedComposerOption});
   };
   choreographersChange = (selectedChoreographerOption) => {
-    this.setState({ selectedChoreographerOption, tagChoreographer:<Tag>{selectedChoreographerOption.label }</Tag>});
+    this.setState({ selectedChoreographerOption});
   };
   writersChange = (selectedWritersOption) => {
-    this.setState({ selectedWritersOption, tagWriter:<Tag>{selectedWritersOption.label }</Tag>});
+    this.setState({ selectedWritersOption});
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, expandedRowVisible, filterOptions, tagStatus, tagSongName, tagPerformer, tagComposer, tagWriter, tagChoreographer, registerFlag } = this.state;   
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, filterOptions, registerFlag } = this.state;   
     
     return(
       <div>
         {      
+        //editFlag ? <EditSongScreen toggle={this.toggleEdit} /> :
+        //approveFlag ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
         registerFlag ? <RegisterSongScreen toggle={this.toggleRegister}/> :
       <Wrapper> 
         <SongsWrapper>
@@ -273,16 +264,8 @@ export default class DancesScreen extends React.Component{
           </SelectWrapper>
       
         </SongsWrapper>
-        <Tags>
-           {tagChoreographer}
-            {tagWriter}
-           {tagComposer}
-            {tagPerformer}
-           {tagSongName}
-            {tagStatus}
-      
-        </Tags>
-        <MainSongsTable expanderFlag={expandedRowVisible} ></MainSongsTable>
+ 
+        <MainSongsTable></MainSongsTable>
       </Wrapper> 
       }
       </div>
@@ -298,27 +281,6 @@ export const Wrapper = styled.div`
 export const SelectWrapper = styled.div`
   display:inline-flex;
   flex-direction:row-reverse; 
-`;
-
-export const Tags = styled.div`
-  display:inline-flex;
-  flex-direction:row;
-  justify-content:space-between;
-  width:auto;
-  align-items:flex-start;
-
-`;
-
-export const Tag = styled.div`
-  width: 100px;
-  font-size: 14px;
-  color: grey;
-  background-color: rgba(225,225,225, 0.6);
-  padding: 0px 2px;
-  margin: 0rem 0.5rem 2rem;
-  border-radius: 5em;
-  display: block;
-  border: 1px solid grey;
 `;
 
 export const SelectRow = styled.div`
