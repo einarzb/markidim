@@ -36,6 +36,13 @@ class RegisterSongScreen extends React.Component{
       toggleRegisterRedux(registerSongView);
     }
   
+
+    save = () => {
+      console.log('will save data to db')
+      this.toggleRegister();
+      console.log('and abort')
+      }
+
        
     setDanceNameValue = (e) => {      
       this.setState({
@@ -272,7 +279,7 @@ class RegisterSongScreen extends React.Component{
            </MainRow>
            <ControlButtons>
               <Button onClick={this.toggleRegister} > ביטול </Button>
-              <Button> שמירה </Button>
+              <Button onClick={this.save}> שמירה </Button>
           </ControlButtons>
         </WrapperDiv>
       

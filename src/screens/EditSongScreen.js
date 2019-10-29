@@ -29,6 +29,12 @@ class EditSongScreen extends React.Component{
   
     }
 
+    save = () => {
+      console.log('will save data to db')
+      this.toggleEdit();
+      console.log('and abort')
+      }
+
     setDanceNameValue = (e) => {      
       this.setState({
         selectedDanceNameValue:e
@@ -232,7 +238,7 @@ class EditSongScreen extends React.Component{
            </MainRow>
            <ControlButtons>
               <Button onClick={this.toggleEdit} > ביטול </Button>
-              <Button> שמירה </Button>
+              <Button onClick={this.save}> שמירה </Button>
           </ControlButtons>
         </WrapperDiv>
       

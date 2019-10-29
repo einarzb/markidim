@@ -25,6 +25,12 @@ class ConfirmSongScreen extends React.Component{
       let approveView = !this.props.approveView; 
       toggleApproveRedux(approveView);
     }
+
+    save = () => {
+    console.log('will save data to db')
+    this.toggleApprove();
+    console.log('and abort')
+    }
    
     render(){
         let {selected, textAreaText, value} = this.state;
@@ -65,7 +71,7 @@ class ConfirmSongScreen extends React.Component{
 
            <ControlButtons>
               <Button onClick={this.toggleApprove} > ביטול </Button>
-              <Button> שמירה </Button>
+              <Button onClick={this.save}> שמירה </Button>
           </ControlButtons>
         </WrapperDiv>
         );
