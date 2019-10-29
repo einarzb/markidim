@@ -4,7 +4,7 @@ import {TableCell}from 'grommet/components/TableCell';
 import styled from 'styled-components';
 
 const ExpandedRow = ({show}) => 
-<TableRow style={{border:'1px solid red',visibility: show ? "visible" : "hidden", backgroundColor: "#FFFFFF", position: "relative", height: "auto", width: "100%", display:show ? "inline-flex" : "none", flexDirection:"row-reverse"}}>
+<TableRow style={{visibility: show ? "visible" : "hidden", backgroundColor: "#FFFFFF", position: "relative", height: "auto", width: "90%", display:show ? "inline-flex" : "none", flexDirection:"row-reverse"}}>
     <PartCol>
       <TableCell>
         <strong>מחברים נוספים: </strong> 

@@ -17,7 +17,7 @@ class ConfirmSongScreen extends React.Component{
     };
     
     toy = (e) => {
-      this.setState({textAreaText:e})
+      this.setState({textAreaText:e}) 
     }  
 
     toggleApprove = () => {

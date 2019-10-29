@@ -89,6 +89,10 @@ export const RightPart = styled.div`
   display:inline-flex;
   flex-direction: row;
   float:right;
+  @media (max-width: 768px) {
+    margin-top: -2.9rem;
+    float: right;
+  }
 `;
 
 export const customStyles = {

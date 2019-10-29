@@ -28,6 +28,14 @@ class MainSongsTable extends React.Component{
     const editBtn = <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0",cursor:'pointer'}} onClick={this.toggleEdit}> <img src={EDIT} width="15" height="15"/></button>;
     
     this.state = {
+      data : [
+        {id : 1, date : "2014-04-18", total : 121.0, status : "Shipped", name : "A", points: 5, percent : 50},
+        {id : 2, date : "2014-04-21", total : 121.0, status : "Not Shipped", name : "B", points: 10, percent: 60},
+        {id : 3, date : "2014-08-09", total : 121.0, status : "Not Shipped", name : "C", points: 15, percent: 70},
+        {id : 4, date : "2014-04-24", total : 121.0, status : "Shipped", name : "D", points: 20, percent : 80},
+        {id : 5, date : "2014-04-26", total : 121.0, status : "Shipped", name : "E", points: 25, percent : 90},
+    ],
+     expandedRows : [],
       columns: [
     
         {
@@ -116,6 +124,49 @@ class MainSongsTable extends React.Component{
     }
   }
 
+  handleRowClick(rowId) {
+    const currentExpandedRows = this.state.expandedRows;
+    const isRowCurrentlyExpanded = currentExpandedRows.includes(rowId);
+    
+    const newExpandedRows = isRowCurrentlyExpanded ? currentExpandedRows.filter(id => id !== rowId) : currentExpandedRows.concat(rowId);
+    
+    this.setState({expandedRows : newExpandedRows});
+}
+
+renderItem(item) {
+  const clickCallback = () => this.handleRowClick(item.id);
+  const itemRows = [
+    
+      <TableRow onClick={clickCallback} border='bottom' key={"row-data-" + item.id} style={{borderBottom:'1px solid grey',cursor:"pointer",display: 'inline-flex',
+        flexDirection:'row-reverse',
+        width: '90%', backgroundColor:'#FFFFFF'}}>
+          <TableCell  style={{textAlign:'right', width:'100px'}}>{item.owner}</TableCell>
+          <TableCell>{item.danceName}</TableCell>
+          <TableCell>{item.performer}</TableCell>
+          <TableCell>{item.composer}</TableCell>
+          <TableCell>{item.writer}</TableCell>
+          <TableCell>{item.originalSongName}</TableCell>
+          <TableCell>{item.danceType}</TableCell>
+          <TableCell>{item.coChoreographers}</TableCell>
+          <TableCell>{item.acumNum}</TableCell>
+          <TableCell>{item.orderDate}</TableCell>
+          <TableCell>{item.editSong}</TableCell>
+          <TableCell>{item.approveSong}</TableCell>
+          <TableCell>{item.status}</TableCell>			
+      </TableRow>
+        ];
+        
+        if(this.state.expandedRows.includes(item.id)) {
+            itemRows.push(
+                <ExpandedRow show={true} key={"row-expanded-" + item.id}>
+                </ExpandedRow>
+            );
+        }
+        
+        return itemRows;    
+      }
+
+
   //TODO: make a generic function 
   toggleApprove = () => {
     let { toggleApproveRedux } = this.props; 
@@ -138,15 +189,48 @@ class MainSongsTable extends React.Component{
 
 
   render() {
+    let allItemRows = [];
+    
+    this.state.usersData.forEach(item => {
+      const perItemRows = this.renderItem(item);
+      allItemRows = allItemRows.concat(perItemRows);
+    });
+
     let {columns, usersData, expandedRowVisible} = this.state
     let {editView, approveView} = this.props;
-  return(
-    <div>
-        { 
-          editView ? <EditSongScreen toggle={this.toggleEdit} /> :
-          approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
+    return(
+      <MainTableWrapper>
+          { 
+            editView ? <EditSongScreen toggle={this.toggleEdit} /> :
+            approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
+            <Table>
+               <TableHeader>
+               
+              </TableHeader>
+             <TableBody style={{border:'1px solid blue'}}>
+             {allItemRows}
 
-          <Table style={{margin:'1rem auto'}}>
+               </TableBody> 
+
+            </Table>
+          }
+      </MainTableWrapper>
+    )
+  }
+}
+
+{/**
+https://www.googleapis.com/youtube/v3/search?fields=items%2Fid,items%2Fsnippet%2Ftitle,items%2Fsnippet%2Fdescription,items%2Fsnippet%2Fthumbnails%2Fdefault,items%2Fsnippet%2FchannelTitle,nextPageToken,prevPageToken&key=AIzaSyBahF7YmvpZiMBziQXy21Uhe44URp2yPHE&maxResults=10&part=id,snippet&q=%D7%A9%D7%91%D7%98+%D7%90%D7%97%D7%99%D7%9D+%D7%95%D7%90%D7%97%D7%99%D7%95%D7%AA+%D7%90%D7%95%D7%9E%D7%A0%D7%99+%D7%99%D7%A9%D7%A8%D7%90%D7%9C&type=video&videoSyndicated=true
+*/}
+   {/** 
+                  <ExpandedRow show={i === expandedRowVisible}> </ExpandedRow>
+                  */}
+                     {/** 
+                  <ExpandedRow show={i === expandedRowVisible}> </ExpandedRow>
+                  */}
+                  {/**
+                  <Table responsiveBreakpoint="small"
+          style={{margin:'1rem auto'}}>
             <TableHeader>
               <TableRow style={{backgroundColor:'rgb(152,135,152)'}} align="end" >
                 {columns.map(c => (
@@ -170,27 +254,13 @@ class MainSongsTable extends React.Component{
                         </TableCell> 
                         
                       ))}
-                  </TableRow>
+                  </TableRow>,
+                   <ExpandedRow show={i === expandedRowVisible}> </ExpandedRow>
+
                 ]
             ))}
             </TableBody>
-          </Table>
-        }
-
-     </div>
-  )
-}
-}
-
-{/**
-https://www.googleapis.com/youtube/v3/search?fields=items%2Fid,items%2Fsnippet%2Ftitle,items%2Fsnippet%2Fdescription,items%2Fsnippet%2Fthumbnails%2Fdefault,items%2Fsnippet%2FchannelTitle,nextPageToken,prevPageToken&key=AIzaSyBahF7YmvpZiMBziQXy21Uhe44URp2yPHE&maxResults=10&part=id,snippet&q=%D7%A9%D7%91%D7%98+%D7%90%D7%97%D7%99%D7%9D+%D7%95%D7%90%D7%97%D7%99%D7%95%D7%AA+%D7%90%D7%95%D7%9E%D7%A0%D7%99+%D7%99%D7%A9%D7%A8%D7%90%D7%9C&type=video&videoSyndicated=true
-*/}
-   {/** 
-                  <ExpandedRow show={i === expandedRowVisible}> </ExpandedRow>
-                  */}
-                     {/** 
-                  <ExpandedRow show={i === expandedRowVisible}> </ExpandedRow>
-                  */}
+          </Table> */}
 
 
 const mapStateToProps = (state) => {
@@ -223,7 +293,7 @@ mapDispatchToProps)
  const NotApproved = styled.div`
   border-radius: 5em;
   background-color: rgb(241, 206, 82);
-  width: 93px;
+  width: 100px;
   display:block;
 `;
 
@@ -231,4 +301,6 @@ mapDispatchToProps)
   background-color: rgb(75, 241, 75);
 `;
 
-
+const MainTableWrapper = styled.div`
+  overflow-x:auto;
+`;

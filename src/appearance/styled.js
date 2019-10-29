@@ -66,10 +66,19 @@ export const Header = styled.div`
   padding-top: 0.5rem;
   & h2 {
     color:#521d50;
-    fontWeight:400;
+    font-weight:400;
   }
   @media (max-width: 768px) {
+    display: inline-flex;
+    flex-direction: column-reverse;
     text-align: center;
+    font-size: 1em;
+    line-height: 1;
+    & img {
+      width: 60px;
+      display: block;
+      margin: 1rem auto 0;
+    }
   }
 `;
 
@@ -79,6 +88,10 @@ export const EnglishHeader = styled.div`
   color:rgb(152, 135, 152);
   width:100%;
   text-align:center;
+  @media (max-width: 768px) {
+    margin: -0.5rem 0rem 1rem 0rem;
+    font-size: 1rem;
+  }
 `;
 
 export const SongsWrapper = styled.div`
