@@ -148,7 +148,8 @@ export default class DancesScreen extends React.Component{
 
   render(){
     let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, filterOptions, registerFlag } = this.state;   
-    
+    let {editView} = this.props;
+
     return(
       <div>
         {      

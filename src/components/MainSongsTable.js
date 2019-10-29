@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toggleEditAction } from '@state/actions/index.js';
+import { toggleEditAction, toggleApproveAction } from '@state/actions/index.js';
 
 //STYLING
 import styled from 'styled-components';
@@ -112,14 +112,15 @@ class MainSongsTable extends React.Component{
           id: 3, owner: 'עידן חיל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019'
         }
       ],
-      approveFlag: false,
       expandedRowVisible:false,      
     }
   }
 
   //TODO: make a generic function 
   toggleApprove = () => {
-    this.setState({approveFlag:true});
+    let { toggleApproveRedux } = this.props; 
+    let approveView = !this.props.approveView; 
+    toggleApproveRedux(approveView);
   }
   
   toggleEdit = () => {
@@ -138,12 +139,12 @@ class MainSongsTable extends React.Component{
 
   render() {
     let {columns, usersData, approveFlag, expandedRowVisible} = this.state
-    let {editView} = this.props;
+    let {editView, approveView} = this.props;
   return(
     <div>
         { 
           editView ? <EditSongScreen toggle={this.toggleEdit} /> :
-          approveFlag ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
+          approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
 
           <Table style={{margin:'1rem auto'}}>
             <TableHeader>
@@ -169,14 +170,7 @@ class MainSongsTable extends React.Component{
                         </TableCell> 
                         
                       ))}
-                  </TableRow>,
-                  <div style={{visibility: i === expandedRowVisible ? "visible" : "hidden", display:i === expandedRowVisible ? "inline-flex" : "none", backgroundColor:"#ebebeb", flexDirection:'row', justifyContent:'space-between'}} key={i}>
-                          <div style={{width:'33%',border:'1px solid red'}}>שם יצירה מקורי:</div>
-                          <div style={{width:'33%',border:'1px solid red'}}>        פתאום עכשיו פתאום היום
-</div>
-                          <div style={{width:'33%',border:'1px solid red'}}>eeee</div>
-                        
-                  </div>
+                  </TableRow>
                 ]
             ))}
             </TableBody>
@@ -191,10 +185,18 @@ class MainSongsTable extends React.Component{
 {/**
 https://www.googleapis.com/youtube/v3/search?fields=items%2Fid,items%2Fsnippet%2Ftitle,items%2Fsnippet%2Fdescription,items%2Fsnippet%2Fthumbnails%2Fdefault,items%2Fsnippet%2FchannelTitle,nextPageToken,prevPageToken&key=AIzaSyBahF7YmvpZiMBziQXy21Uhe44URp2yPHE&maxResults=10&part=id,snippet&q=%D7%A9%D7%91%D7%98+%D7%90%D7%97%D7%99%D7%9D+%D7%95%D7%90%D7%97%D7%99%D7%95%D7%AA+%D7%90%D7%95%D7%9E%D7%A0%D7%99+%D7%99%D7%A9%D7%A8%D7%90%D7%9C&type=video&videoSyndicated=true
 */}
+   {/** 
+                  <ExpandedRow show={i === expandedRowVisible}> </ExpandedRow>
+                  */}
+                     {/** 
+                  <ExpandedRow show={i === expandedRowVisible}> </ExpandedRow>
+                  */}
+
 
 const mapStateToProps = (state) => {
   let props = {
-    editView:state.dancesReducer.editView
+    editView:state.dancesReducer.editView,
+    approveView:state.dancesReducer.approveView
     }
     
     console.log('----im props view:----');
@@ -205,7 +207,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({  
-  toggleEditRedux: (editView) => dispatch(toggleEditAction(editView))
+  toggleEditRedux: (editView) => dispatch(toggleEditAction(editView)),
+  toggleApproveRedux: (approveView) => dispatch(toggleApproveAction(approveView))
 });
 
 

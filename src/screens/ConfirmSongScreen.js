@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { toggleApproveAction } from '@state/actions/index.js';
+
+
 import { Box, RadioButton, TextArea } from 'grommet';
 
  
@@ -7,18 +12,22 @@ import { Box, RadioButton, TextArea } from 'grommet';
 import styled from 'styled-components';
 
 class ConfirmSongScreen extends React.Component{
-         state = {
-              textAreaText:""
-          };
+    state = {
+        textAreaText:""
+    };
     
     toy = (e) => {
       this.setState({textAreaText:e})
-    }      
+    }  
 
+    toggleApprove = () => {
+      let { toggleApproveRedux } = this.props; 
+      let approveView = !this.props.approveView; 
+      toggleApproveRedux(approveView);
+    }
    
     render(){
         let {selected, textAreaText, value} = this.state;
-        console.log(selected)
         return (
 
         <WrapperDiv>
@@ -55,7 +64,7 @@ class ConfirmSongScreen extends React.Component{
                 }
 
            <ControlButtons>
-              <Button onClick={this.toggleConfirm} > ביטול </Button>
+              <Button onClick={this.toggleApprove} > ביטול </Button>
               <Button> שמירה </Button>
           </ControlButtons>
         </WrapperDiv>
@@ -63,7 +72,25 @@ class ConfirmSongScreen extends React.Component{
     }
 }
 
-  export default ConfirmSongScreen;
+const mapStateToProps = (state) => {
+  let props = {
+    approveView:state.dancesReducer.approveView
+    }
+    
+    console.log('----im approve view:----');
+    console.log(props);
+    console.log('--------------');
+    
+  return props;
+};
+
+const mapDispatchToProps = (dispatch) => ({  
+  toggleApproveRedux: (approveView) => dispatch(toggleApproveAction(approveView))
+});
+
+  export default connect( 
+    mapStateToProps,
+    mapDispatchToProps)(ConfirmSongScreen);
   
   
 const WrapperDiv = styled.div`
