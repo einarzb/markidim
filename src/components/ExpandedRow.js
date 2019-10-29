@@ -4,8 +4,8 @@ import {TableCell}from 'grommet/components/TableCell';
 import styled from 'styled-components';
 
 const ExpandedRow = ({show}) => 
-<TableRow style={{visibility: show ? "visible" : "hidden", backgroundColor: "#FFFFFF", position: "relative", height: "auto", width: "100%", display:show ? "inline-flex" : "none", flexDirection:"row-reverse"}}>
-  <PartCol>
+<TableRow style={{border:'1px solid red',visibility: show ? "visible" : "hidden", backgroundColor: "#FFFFFF", position: "relative", height: "auto", width: "100%", display:show ? "inline-flex" : "none", flexDirection:"row-reverse"}}>
+    <PartCol>
       <TableCell>
         <strong>מחברים נוספים: </strong> 
         עינר גל, עידן חיל
@@ -19,7 +19,6 @@ const ExpandedRow = ({show}) =>
         9038938
       </TableCell>
     </PartCol>
-
     <PartCol>
     <TableCell>
         <strong>תאריך הזמנה: </strong>
@@ -57,11 +56,16 @@ export default ExpandedRow;
 
 export const PartCol = styled.div`
   display:inline-flex;
-  flex-direction:column;
-  align-items: flex-end;
+  flex-direction:row;
+  border:2px solid black;
+  width: 33%;
   & div {
     direction:rtl;
     height:80px;
 
   }
 `;
+
+       {/** 
+                 <ExpandedRow show={i === expandedRowVisible}></ExpandedRow>
+                 */}

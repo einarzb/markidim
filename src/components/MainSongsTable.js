@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { toggleEditAction } from '@state/actions/index.js';
 
 //STYLING
 import styled from 'styled-components';
@@ -26,11 +29,7 @@ class MainSongsTable extends React.Component{
     
     this.state = {
       columns: [
-        {
-          property: 'expandableRow',
-          label: '',
-          align: 'center',
-        },
+    
         {
           property: 'approveSong',
           label: '',
@@ -104,19 +103,16 @@ class MainSongsTable extends React.Component{
       ],
       usersData: [
         {
-          id: 1, owner: 'עינר גל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר',writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', expandableRow:'t'
+          id: 1, owner: 'עינר גל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר',writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019'
         },
         {
-          id: 2, owner: 'תמיר שרצר', status: <NotApproved>לא מאושר</NotApproved> , danceName:'אהבתיה',performer:'שלמה ארצי',composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', editSong: editBtn, approveSong:approveBtn, expandableRow:''
+          id: 2, owner: 'תמיר שרצר', status: <NotApproved>לא מאושר</NotApproved> , danceName:'אהבתיה',performer:'שלמה ארצי',composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', editSong: editBtn, approveSong:approveBtn
         },
         {
-          id: 3, owner: 'עידן חיל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', expandableRow:<Table>
-<tr><td>einarnairnai</td></tr>
-          </Table>
+          id: 3, owner: 'עידן חיל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019'
         }
       ],
       approveFlag: false,
-      editFlag: false,
       expandedRowVisible:false,      
     }
   }
@@ -127,7 +123,9 @@ class MainSongsTable extends React.Component{
   }
   
   toggleEdit = () => {
-    this.setState({editFlag:true});
+    let { toggleEditRedux } = this.props; 
+    let editView = !this.props.editView; 
+    toggleEditRedux(editView);
   }
   
   expandRow = (rowIndex) => {
@@ -139,12 +137,12 @@ class MainSongsTable extends React.Component{
 
 
   render() {
-    let {editFlag, columns, usersData, approveFlag, expandedRowVisible} = this.state
-    
+    let {columns, usersData, approveFlag, expandedRowVisible} = this.state
+    let {editView} = this.props;
   return(
     <div>
         { 
-          editFlag ? <EditSongScreen toggle={this.toggleEdit} /> :
+          editView ? <EditSongScreen toggle={this.toggleEdit} /> :
           approveFlag ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
 
           <Table style={{margin:'1rem auto'}}>
@@ -157,20 +155,28 @@ class MainSongsTable extends React.Component{
                 ))}
               </TableRow>
             </TableHeader>
-            <TableBody>             
+            <TableBody style={{ display: 'table-row-group',
+  verticalAlign: 'middle',
+  borderColor: 'inherit'}}>             
                {usersData.map((user,i) => (  
                 [
-                <TableRow onClick={() => this.expandRow(i)} scope="column" style={{cursor:'pointer', backgroundColor:'#FFFFFF', fontSize:'12px'}} border='bottom' key={user.id}>
-                  {columns.map(c => (
-                      <TableCell key={c.property} scope={c.dataScope} align={c.align} border='bottom'>
-                        <Text style={{fontSize:'14px'}}>
-                          {user[c.property]}
-                        </Text>
-                      </TableCell> 
-                      
-                    ))}
-                 </TableRow> ,
-                 <ExpandedRow show={i === expandedRowVisible}></ExpandedRow>
+                  <TableRow onClick={() => this.expandRow(i)} scope="column" style={{cursor:'pointer', backgroundColor:'#FFFFFF', fontSize:'12px'}} border='bottom' key={user.id}>
+                    {columns.map(c => (
+                        <TableCell key={c.property} scope={c.dataScope} align={c.align} border='bottom'>
+                          <Text style={{fontSize:'14px'}}>
+                            {user[c.property]}
+                          </Text>
+                        </TableCell> 
+                        
+                      ))}
+                  </TableRow>,
+                  <div style={{visibility: i === expandedRowVisible ? "visible" : "hidden", display:i === expandedRowVisible ? "inline-flex" : "none", backgroundColor:"#ebebeb", flexDirection:'row', justifyContent:'space-between'}} key={i}>
+                          <div style={{width:'33%',border:'1px solid red'}}>שם יצירה מקורי:</div>
+                          <div style={{width:'33%',border:'1px solid red'}}>        פתאום עכשיו פתאום היום
+</div>
+                          <div style={{width:'33%',border:'1px solid red'}}>eeee</div>
+                        
+                  </div>
                 ]
             ))}
             </TableBody>
@@ -182,8 +188,33 @@ class MainSongsTable extends React.Component{
 }
 }
 
+{/**
+https://www.googleapis.com/youtube/v3/search?fields=items%2Fid,items%2Fsnippet%2Ftitle,items%2Fsnippet%2Fdescription,items%2Fsnippet%2Fthumbnails%2Fdefault,items%2Fsnippet%2FchannelTitle,nextPageToken,prevPageToken&key=AIzaSyBahF7YmvpZiMBziQXy21Uhe44URp2yPHE&maxResults=10&part=id,snippet&q=%D7%A9%D7%91%D7%98+%D7%90%D7%97%D7%99%D7%9D+%D7%95%D7%90%D7%97%D7%99%D7%95%D7%AA+%D7%90%D7%95%D7%9E%D7%A0%D7%99+%D7%99%D7%A9%D7%A8%D7%90%D7%9C&type=video&videoSyndicated=true
+*/}
 
-export default MainSongsTable;
+const mapStateToProps = (state) => {
+  let props = {
+    editView:state.dancesReducer.editView
+    }
+    
+    console.log('----im props view:----');
+    console.log(props);
+    console.log('--------------');
+    
+  return props;
+};
+
+const mapDispatchToProps = (dispatch) => ({  
+  toggleEditRedux: (editView) => dispatch(toggleEditAction(editView))
+});
+
+
+
+
+export default connect (
+  mapStateToProps,
+mapDispatchToProps)
+(MainSongsTable);
 
 
  const NotApproved = styled.div`

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import { TextInput } from 'grommet/components/TextInput';
 import Select from 'react-select';
 import { SelectBtn } from '@appearance/styled';
+
+import { toggleEditAction } from '@state/actions/index.js';
 
 
 // STYLING
@@ -10,7 +14,6 @@ import styled from 'styled-components';
 class EditSongScreen extends React.Component{
          state = {
             selectedDanceNameValue:"",
-            editFlag:true,
             danceStatuses:[
               {value: 1, label:'מאושר'},
               {value: 2, label: 'לא מאושר'},
@@ -19,13 +22,13 @@ class EditSongScreen extends React.Component{
           };
     
 
-    toggleEdit = () => {      
-      this.setState({
-        editFlag: !this.state.editFlag,
-      })
-      
+    toggleEdit = () => {
+      let { toggleEditRedux } = this.props; 
+      let editView = !this.props.editView; 
+      toggleEditRedux(editView);
+  
     }
-       
+
     setDanceNameValue = (e) => {      
       this.setState({
         selectedDanceNameValue:e
@@ -237,7 +240,26 @@ class EditSongScreen extends React.Component{
     }
 }
 
-  export default EditSongScreen;
+const mapStateToProps = (state) => {
+  let props = {
+    editView:state.dancesReducer.editView
+    }
+    
+    console.log('----im edit view:----');
+    console.log(props);
+    console.log('--------------');
+    
+  return props;
+};
+
+  const mapDispatchToProps = (dispatch) => ({  
+    toggleEditRedux: (editView) => dispatch(toggleEditAction(editView))
+  });
+
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps)
+  (EditSongScreen);
   
   
 const WrapperDiv = styled.div`
