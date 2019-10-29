@@ -14,3 +14,11 @@ export const toggleApproveAction = (data) => ({
     data
    }
 });
+
+export const TOGGLE_REGISTER = 'TOGGLE_REGISTER';
+export const toggleRegisterAction = (data) => ({
+  type: TOGGLE_REGISTER,
+  data: {
+    data
+   }
+});

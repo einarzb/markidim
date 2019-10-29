@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { toggleRegisterAction } from '@state/actions/index.js';
+
+
 import Select from 'react-select';
 
 import {CREDIT_CARD, PLUS } from '@assets/index.js';
@@ -12,7 +17,7 @@ import RegisterSongScreen from './RegisterSongScreen';
 
 let dancesCounter = 2; 
 
-export default class DancesScreen extends React.Component{ 
+class DancesScreen extends React.Component{ 
   constructor(){
     super()
     this.state = {
@@ -87,13 +92,12 @@ export default class DancesScreen extends React.Component{
       dancesCounter: 3,
       //add icon to the object property
       mainButtons : [
-        {label: 'רישום שיר חדש', span:'עוד ' + dancesCounter + ' שירים', onClick:this.registerDance, bgColor:'rgb(83,71,103)', icon:PLUS},
+        {label: 'רישום שיר חדש', span:'עוד ' + dancesCounter + ' שירים', onClick:this.toggleRegister, bgColor:'rgb(83,71,103)', icon:PLUS},
         {label: 'תשלום דמי חבר', span:'לשנת 2019', onClick:this.payMembershipFee, bgColor:'#192F3A', icon:CREDIT_CARD},
       ],
  
  
    
-      registerFlag:false,
       //mock data
       filterOptions:[
         { value: 'זוגות', label: 'זוגות', color: '#FFFFFF', isFixed: false },
@@ -109,12 +113,12 @@ export default class DancesScreen extends React.Component{
   
 
 
-
-  registerDance = () => {
-    console.log('register song');
-    this.setState({registerFlag:true});
-        //this.updateSongsCounter(3);
+  toggleRegister= () => {
+    let { toggleRegisterRedux } = this.props; 
+    let registerSongView = !this.props.registerSongView; 
+    toggleRegisterRedux(registerSongView);
   }
+
 
   updateDancesCounter = (num) => {
     this.setState({dancesCounter:num})
@@ -147,15 +151,13 @@ export default class DancesScreen extends React.Component{
   };
 
   render(){
-    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, filterOptions, registerFlag } = this.state;   
-    let {editView} = this.props;
+    let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, filterOptions } = this.state;   
+    let {registerSongView} = this.props;
 
     return(
       <div>
         {      
-        //editFlag ? <EditSongScreen toggle={this.toggleEdit} /> :
-        //approveFlag ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
-        registerFlag ? <RegisterSongScreen toggle={this.toggleRegister}/> :
+        registerSongView ? <RegisterSongScreen toggle={this.toggleRegister}/> :
       <Wrapper> 
         <SongsWrapper>
           <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
@@ -273,6 +275,25 @@ export default class DancesScreen extends React.Component{
     )
   }
 }
+const mapStateToProps = (state) => {
+  let props = {
+    registerSongView:state.dancesReducer.registerSongView
+    }
+    
+    console.log('----im register view:----');
+    console.log(props);
+    console.log('--------------');
+    
+  return props;
+};
+
+const mapDispatchToProps = (dispatch) => ({  
+  toggleRegisterRedux: (registerSongView) => dispatch(toggleRegisterAction(registerSongView))
+});
+
+export default connect(mapStateToProps,
+  mapDispatchToProps)
+(DancesScreen)
 
 export const Wrapper = styled.div`
   background-color:#ebebeb;

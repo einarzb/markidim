@@ -138,7 +138,7 @@ class MainSongsTable extends React.Component{
 
 
   render() {
-    let {columns, usersData, approveFlag, expandedRowVisible} = this.state
+    let {columns, usersData, expandedRowVisible} = this.state
     let {editView, approveView} = this.props;
   return(
     <div>

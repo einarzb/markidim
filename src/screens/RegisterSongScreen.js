@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+
+import { toggleRegisterAction } from '@state/actions/index.js';
+
+
 import { TextInput, TextArea } from 'grommet';
 import Select from 'react-select';
 import { SelectBtn } from '@appearance/styled';
@@ -10,7 +16,6 @@ import styled from 'styled-components';
 class RegisterSongScreen extends React.Component{
          state = {
             selectedDanceNameValue:"",
-            showFlag:true,
             danceStatuses:[
               {value: 1, label:'מוזמן'},
               {value: 2, label:'מאושר'},
@@ -24,12 +29,13 @@ class RegisterSongScreen extends React.Component{
     toy = (e) => {
       this.setState({textAreaText:e})
     }   
-    toggleRegister = () => {      
-      this.setState({
-        showFlag: !this.state.showFlag,
-      })
-      
+
+    toggleRegister= () => {
+      let { toggleRegisterRedux } = this.props; 
+      let registerSongView = !this.props.registerSongView;
+      toggleRegisterRedux(registerSongView);
     }
+  
        
     setDanceNameValue = (e) => {      
       this.setState({
@@ -274,7 +280,27 @@ class RegisterSongScreen extends React.Component{
     }
 }
 
-  export default RegisterSongScreen;
+
+const mapStateToProps = (state) => {
+  let props = {
+    registerSongView:state.dancesReducer.registerSongView
+    }
+    
+    console.log('----im register view:----');
+    console.log(props);
+    console.log('--------------');
+    
+  return props;
+};
+
+const mapDispatchToProps = (dispatch) => ({  
+  toggleRegisterRedux: (registerSongView) => dispatch(toggleRegisterAction(registerSongView))
+});
+
+
+  export default connect( 
+    mapStateToProps,
+    mapDispatchToProps)(RegisterSongScreen);
   
   
 const WrapperDiv = styled.div`
