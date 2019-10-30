@@ -37,7 +37,23 @@ class MainSongsTable extends React.Component{
     ],
      expandedRows : [],
       columns: [
-    
+        {
+          property:'danceVideo',
+          label:'סרטון ריקוד'
+        }
+        ,
+        {
+          property:'shironet',
+          label:'שירונט'
+        },
+        {
+          property:'youtubeLink',
+          label:'יוטיוב'
+        },
+         {
+           property:'dateOfRegistration',
+           label:'תאריך הפיכה לריקוד קיים:',
+         },
         {
           property: 'approveSong',
           label: '',
@@ -111,13 +127,15 @@ class MainSongsTable extends React.Component{
       ],
       usersData: [
         {
-          id: 1, owner: 'עינר גל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר',writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019'
+          id: 1, owner: 'עינר גל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר',writer:'תרצה אתר', originalSongName:'אני זוכר אותה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', dateOfRegistration:'06/2019', youtubeLink:'https://www.youtube.com/embed/19qoWmBJVRc', shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=975&wrkid=73',danceVideo:''
         },
         {
-          id: 2, owner: 'תמיר שרצר', status: <NotApproved>לא מאושר</NotApproved> , danceName:'אהבתיה',performer:'שלמה ארצי',composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', editSong: editBtn, approveSong:approveBtn
+          id: 2, owner: 'תמיר שרצר', status: <NotApproved>לא מאושר</NotApproved> , danceName:'לתת ולקחת',performer:'שלמה ארצי, דודו טסה',composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'לתת ולקחת', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', editSong: editBtn, approveSong:approveBtn, dateOfRegistration:'11/2019', youtubeLink:'https://www.youtube.com/embed/C-bAr0i0YAg',
+          shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=14541&wrkid=33438',danceVideo:''
         },
         {
-          id: 3, owner: 'עידן חיל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'אהבתיה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019'
+          id: 3, owner: 'עידן חיל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'בליבי עכשיו', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', dateOfRegistration:'02/2019',
+          shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=975&wrkid=73',danceVideo:''
         }
       ],
       expandedRowVisible:false,      
@@ -137,28 +155,33 @@ renderItem(item) {
   const clickCallback = () => this.handleRowClick(item.id);
   const itemRows = [
     
-      <TableRow onClick={clickCallback} border='bottom' key={"row-data-" + item.id} style={{borderBottom:'1px solid grey',cursor:"pointer",display: 'inline-flex',
-        flexDirection:'row-reverse',
-        width: '90%', backgroundColor:'#FFFFFF'}}>
-          <TableCell  style={{textAlign:'right', width:'100px'}}>{item.owner}</TableCell>
-          <TableCell>{item.danceName}</TableCell>
-          <TableCell>{item.performer}</TableCell>
+      <TableRow onClick={clickCallback} border='bottom' key={"row-data-" + item.id} style={{borderBottom:'1px solid grey',cursor:"pointer",display: 'inline-flex', alignItems:'center',
+        flexDirection:'row', direction:'rtl', height:'auto',
+        width: '90%', backgroundColor:'#FFFFFF', fontSize: '1rem',
+      }}>
+          <TableCell>{item.status}</TableCell>			
+          <TableCell style={{textAlign:'center', width:'100px'}}>{item.owner}</TableCell>
+          <TableCell style={{overflow: 'hidden',
+          whiteSpace: 'normal', width:'111px', display:'inline-table'}}>{item.danceName}</TableCell>
+          <TableCell style={{overflow: 'hidden',
+          whiteSpace: 'normal', width:'111px', display:'inline-table'}}>{item.performer}</TableCell>
           <TableCell>{item.composer}</TableCell>
           <TableCell>{item.writer}</TableCell>
-          <TableCell>{item.originalSongName}</TableCell>
+          <TableCell  style={{overflow: 'hidden',
+          whiteSpace: 'normal', width:'111px', display:'inline-table'}}>{item.originalSongName}</TableCell>
           <TableCell>{item.danceType}</TableCell>
-          <TableCell>{item.coChoreographers}</TableCell>
+          <TableCell style={{overflow: 'hidden',
+          whiteSpace: 'normal', width:'112px', display:'inline-table'}}>{item.coChoreographers}</TableCell>
           <TableCell>{item.acumNum}</TableCell>
           <TableCell>{item.orderDate}</TableCell>
           <TableCell>{item.editSong}</TableCell>
           <TableCell>{item.approveSong}</TableCell>
-          <TableCell>{item.status}</TableCell>			
       </TableRow>
         ];
         
         if(this.state.expandedRows.includes(item.id)) {
             itemRows.push(
-                <ExpandedRow show={true} key={"row-expanded-" + item.id}>
+                <ExpandedRow expandedData={[item.dateOfRegistration, item.originalSongName, item.acumNum, item.orderDate, item.youtubeLink, item.shironet, item.danceVideo]} show={true} key={"row-expanded-" + item.id}>
                 </ExpandedRow>
             );
         }
@@ -203,15 +226,10 @@ renderItem(item) {
           { 
             editView ? <EditSongScreen toggle={this.toggleEdit} /> :
             approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
-            <Table>
-               <TableHeader>
-               
-              </TableHeader>
-             <TableBody style={{border:'1px solid blue'}}>
-             {allItemRows}
-
-               </TableBody> 
-
+            <Table style={{margin:'1rem auto'}}>
+              <TableBody>
+                  {allItemRows}
+              </TableBody> 
             </Table>
           }
       </MainTableWrapper>
@@ -291,6 +309,7 @@ mapDispatchToProps)
 
 
  const NotApproved = styled.div`
+ text-align: center;
   border-radius: 5em;
   background-color: rgb(241, 206, 82);
   width: 100px;
