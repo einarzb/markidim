@@ -98,7 +98,7 @@ export const SongsWrapper = styled.div`
   display:inline-flex;
   flex-direction:row;
   width:100%;
-  justify-content:space-evenly;
+  justify-content:space-around;
   padding: 0.5rem 0rem 0px;
   margin: -1rem 0 0rem;
   align-items: center;
@@ -117,9 +117,11 @@ export const ButtonsFlexer = styled.div`
   display: inline-flex; 
   flex-direction: row;
   width: auto;
-  margin: 15px 0px;
+  margin: 1rem;
   justify-content:space-between;
   padding:0px;
+  position:absolute;
+  left: 0%;
 `;
 
 export const MainButton = styled(Button)` 

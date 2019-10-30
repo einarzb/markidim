@@ -226,7 +226,7 @@ renderItem(item) {
           { 
             editView ? <EditSongScreen toggle={this.toggleEdit} /> :
             approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
-            <Table style={{margin:'1rem auto'}}>
+            <Table style={{margin:'3rem auto'}}>
               <TableBody>
                   {allItemRows}
               </TableBody> 

@@ -43,7 +43,7 @@ class NavigationRouter extends React.Component {
           <Router>
               <div>
                 <nav style={{textAlign:'left'}}>
-                  <ul style={{padding:'5px', fontSize:"15px"}}>
+                  <ul style={{padding:'5px', fontSize:"15px", marginLeft:'1rem'}}>
                     <Tab>
                       <Link to="/">ראשי</Link>
                     </Tab>
@@ -89,6 +89,7 @@ export const RightPart = styled.div`
   display:inline-flex;
   flex-direction: row;
   float:right;
+  margin-right: 3rem;
   @media (max-width: 768px) {
     margin-top: -2.9rem;
     float: right;
