@@ -91,6 +91,7 @@ export const RightPart = styled.div`
   float:right;
   margin-right: 3rem;
   @media (max-width: 768px) {
+    margin-right: 0rem;
     margin-top: -2.9rem;
     float: right;
   }
