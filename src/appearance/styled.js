@@ -27,6 +27,9 @@ export const Tab = styled.li`
   justify-content:space-between;
   color: #FFFFFF;
   text-align:center;
+  @media (max-width: 768px) {
+    width:40px;
+  }
   & a {
     color: #FFFFFF;
     text-decoration:none;
@@ -147,8 +150,10 @@ export const SelectBtn = styled.div`
   font-weight:300;
   margin:0px 4px;
   color:#000000;
+  min-width:165px;
+  width:auto;
   @media (max-width: 768px) {
-    width: 100px;
+    width: 120px;
   }
   & input {
     border:1px solid grey;

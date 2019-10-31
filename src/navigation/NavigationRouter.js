@@ -43,7 +43,7 @@ class NavigationRouter extends React.Component {
           <Router>
               <div>
                 <nav style={{textAlign:'left'}}>
-                  <ul style={{padding:'5px', fontSize:"15px", marginLeft:'1rem'}}>
+                  <NavUl>
                     <Tab>
                       <Link to="/">ראשי</Link>
                     </Tab>
@@ -61,8 +61,8 @@ class NavigationRouter extends React.Component {
                           <DropdownLanguages show={this.state.dropdownVisible}/> 
                     </RightPart>
                 
-                  </ul>
-                </nav>
+                    </NavUl>
+                                    </nav>
               </div>
               <Route path="/about" component={AboutScreen}></Route>
               <Route path="/dances" component={DancesScreen}></Route>
@@ -83,6 +83,14 @@ export const Bar = styled.div`
   width:100%;
   `;
 
+const NavUl = styled.ul`
+  padding:5px;
+  font-size:15px; 
+  margin-left:1rem;
+    @media (max-width: 768px) {
+      margin-left: 0;
+    }
+`;
 
 export const RightPart = styled.div`
   width: auto;
@@ -92,7 +100,7 @@ export const RightPart = styled.div`
   margin-right: 3rem;
   @media (max-width: 768px) {
     margin-right: 0rem;
-    margin-top: -2.9rem;
+    margin-top: -0.2rem;
     float: right;
   }
 `;

@@ -1,7 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const DropdownLogin = ({show}) => 
-<div style={{visibility: show ? "visible" : "hidden", backgroundColor: "#FFFFFF", marginTop:"50px", right:"4.5%", borderBottom:"1px solid rgb(83, 71, 103)", borderRight:"1px solid rgb(83, 71, 103)", borderLeft:"1px solid rgb(83, 71, 103)", position: "absolute", height: "auto", width: "110px", zIndex:"1", outline:"none"}}>
+<DropDown style={{visibility: show ? "visible" : "hidden"}}>
+
   
   <div style={{textAlign:"right", padding:"0px 10px"}}>
     <a href="" style={{textDecoration:"none", color:'rgb(83, 71, 103)', fontSize:"14px"}}>פרופיל</a>
@@ -9,6 +11,24 @@ const DropdownLogin = ({show}) =>
   <div style={{textAlign:"right", padding:"0px 10px"}}>
   <a href="" style={{textDecoration:"none", color:'rgb(83, 71, 103)', fontSize:"14px"}}>התנתק</a>
   </div>
-</div>
+</DropDown>
 
 export default DropdownLogin;
+
+const DropDown = styled.div`
+background-color: #FFFFFF;
+margin-top:50px;
+right:4.5%; 
+border-bottom:1px solid rgb(83, 71, 103);
+border-right:1px solid rgb(83, 71, 103);
+border-left:1px solid rgb(83, 71, 103);
+position: absolute;
+height: auto;
+width: 110px;
+z-index:1;
+outline:none
+@media (max-width: 768px) {
+  right: 15%;
+}
+
+`;

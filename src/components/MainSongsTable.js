@@ -38,93 +38,89 @@ class MainSongsTable extends React.Component{
      expandedRows : [],
       columns: [
         {
-          property:'danceVideo',
-          label:'סרטון ריקוד'
-        }
-        ,
-        {
-          property:'shironet',
-          label:'שירונט'
-        },
-        {
-          property:'youtubeLink',
-          label:'יוטיוב'
-        },
-         {
-           property:'dateOfRegistration',
-           label:'תאריך הפיכה לריקוד קיים:',
-         },
-        {
           property: 'approveSong',
           label: '',
           align: 'center',
-          onClick:this.toggleApprove
+          onClick:this.toggleApprove,
+          hidden:false
         },
         {
           property: 'editSong',
           label: '',
           align: 'center',
-          onClick:this.toggleEdit
-
+          onClick:this.toggleEdit,
+          hidden:false
         },
         {
           property: 'orderDate',
           label: 'תאריך הזמנה',
-          align: 'center'
+          align: 'center',
+          hidden:false
         },
         {
           property: 'acumNum',
           label: 'מס׳ אקו״ם',
-          align: 'center'
+          align: 'center',
+          hidden:false
         },
         {
           property: 'coChoreographers',
           label: 'מחברים נוספים',
-          align: 'center'
+          align: 'center',
+          hidden:false
         },
         {
           property: 'danceType',
           label: 'סוג ריקוד',
-          align: 'center'
+          align: 'center',
+          hidden:false
         },
         {
           property: 'originalSongName',
           label: 'שם שיר מקורי',
-          align: 'center'
+          align: 'center',
+          hidden:false
         },
         {
           property: 'writer',
           label: 'שם משורר',
-          align: 'center'
+          align: 'center',
+          hidden:false
         },
         {
           property: 'composer',
           label: 'שם מלחין',
-          align: 'center'
+          align: 'center',
+          hidden:false
         },
         {
           property: 'performer',
           label: 'שם מבצע',
-          align: 'center'
+          align: 'center',
+          hidden:false
         },
         {
+          hidden:false,
           property: 'danceName',
           label: 'שם ריקוד',
           align: 'center'
         },
         {
+          hidden:false,
           property: 'owner',
           label: 'מוזמן ע״י',
           align: 'center'
       
         },
         {
+          hidden:false,
           property: 'status',
           label: 'סטטוס',
           dataScope: 'column',
           align: 'center'
         }
       ],
+ 
       usersData: [
         {
           id: 1, owner: 'עינר גל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר',writer:'תרצה אתר', originalSongName:'אני זוכר אותה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', dateOfRegistration:'06/2019', youtubeLink:'https://www.youtube.com/embed/19qoWmBJVRc', shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=975&wrkid=73',danceVideo:''
@@ -219,14 +215,24 @@ renderItem(item) {
       allItemRows = allItemRows.concat(perItemRows);
     });
 
-    let {columns, usersData, expandedRowVisible} = this.state
     let {editView, approveView} = this.props;
-    return(
+    let {columns} = this.state;
+     return(
       <MainTableWrapper>
           { 
             editView ? <EditSongScreen toggle={this.toggleEdit} /> :
             approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
-            <Table style={{margin:'3rem auto'}}>
+            <Table style={{display: 'inline-flex',flexDirection: 'column',margin:'3rem auto', alignItems:'center'}}>
+              <TableHeader style={{width:'100%', display:'inline-flex', flexDirection:'row', justifyContent:'space-around'}}>
+                  <TableRow style={{backgroundColor:'rgb(152,135,152)', width: '90%',
+    display: 'inline-table' }} align="end">
+                    {columns.map(c => (
+                      <TableCell key={c.property} scope='col' border='bottom' align={c.align} style={{display:c.hidden ? "none" : "block"}}>
+                             <Text style={{fontSize:'14px', fontWeight:'bold', color:'#FFFFFF'}}>{c.label}</Text>
+                      </TableCell>                      
+                    ))}
+                  </TableRow>
+              </TableHeader>
               <TableBody>
                   {allItemRows}
               </TableBody> 
@@ -280,6 +286,7 @@ https://www.googleapis.com/youtube/v3/search?fields=items%2Fid,items%2Fsnippet%2
             </TableBody>
           </Table> */}
 
+ 
 
 const mapStateToProps = (state) => {
   let props = {
@@ -323,3 +330,4 @@ mapDispatchToProps)
 const MainTableWrapper = styled.div`
   overflow-x:auto;
 `;
+

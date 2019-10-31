@@ -182,7 +182,7 @@ class DancesScreen extends React.Component{
                   <SelectRow style={{marginTop:'1rem'}}>
                   <label>
                     סטטוס ריקוד
-                    <SelectBtn style={{minWidth:'165px',width:'auto'}}>
+                    <SelectBtn>
                         <Select
                           placeholder='סטטוס ריקוד'
                         //  styles={customStyles} 
@@ -196,7 +196,7 @@ class DancesScreen extends React.Component{
                     </SelectBtn>
                   </label>
                   <label> שם שיר
-                  <SelectBtn style={{minWidth:'165px',width:'auto'}}>
+                  <SelectBtn>
                           <Select
                             //styles={customStyles} 
                             autoFocus
@@ -211,7 +211,7 @@ class DancesScreen extends React.Component{
                   </label>
                   <label>
                     שם מבצע 
-                    <SelectBtn style={{minWidth:'165px',width:'auto'}}>
+                    <SelectBtn>
                         <Select
                           //styles={customStyles} 
                           autoFocus
@@ -227,7 +227,7 @@ class DancesScreen extends React.Component{
               
                   <label>
                   שם מלחין
-                  <SelectBtn style={{minWidth:'165px',width:'auto'}}>
+                  <SelectBtn>
                       <Select
                         //styles={customStyles} 
                         autoFocus
@@ -242,7 +242,7 @@ class DancesScreen extends React.Component{
                   </label>
                   <label>
                     שם משורר
-                    <SelectBtn style={{minWidth:'165px',width:'auto'}}>
+                    <SelectBtn>
                         <Select
                           //styles={customStyles} 
                           autoFocus
@@ -257,7 +257,7 @@ class DancesScreen extends React.Component{
                   </label>
                   <label>
                       שם מזמין  
-                  <SelectBtn style={{minWidth:'165px',width:'auto'}}>
+                  <SelectBtn>
                         <Select
                           //styles={customStyles} 
                           autoFocus 
