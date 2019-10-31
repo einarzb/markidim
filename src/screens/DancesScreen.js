@@ -163,6 +163,7 @@ class DancesScreen extends React.Component{
 
             <SongsWrapper>
               <SelectWrapper>
+                <h2>מערכת איתור ריקודים</h2>
                 <SelectRow style={{ alignItems: 'flex-end'}}>
                   <label> &nbsp;
                   <SelectBtn style={{width:'540px'}}>
@@ -315,6 +316,12 @@ export const SelectWrapper = styled.div`
   margin-top:3rem;
   width: 90%;
   flex-direction:column; 
+  & h2 {
+    margin: 0;
+    text-align: right;
+    color:rgb(152, 135, 152);
+    font-weight: 400;
+  }
 `;
 
 export const SelectRow = styled.div`
