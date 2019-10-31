@@ -312,7 +312,8 @@ export const Wrapper = styled.div`
 
 export const SelectWrapper = styled.div`
   display:inline-flex;
-  margin-top:2rem;
+  margin-top:3rem;
+  width: 90%;
   flex-direction:column; 
 `;
 

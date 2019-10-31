@@ -120,7 +120,7 @@ export const ButtonsFlexer = styled.div`
   display: inline-flex; 
   flex-direction: row;
   width: auto;
-  margin: 1rem;
+  margin: -1rem 4rem;
   justify-content:space-between;
   padding:0px;
   position:absolute;
@@ -152,6 +152,7 @@ export const SelectBtn = styled.div`
   color:#000000;
   min-width:165px;
   width:auto;
+
   @media (max-width: 768px) {
     width: 120px;
   }
@@ -161,23 +162,3 @@ export const SelectBtn = styled.div`
 `;
 
 
-
-{/**
-
-export const MainButton = styled(Button)` 
-  background-color:#ffb639;
-  color:#FFFFFF;
-  border:1px solid transparent;
-  border-radius: 1rem;
-  display:inline-flex;
-  flex-direction:column;
-  color: #00000;
-  width: auto;
-  padding: 5px 10px;
-  margin: 10px;
-  align-items:center; 
-  & span {
-    font-size: 14px;
-  }
-`;
- */}

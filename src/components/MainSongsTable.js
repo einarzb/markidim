@@ -222,7 +222,7 @@ renderItem(item) {
           { 
             editView ? <EditSongScreen toggle={this.toggleEdit} /> :
             approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
-            <Table style={{display: 'inline-flex',flexDirection: 'column',margin:'3rem auto', alignItems:'center'}}>
+            <Table style={{display: 'inline-flex',flexDirection: 'column',margin:'2rem auto', alignItems:'center'}}>
               <TableHeader style={{width:'100%', display:'inline-flex', flexDirection:'row', justifyContent:'space-around'}}>
                   <TableRow style={{backgroundColor:'rgb(152,135,152)', width: '90%',
     display: 'inline-table' }} align="end">
