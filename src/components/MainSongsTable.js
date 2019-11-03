@@ -42,82 +42,104 @@ class MainSongsTable extends React.Component{
           label: '',
           align: 'center',
           onClick:this.toggleApprove,
-          hidden:false
+          hidden:false,
+          width:'0px',
+          display:'none'
         },
         {
           property: 'editSong',
           label: '',
           align: 'center',
           onClick:this.toggleEdit,
-          hidden:false
+          hidden:false,
+          width:'0px',
+          display:'none'
+
         },
         {
           property: 'orderDate',
           label: 'תאריך הזמנה',
           align: 'center',
-          hidden:false
+          hidden:false,
+
         },
         {
           property: 'acumNum',
           label: 'מס׳ אקו״ם',
           align: 'center',
-          hidden:false
+          hidden:false,
+
+
         },
         {
           property: 'coChoreographers',
           label: 'מחברים נוספים',
           align: 'center',
-          hidden:false
+          hidden:false,
+          width: '98px'
+
         },
         {
           property: 'danceType',
           label: 'סוג ריקוד',
           align: 'center',
-          hidden:false
+          hidden:false,
+          width: '60px'
+
         },
         {
           property: 'originalSongName',
           label: 'שם שיר מקורי',
           align: 'center',
-          hidden:false
+          hidden:false,
+          width: '100px'
         },
         {
           property: 'writer',
           label: 'שם משורר',
           align: 'center',
-          hidden:false
+          hidden:false,
+          width: '54px'
+
         },
         {
           property: 'composer',
           label: 'שם מלחין',
           align: 'center',
-          hidden:false
+          hidden:false,
+          width: '101px'
         },
         {
           property: 'performer',
           label: 'שם מבצע',
           align: 'center',
-          hidden:false
+          hidden:false,
+          width: '128px'
+
+
         },
         {
           hidden:false,
           property: 'danceName',
           label: 'שם ריקוד',
-          align: 'center'
+          align: 'center',
+          width: '74px'
+
         },
         {
           hidden:false,
           property: 'owner',
           label: 'מוזמן ע״י',
-          align: 'center'
-      
+          align: 'center',
+          width: '64px'
         },
         {
           hidden:false,
           property: 'status',
           label: 'סטטוס',
           dataScope: 'column',
-          align: 'center'
+          align: 'center',
+          width: '100px'
         }
       ],
  
@@ -222,18 +244,19 @@ renderItem(item) {
           { 
             editView ? <EditSongScreen toggle={this.toggleEdit} /> :
             approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
-            <Table style={{display: 'inline-flex',flexDirection: 'column',margin:'2rem auto', alignItems:'center'}}>
-              <TableHeader style={{width:'100%', display:'inline-flex', flexDirection:'row', justifyContent:'space-around'}}>
-                  <TableRow style={{backgroundColor:'rgb(152,135,152)', width: '90%',
+            <Table style={{display: 'inline-flex',flexDirection: 'column',margin:'2rem auto', alignItems:'center', width:'90%'}}>
+              <TableHeader style={{width:'90%', display:'inline-flex', flexDirection:'row', justifyContent:'space-around'}}>
+                  <TableRow style={{backgroundColor:'rgb(152,135,152)', width: '100%',
     display: 'inline-table' }} align="end">
                     {columns.map(c => (
-                      <TableCell key={c.property} scope='col' border='bottom' align={c.align} style={{display:c.hidden ? "none" : "block"}}>
+                      <TableCell key={c.property} scope='col' border='bottom' align={c.align} style={{display:c.hidden ? "none" : "inline-table", margin:'0 5px', width:c.width, whiteSpace:'normal'}}>
                              <Text style={{fontSize:'14px', fontWeight:'bold', color:'#FFFFFF'}}>{c.label}</Text>
                       </TableCell>                      
                     ))}
                   </TableRow>
               </TableHeader>
-              <TableBody>
+              <TableBody style={{ width: '100%', 
+    backgroundColor: '#FFFFFF'}}>
                   {allItemRows}
               </TableBody> 
             </Table>

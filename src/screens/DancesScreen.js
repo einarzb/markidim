@@ -12,7 +12,7 @@ import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
 
 import styled from 'styled-components';
-import { SongsWrapper, SelectBtn } from '@appearance/styled';
+import { SongsWrapper, SelectBtn, SearchSelectBtn } from '@appearance/styled';
 import RegisterSongScreen from './RegisterSongScreen';
 
 let dancesCounter = 2; 
@@ -105,7 +105,10 @@ class DancesScreen extends React.Component{
         {value: 2, label: 'לא מאושר'},
         {value: 3, label: 'בבדיקה'}  
       ],  
-
+      //selectedDanceStatusOption:[{[string]: string}]
+     // selectedSongOption:"",
+      //selectedChoreographerOption:"",
+     // selectedComposerOption:""
 
       
  
@@ -113,6 +116,10 @@ class DancesScreen extends React.Component{
   }
   
 
+  clearFilters = () => {
+    console.log('im gonna clear filters');
+    
+  }
 
   toggleRegister= () => {
     let { toggleRegisterRedux } = this.props; 
@@ -131,6 +138,7 @@ class DancesScreen extends React.Component{
 
   //TODO : make a generic function that get params
 
+  /*
   danceStatusChange = (selectedDanceStatusOption) => {
     this.setState({ selectedDanceStatusOption});
   };
@@ -150,6 +158,7 @@ class DancesScreen extends React.Component{
   writersChange = (selectedWritersOption) => {
     this.setState({ selectedWritersOption});
   };
+  */
 
   render(){
     let {mainButtons, customStyles, selectedDanceStatusOption, danceStatuses, selectedSongOption, dances, selectedPerformerOption, performers, composers, selectedComposerOption, choreographers, selectedChoreographerOption, writers, selectedWritersOption, filterOptions } = this.state;   
@@ -166,7 +175,7 @@ class DancesScreen extends React.Component{
                 <h2>מערכת איתור ריקודים</h2>
                 <SelectRow style={{ alignItems: 'flex-end'}}>
                   <label> &nbsp;
-                  <SelectBtn style={{width:'540px'}}>
+                  <SearchSelectBtn>
                       <Select
                         placeholder='סינון חופשי'
                         styles={customStyles} 
@@ -174,8 +183,9 @@ class DancesScreen extends React.Component{
                       // defaultValue={[filterOptions[0], filterOptions[1]]}
                         isMulti
                         options={filterOptions}
+                        value = {selectedDanceStatusOption}
                       />
-                  </SelectBtn>
+                  </SearchSelectBtn>
                   </label>
                   <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
 
@@ -188,7 +198,7 @@ class DancesScreen extends React.Component{
                           placeholder='סטטוס ריקוד'
                         //  styles={customStyles} 
                           autoFocus
-                          //value={selectedDanceStatusOption}
+                          value={selectedDanceStatusOption}
                           //onChange={this.danceStatusChange}
                           options={danceStatuses}
                           isMulti
@@ -202,7 +212,7 @@ class DancesScreen extends React.Component{
                             //styles={customStyles} 
                             autoFocus
                             placeholder='שם שיר'
-                          // value={selectedSongOption}
+                            value={selectedSongOption}
                           // onChange={this.danceChange}
                             options={dances}
                             isMulti
@@ -217,7 +227,7 @@ class DancesScreen extends React.Component{
                           //styles={customStyles} 
                           autoFocus
                           placeholder='שם מבצע'
-                          //value={selectedPerformerOption}
+                          value={selectedPerformerOption}
                           //onChange={this.performerChange}
                           options={performers}
                           isMulti
@@ -233,7 +243,7 @@ class DancesScreen extends React.Component{
                         //styles={customStyles} 
                         autoFocus
                         placeholder='שם מלחין'
-                        //value={selectedComposerOption}
+                        value={selectedComposerOption}
                         //onChange={this.composersChange}
                         options={composers}
                         isMulti
@@ -249,7 +259,7 @@ class DancesScreen extends React.Component{
                           autoFocus
                           isMulti
                           placeholder='שם משורר'
-                          //value={selectedWritersOption}
+                          value={selectedWritersOption}
                           //onChange={this.writersChange}
                           options={writers}
                           name="dance-status-select"
@@ -264,7 +274,7 @@ class DancesScreen extends React.Component{
                           autoFocus 
                           isMulti
                           placeholder='שם מזמין'
-                        // value={selectedChoreographerOption}
+                          value={selectedChoreographerOption}
                           //onChange={this.choreographersChange}
                           options={choreographers}
                           name="dance-status-select"
@@ -272,11 +282,12 @@ class DancesScreen extends React.Component{
                   </SelectBtn>
                   </label> 
                 </SelectRow>
-
+                <SelectRow>
+                <FilterReset onClick={this.clearFilters}>אפס פילטרים </FilterReset>
+                </SelectRow>
               
 
               </SelectWrapper>
-          
             </SongsWrapper>
     
             <MainSongsTable></MainSongsTable>
@@ -316,6 +327,10 @@ export const SelectWrapper = styled.div`
   margin-top:3rem;
   width: 90%;
   flex-direction:column; 
+  @media (max-width: 768px) {
+    margin-top:6rem;
+
+  }
   & h2 {
     margin: 0;
     text-align: right;
@@ -337,4 +352,11 @@ export const SelectRow = styled.div`
   @media (max-width: 768px) {
     flex-direction:column;
   }
+`;
+
+const FilterReset = styled.div`
+  font-size: 12px;
+  color:rgb(152,135,152);
+  text-decoration:underline;
+  cursor:pointer;
 `;

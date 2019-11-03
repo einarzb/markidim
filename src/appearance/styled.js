@@ -108,7 +108,7 @@ export const SongsWrapper = styled.div`
   border-top: 1px solid #ebebeb;
   border-bottom: 1px solid #ebebeb;
   background-color:#ebebeb;
-
+  position:relative;
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 0;
@@ -125,6 +125,12 @@ export const ButtonsFlexer = styled.div`
   padding:0px;
   position:absolute;
   left: 0%;
+  @media (max-width: 768px) {
+    margin: -4rem 0rem;
+    font-size: 14px;
+    top: 12%;
+    left: 5%;
+  }
 `;
 
 export const MainButton = styled(Button)` 
@@ -154,11 +160,25 @@ export const SelectBtn = styled.div`
   width:auto;
 
   @media (max-width: 768px) {
-    width: 120px;
+    width: auto;
   }
   & input {
     border:1px solid grey;
     padding: 10px;
+`;
+
+export const SearchSelectBtn = styled.div`
+  width:540px;
+  font-size: 13px;
+  font-weight:300;
+  margin:0px 4px;
+  color:#000000;
+  min-width:165px;
+
+  @media (max-width: 768px) {
+    width: 330px;
+  }
+ 
 `;
 
 
