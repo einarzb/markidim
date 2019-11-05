@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toggleEditAction, toggleApproveAction } from '@state/actions/index.js';
+import { toggleEditAction, toggleApproveAction, fetchDataAction } from '@state/actions/index.js';
 
 //STYLING
 import styled from 'styled-components';
@@ -175,7 +175,7 @@ renderItem(item) {
     
       <TableRow onClick={clickCallback} border='bottom' key={"row-data-" + item.id} style={{borderBottom:'1px solid grey',cursor:"pointer",display: 'inline-flex', alignItems:'center',
         flexDirection:'row', direction:'rtl', height:'auto',
-        width: '90%', backgroundColor:'#FFFFFF', fontSize: '1rem',
+        width: '100%', backgroundColor:'#FFFFFF', fontSize: '1rem',
       }}>
           <TableCell>{item.status}</TableCell>			
           <TableCell style={{textAlign:'center', width:'100px'}}>{item.owner}</TableCell>
@@ -207,6 +207,13 @@ renderItem(item) {
         return itemRows;    
       }
 
+  componentDidMount(){
+    this.refreshData();
+  }
+
+  refreshData = () => {
+      let { sendDataToRedux } = this.props;
+  }
 
   //TODO: make a generic function 
   toggleApprove = () => {
@@ -244,8 +251,8 @@ renderItem(item) {
           { 
             editView ? <EditSongScreen toggle={this.toggleEdit} /> :
             approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
-            <Table style={{display: 'inline-flex',flexDirection: 'column',margin:'2rem auto', alignItems:'center', width:'90%'}}>
-              <TableHeader style={{width:'90%', display:'inline-flex', flexDirection:'row', justifyContent:'space-around'}}>
+            <Table style={{display: 'inline-flex',flexDirection: 'column',margin:'2rem auto', alignItems:'center', width:'auto'}}>
+              <TableHeader style={{width:'auto', display:'inline-flex', flexDirection:'row', justifyContent:'space-around'}}>
                   <TableRow style={{backgroundColor:'rgb(152,135,152)', width: '100%',
     display: 'inline-table' }} align="end">
                     {columns.map(c => (
@@ -255,7 +262,7 @@ renderItem(item) {
                     ))}
                   </TableRow>
               </TableHeader>
-              <TableBody style={{ width: '100%', 
+              <TableBody style={{ width: 'auto', 
     backgroundColor: '#FFFFFF'}}>
                   {allItemRows}
               </TableBody> 
@@ -313,8 +320,9 @@ https://www.googleapis.com/youtube/v3/search?fields=items%2Fid,items%2Fsnippet%2
 
 const mapStateToProps = (state) => {
   let props = {
-    editView:state.dancesReducer.editView,
-    approveView:state.dancesReducer.approveView
+    editView:state.screensReducer.editView,
+    approveView:state.screensReducer.approveView,
+    danceData:state.dancesReducer
     }
     
     console.log('----im props view:----');
@@ -325,6 +333,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({  
+  sendDataToRedux:(res) => dispatch(fetchDataAction(res)),
   toggleEditRedux: (editView) => dispatch(toggleEditAction(editView)),
   toggleApproveRedux: (approveView) => dispatch(toggleApproveAction(approveView))
 });
@@ -351,6 +360,9 @@ mapDispatchToProps)
 `;
 
 const MainTableWrapper = styled.div`
-  overflow-x:auto;
+  overflow-x: auto;
+  width: 90%;
+  display: block;
+  margin: 0px auto;
 `;
 

@@ -22,3 +22,11 @@ export const toggleRegisterAction = (data) => ({
     data
    }
 });
+
+export const FETCH_DATA = 'FETCH_DATA';
+export const fetchDataAction = (res) => ({
+  type: FETCH_DATA,
+  data: {
+    res
+  }  
+});

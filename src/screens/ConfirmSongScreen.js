@@ -80,7 +80,7 @@ class ConfirmSongScreen extends React.Component{
 
 const mapStateToProps = (state) => {
   let props = {
-    approveView:state.dancesReducer.approveView
+    approveView:state.screensReducer.approveView
     }
     
     console.log('----im approve view:----');

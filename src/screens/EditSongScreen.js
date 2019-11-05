@@ -248,7 +248,7 @@ class EditSongScreen extends React.Component{
 
 const mapStateToProps = (state) => {
   let props = {
-    editView:state.dancesReducer.editView
+    editView:state.screensReducer.editView
     }
     
     console.log('----im edit view:----');

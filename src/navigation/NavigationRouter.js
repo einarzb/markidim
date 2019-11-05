@@ -10,6 +10,7 @@ import DropDownLogin from '@components/DropDownLogin';
 //screens
 import DancesScreen from '@screens/DancesScreen';
 import AboutScreen from '@screens/AboutScreen';
+import MainScreen from '@screens/MainScreen';
 
 //style
 import { Tab } from '@appearance/styled';
@@ -45,7 +46,7 @@ class NavigationRouter extends React.Component {
                 <nav style={{textAlign:'left'}}>
                   <NavUl>
                     <Tab>
-                      <Link to="/">ראשי</Link>
+                      <Link to="/main">ראשי</Link>
                     </Tab>
                     <Tab>
                       <Link to="/about">אודות</Link>
@@ -66,7 +67,7 @@ class NavigationRouter extends React.Component {
               </div>
               <Route path="/about" component={AboutScreen}></Route>
               <Route path="/dances" component={DancesScreen}></Route>
-              <Route path="/"></Route>
+              <Route path="/main" component={MainScreen}></Route>
               <Redirect from="/" to="dances" />
           </Router>
         </Bar>

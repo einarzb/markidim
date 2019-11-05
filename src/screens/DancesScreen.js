@@ -299,7 +299,7 @@ class DancesScreen extends React.Component{
 }
 const mapStateToProps = (state) => {
   let props = {
-    registerSongView:state.dancesReducer.registerSongView
+    registerSongView:state.screensReducer.registerSongView
     }
     
     console.log('----im register view:----');

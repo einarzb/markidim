@@ -9,7 +9,7 @@ const ExpandedRow = ({expandedData, show}) =>
 
 
 
-<TableRow style={{visibility: show ? "visible" : "hidden", backgroundColor: "rgba(152, 135, 152, 0.2)", position: "relative", height: "auto", width: "90%", display:show ? "inline-flex" : "none", flexDirection:"row-reverse", borderBottom:'1px solid grey'}}>
+<TableRow style={{visibility: show ? "visible" : "hidden", backgroundColor: "rgba(152, 135, 152, 0.2)", position: "relative", height: "auto", width: "100%", display:show ? "inline-flex" : "none", flexDirection:"row-reverse", borderBottom:'1px solid grey'}}>
     <PartCol>
       <TableCell>
         <strong> שם יצירה מקורי: </strong> 
