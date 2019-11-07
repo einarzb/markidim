@@ -12,7 +12,7 @@ import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
 
 import styled from 'styled-components';
-import { SongsWrapper, SelectBtn, SearchSelectBtn } from '@appearance/styled';
+import { SongsWrapper, SelectBtn, SearchSelectBtn, Wrapper, SelectWrapper } from '@appearance/styled';
 import RegisterSongScreen from './RegisterSongScreen';
 
 let dancesCounter = 2; 
@@ -317,27 +317,7 @@ export default connect(mapStateToProps,
   mapDispatchToProps)
 (DancesScreen)
 
-export const Wrapper = styled.div`
-  background-color:#ebebeb;
-  padding: 0rem 0 2rem 0rem;
-`;
 
-export const SelectWrapper = styled.div`
-  display:inline-flex;
-  margin-top:3rem;
-  width: 90%;
-  flex-direction:column; 
-  @media (max-width: 768px) {
-    margin-top:6rem;
-
-  }
-  & h2 {
-    margin: 0;
-    text-align: right;
-    color:rgb(152, 135, 152);
-    font-weight: 400;
-  }
-`;
 
 export const SelectRow = styled.div`
   display:inline-flex;

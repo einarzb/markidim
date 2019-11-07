@@ -11,6 +11,7 @@ import DropDownLogin from '@components/DropDownLogin';
 import DancesScreen from '@screens/DancesScreen';
 import AboutScreen from '@screens/AboutScreen';
 import MainScreen from '@screens/MainScreen';
+import UsersScreen from '@screens/UsersScreen';
 
 //style
 import { Tab } from '@appearance/styled';
@@ -54,6 +55,9 @@ class NavigationRouter extends React.Component {
                     <Tab>
                       <Link to="/dances">ריקודים</Link>
                     </Tab>
+                    <Tab>
+                      <Link to="/users">משתמשים</Link>
+                    </Tab>
                     <RightPart>
                           <UserButton onClick={this.toggleDropDownUser}/>
                           <DropDownLogin show={this.state.dropdownVisibleUser}/> 
@@ -68,6 +72,7 @@ class NavigationRouter extends React.Component {
               <Route path="/about" component={AboutScreen}></Route>
               <Route path="/dances" component={DancesScreen}></Route>
               <Route path="/main" component={MainScreen}></Route>
+              <Route path="/users" component={UsersScreen}></Route>
               <Redirect from="/" to="dances" />
           </Router>
         </Bar>

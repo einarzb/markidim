@@ -182,4 +182,26 @@ export const SearchSelectBtn = styled.div`
 `;
 
 
-    
+
+export const Wrapper = styled.div`
+  background-color:#ebebeb;
+  padding: 0rem 0 2rem 0rem;
+`;
+
+
+export const SelectWrapper = styled.div`
+  display:inline-flex;
+  margin-top:3rem;
+  width: 90%;
+  flex-direction:column; 
+  @media (max-width: 768px) {
+    margin-top:6rem;
+
+  }
+  & h2 {
+    margin: 0;
+    text-align: right;
+    color:rgb(152, 135, 152);
+    font-weight: 400;
+  }
+`;    

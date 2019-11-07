@@ -30,3 +30,21 @@ export const fetchDataAction = (res) => ({
     res
   }  
 });
+
+export const TOGGLE_DELETE = 'TOGGLE_DELETE';
+export const toggleDeleteAction = (data) => ({
+  type: TOGGLE_DELETE,
+  data: {
+    data
+   }
+});
+
+export const TOGGLE_DANCELIST = 'TOGGLE_DANCELIST';
+export const toggleDanceListAction = (data) => ({
+  type: TOGGLE_DANCELIST,
+  data: {
+    data
+   }
+});
+
+

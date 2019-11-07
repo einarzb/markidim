@@ -18,7 +18,7 @@ export default DropdownLogin;
 const DropDown = styled.div`
 background-color: #FFFFFF;
 margin-top:50px;
-right:4.5%; 
+right:7.5%; 
 border-bottom:1px solid rgb(83, 71, 103);
 border-right:1px solid rgb(83, 71, 103);
 border-left:1px solid rgb(83, 71, 103);

@@ -84,6 +84,6 @@ const MainButtonsGroup = styled.div`
   left: -3%;
   width: 100%;
   top: 55%;
-
+  direction:rtl;
 }
 `; 
