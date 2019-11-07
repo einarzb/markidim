@@ -47,4 +47,19 @@ export const toggleDanceListAction = (data) => ({
    }
 });
 
+export const TOGGLE_REGISTER_USER = 'TOGGLE_REGISTER_USER';
+export const toggleUserRegisterAction = (data) => ({
+  type: TOGGLE_REGISTER_USER,
+  data: {
+    data
+   }
+});
+
+export const TOGGLE_LOGIN_USER = 'TOGGLE_LOGIN_USER';
+export const toggleLoginAction = (data) => ({
+  type: TOGGLE_LOGIN_USER,
+  data: {
+    data
+   }
+});
 

@@ -1,38 +1,52 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import styled from 'styled-components';
 import ButtonsGroup from '@components/ButtonsGroup';
+
+import RegisterScreen from '@screens/RegisterScreen';
+import LoginScreen from '@screens/LoginScreen';
+
+import { toggleUserRegisterAction, toggleLoginAction } from '@state/actions/index.js';
+
 
 class MainScreen extends React.Component{ 
   constructor(){
     super()
     this.state = {
       mainButtons : [
-        {label: 'עדיין לא רשומים לאתר?', span:'הירשמו פה', onClick:this.signup, bgColor:'#192F3A', icon:''},
-        {label: 'כניסה למערכת', span:'למשתמשים רשומים', onClick:this.login, bgColor:'rgb(83,71,103)', icon:''}
+        {label: 'עדיין לא רשומים לאתר?', span:'הירשמו פה', onClick:this.toggleRegisterUser, bgColor:'#192F3A', icon:''},
+        {label: 'כניסה למערכת', span:'למשתמשים רשומים', onClick:this.toggleLogin, bgColor:'rgb(83,71,103)', icon:''}
       ],
     }
   }
-
-  signup = () => {
-    console.log('im sign up');
+  toggleRegisterUser = () => {
+    let { toggleRegisterRedux } = this.props; 
+    let registerView = !this.props.registerView;
+    toggleRegisterRedux(registerView);
   }
 
-  login = () => {
-    console.log('im login');
+  toggleLogin = () => {
+    let { loginRedux } = this.props; 
+    let loginView = !this.props.loginView;
+    loginRedux(loginView);
   }
+
 
   render(){
+    let {registerView, loginView} = this.props;
     let {mainButtons} = this.state;
     return(
         <div>
+        {
+        registerView ? <RegisterScreen toggle={this.toggleRegisterUser}/> :     
+        loginView ? <LoginScreen toggle={this.toggleLogin}/> :     
 
+      <div>
         <MainButtonsGroup>
             <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
-
        </MainButtonsGroup>
         <MainPageWrapper>
-     
-
        <h2>ארגון המדריכים והיוצרים לריקודי עם</h2>
        <h4>ברוכים הבאים למערכת רישום הריקודים של ארגון המדריכים והיוצרים!</h4>
        <p>
@@ -57,13 +71,42 @@ class MainScreen extends React.Component{
          </ul>
        </p>
      </MainPageWrapper>
-             </div>
-
+     </div>
+        }
+     </div>
+         
     )
   }
 }
 
-export default MainScreen;
+
+const mapStateToProps = (state) => {
+  let props = {
+    registerView:state.screensReducer.registerView,
+    loginView:state.screensReducer.loginView
+
+    }
+    
+    console.log('----im props view:----');
+    console.log(props);
+    console.log('--------------');
+    
+  return props;
+};
+
+
+const mapDispatchToProps = (dispatch) => ({  
+  toggleRegisterRedux: (registerView) => dispatch(toggleUserRegisterAction(registerView)),
+  loginRedux: (loginView) => dispatch(toggleLoginAction(loginView))
+
+});
+
+export default connect (
+  mapStateToProps,
+mapDispatchToProps)
+(MainScreen);
+
+
 
 const MainPageWrapper = styled.div`
   text-align:right;
