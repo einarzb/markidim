@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import MainUsersTable from '@components/MainUsersTable';
 import { toggleDanceListAction } from '@state/actions/index.js';
 
 // STYLING
@@ -24,8 +25,6 @@ class UserDanceListScreen extends React.Component{
 
         <WrapperDiv>
            <h2>רשימת הריקודים של </h2>
-        
-               
            <ControlButtons>
               <Button onClick={this.toggleDanceList} > חזרה למסך ראשי </Button>
           </ControlButtons>
@@ -64,7 +63,7 @@ const WrapperDiv = styled.div`
     background-color:#FFFFFF;
     width: 100%;
     text-align:center;
-    top: 30%;
+    top: 20%;
     position: absolute;
     left: 0%;
     height: 100vh;
