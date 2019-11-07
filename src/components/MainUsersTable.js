@@ -189,13 +189,16 @@ class MainUsersTable extends React.Component{
     let {editUserView, deleteView, danceListView} = this.props;
     let {columns, usersData} = this.state;
      return(
+       <div>
+         { 
+        editUserView ? <EditUserScreen toggle={this.toggleEdit} /> :
+        deleteView ? <DeleteUserScreen toggle={this.toggleDelete}/> : 
+        danceListView ? <UserDanceListScreen toggle={this.toggleDanceList}/> :
+
       <MainTableWrapper>
-          { 
-            editUserView ? <EditUserScreen toggle={this.toggleEdit} /> :
-            deleteView ? <DeleteUserScreen toggle={this.toggleDelete}/> : 
-            danceListView ? <UserDanceListScreen toggle={this.toggleDanceList}/> :
+         
            
-           <Table responsiveBreakpoint="small" style={{margin:'2rem auto', width:'100%'}}>
+           <Table responsiveBreakpoint="small" style={{margin:'3rem auto', width:'100%'}}>
               <TableHeader>
                 <TableRow style={{backgroundColor:'rgb(152,135,152)'}} align="end" >
                   {columns.map(c => (
@@ -224,9 +227,12 @@ class MainUsersTable extends React.Component{
               </TableBody>
             </Table>
    
-          }
       </MainTableWrapper>
+                }
+                </div>
+
     )
+    
   }
 }
 

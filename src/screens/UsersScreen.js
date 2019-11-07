@@ -63,7 +63,7 @@ class UsersScreen extends React.Component{
     let {mainButtons, customStyles, filterOptions, selectedDanceStatusOption, choreographerType, ordersNum, composerName, selectedOrderNumOption, selectedComposerOption, selectedChoreographerOption , choreographerStatuses} = this.state;
     return(
       <Wrapper> 
-
+          
           <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
           <SongsWrapper>
               <SelectWrapper>
@@ -150,7 +150,7 @@ class UsersScreen extends React.Component{
                 </SelectRow>
               </SelectWrapper>
             </SongsWrapper>
-            <MainUsersTable></MainUsersTable>
+          <MainUsersTable></MainUsersTable>
         </Wrapper>
     )
   }
