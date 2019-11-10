@@ -126,7 +126,7 @@ const MainButtonsGroup = styled.div`
   position: absolute;
   left: -3%;
   width: 100%;
-  top: 55%;
+  top: 44%;
   direction:rtl;
 }
 `; 
