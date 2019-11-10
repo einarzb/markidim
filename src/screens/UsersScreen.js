@@ -25,7 +25,7 @@ class UsersScreen extends React.Component{
             borderColor: "#fd7c20"
           }
         })},
-      mainButtons : [
+      exportButton : [
         {label: 'ייצא רשימת משתמשים', onClick:this.downloadFile, bgColor:'rgb(83,71,103)'}
       ],
       selectedDanceStatusOption:null,
@@ -60,11 +60,10 @@ class UsersScreen extends React.Component{
     }
   }
   render () {
-    let {mainButtons, customStyles, filterOptions, selectedDanceStatusOption, choreographerType, ordersNum, composerName, selectedOrderNumOption, selectedComposerOption, selectedChoreographerOption , choreographerStatuses} = this.state;
+    let {exportButton, customStyles, filterOptions, selectedDanceStatusOption, choreographerType, ordersNum, composerName, selectedOrderNumOption, selectedComposerOption, selectedChoreographerOption , choreographerStatuses} = this.state;
     return(
       <Wrapper> 
           
-          <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
           <SongsWrapper>
               <SelectWrapper>
                 <h2>מערכת איתור משתמשים</h2>
@@ -82,7 +81,7 @@ class UsersScreen extends React.Component{
                       />
                   </SearchSelectBtn>
                   </label>
-                  <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
+                  <ButtonsGroup btnsArr={exportButton}></ButtonsGroup>
 
                   </SelectRow>
                   <SelectRow style={{marginTop:'1rem'}}>
