@@ -161,7 +161,7 @@ export const SelectBtn = styled.div`
   width:auto;
 
   @media (max-width: 768px) {
-    width: auto;
+    width: 100%;
   }
   & input {
     border:1px solid grey;

@@ -90,6 +90,10 @@ padding-top:0px auto;
 margin: 0px auto;
 background-color:#FFFFFF;
 width: 400px;
+@media (max-width: 768px) {
+  width: auto;
+}
+
 & a {
   font-size: 12px;
 }
@@ -98,6 +102,8 @@ text-align:center;
 & h2 {
   text-align: right;
 }
+
+
 `;
 
 const ButtonsFlexer = styled.div`

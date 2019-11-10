@@ -66,28 +66,28 @@ class RegisterSongScreen extends React.Component{
            <MainRow>
               <FormCol>
                   <ButtonsFlexer>
-                          <label>שם הריקוד / השיר 
+                          <MyLabel>שם הריקוד / השיר 
                               <TextInput
                                 placeholder=""
                                 value={selectedDanceNameValue}
                                 onChange={ event => this.setDanceNameValue(event.target.value) }
                               />
-                          </label>
+                          </MyLabel>
                   </ButtonsFlexer>
               </FormCol>
               <FormCol>
                   <ButtonsFlexer>
-                    <label> מוזמן ע״י
+                    <MyLabel> מוזמן ע״י
                       <TextInput
                           placeholder=""
                           value={selectedDanceOwnerValue}
                         />
-                    </label>
+                    </MyLabel>
                   </ButtonsFlexer>
               </FormCol>
               <FormCol>
                   <ButtonsFlexer>
-                    <label>סטטוס
+                    <MyLabel>סטטוס
                         <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                             <Select
                                 autoFocus
@@ -98,7 +98,7 @@ class RegisterSongScreen extends React.Component{
                                 name="dance-status-select"
                               /> 
                         </SelectBtn>
-                    </label> 
+                    </MyLabel> 
                   </ButtonsFlexer>
               </FormCol>
            </MainRow>
@@ -106,7 +106,7 @@ class RegisterSongScreen extends React.Component{
            <MainRow>
               <FormCol>
                   <ButtonsFlexer>
-                  <label> שם מלחין
+                  <MyLabel> שם מלחין
                     <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                             <Select
                                 autoFocus
@@ -117,23 +117,23 @@ class RegisterSongScreen extends React.Component{
                                 name="dance-status-select"
                               /> 
                             </SelectBtn>
-                    </label>
+                    </MyLabel>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
                   
                   </ButtonsFlexer>
 
                   <ButtonsFlexer>
-                    <label>שם שיר מקורי: 
+                    <MyLabel>שם שיר מקורי: 
                     <TextInput
                             placeholder="אהבתיה"
                             value={selectedDanceNameValue}
                             onChange={ event => this.setDanceNameValue(event.target.value) }
                     />
-                    </label>
+                    </MyLabel>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                  <label>  סוג הריקוד
+                  <MyLabel>  סוג הריקוד
                     <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                             <Select
                                 autoFocus
@@ -144,22 +144,22 @@ class RegisterSongScreen extends React.Component{
                                 name="dance-status-select"
                               /> 
                             </SelectBtn>
-                    </label>
+                    </MyLabel>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                    <label>  תאריך ושעת הזמנה 
+                    <MyLabel>  תאריך ושעת הזמנה 
                       <TextInput
                               placeholder=""
                               value={selectedDanceNameValue}
                               onChange={ event => this.setDanceNameValue(event.target.value) }
                             />
-                     </label>
+                     </MyLabel>
                   </ButtonsFlexer>
               </FormCol>
 
               <FormCol>
               <ButtonsFlexer>
-              <label> שם משורר
+              <MyLabel> שם משורר
                        <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                             <Select
                                 autoFocus
@@ -170,43 +170,43 @@ class RegisterSongScreen extends React.Component{
                                 name="dance-status-select"
                               /> 
                             </SelectBtn>
-                       </label>
+                       </MyLabel>
            
                     </ButtonsFlexer>
                     <ButtonsFlexer>
-                          <label>  מספר יצירה באקו״ם
+                          <MyLabel>  מספר יצירה באקו״ם
                             
                         <TextInput
                                   placeholder="#"
                                   value={selectedDanceNameValue}
                                   onChange={ event => this.setDanceNameValue(event.target.value) }
                           />
-                      </label>
+                      </MyLabel>
                     </ButtonsFlexer>
 
                   <ButtonsFlexer>
-                  <label>  שם יצירה מקורי
+                  <MyLabel>  שם יצירה מקורי
                   <TextInput
                             placeholder=""
                             value={selectedDanceNameValue}
                             onChange={ event => this.setDanceNameValue(event.target.value) }
                     />
-                </label>
+                </MyLabel>
              
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                    <label>  תאריך הפיכה לריקוד קיים
+                    <MyLabel>  תאריך הפיכה לריקוד קיים
                       <TextInput
                               placeholder=""
                               value={selectedDanceNameValue}
                               onChange={ event => this.setDanceNameValue(event.target.value) }
                             />
-                     </label>
+                     </MyLabel>
                   </ButtonsFlexer>
               </FormCol>
               <FormCol>
               <ButtonsFlexer>
-              <label>  שם מבצע
+              <MyLabel>  שם מבצע
               <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                             <Select
                                 autoFocus
@@ -217,21 +217,21 @@ class RegisterSongScreen extends React.Component{
                                 name="dance-status-select"
                               /> 
                             </SelectBtn>
-                     </label>
+                     </MyLabel>
                </ButtonsFlexer>
            
               <ButtonsFlexer>
-                  <label>  מספר יצירה מקורי באקו״ם
+                  <MyLabel>  מספר יצירה מקורי באקו״ם
                         <TextInput
                                   placeholder="#"
                                   value={selectedDanceNameValue}
                                   onChange={ event => this.setDanceNameValue(event.target.value) }
                           />
-                  </label>
+                  </MyLabel>
               </ButtonsFlexer>
 
               <ButtonsFlexer>
-              <label>  מחברים נוספים
+              <MyLabel>  מחברים נוספים
                         <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                             <Select
                                 autoFocus
@@ -242,17 +242,17 @@ class RegisterSongScreen extends React.Component{
                                 name="dance-status-select"
                               /> 
                             </SelectBtn>
-                       </label>
+                       </MyLabel>
               </ButtonsFlexer>
 
               <ButtonsFlexer>
-                <label>קישור לסרטון הריקוד 
+                <MyLabel>קישור לסרטון הריקוד 
                 <TextInput
                         placeholder=""
                         value={selectedDanceNameValue}
                         onChange={ event => this.setDanceNameValue(event.target.value) }
                       />
-                </label>
+                </MyLabel>
               </ButtonsFlexer>
               </FormCol>
        
@@ -260,22 +260,26 @@ class RegisterSongScreen extends React.Component{
            </MainRow>
            <MainRow>
               <ButtonsFlexer>
-                  <label> לינק חופשי 
+                  <MyLabel> לינק חופשי 
                     <TextInput
                             placeholder=""
                             value={selectedDanceNameValue}
                             onChange={ event => this.setDanceNameValue(event.target.value) }
                           />
-                    </label>
+                    </MyLabel>
                 </ButtonsFlexer>
            </MainRow>
            <MainRow>
+             <MyLabelTextArea>
+
               <TextArea
-                style={{width:'711px', minHeight:'200px', direction:'rtl', textAlign:'right', margin: '2rem 0'}}
+                style={{ minHeight:'200px', direction:'rtl', textAlign:'right', margin: '2rem 0'}}
                 placeholder="הערות"
                 value={value}
                 onChange={e => this.toy(e.target.value)}
               />
+                           </MyLabelTextArea>
+
            </MainRow>
            <ControlButtons>
               <Button onClick={this.toggleRegister} > ביטול </Button>
@@ -371,12 +375,36 @@ const FormCol = styled.div`
     display:inline-flex;
     flex-direction:column;
     width:33%;
-
+    @media (max-width: 768px) {
+      width: auto;
+    }
 `; 
 
 const MainRow = styled.div`
 display:inline-flex;
 flex-direction:row-reverse;
 width:55%;
+@media (max-width: 768px) {
+  width:90%;
+  flex-direction:column;
+
+
+}
+
+`;
+
+
+const MyLabel = styled.label`
+text-align: right;
+width: auto;
+margin: 5px 0px;
+color: rgb(152,135,152);
+@media (max-width: 768px) {
+  width: 100%;
+}
+`;
+
+const MyLabelTextArea = styled(MyLabel)`
+  width: 90%;
 
 `;

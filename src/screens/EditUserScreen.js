@@ -75,35 +75,35 @@ class EditUserScreen extends React.Component{
 
               <FormCol>
                   <ButtonsFlexer>
-                    <label> שם פרטי
+                    <MyLabel> שם פרטי
                       <TextInput
                           placeholder=""
                           value={selectedDanceNameValue}
                           onChange={ event => this.setDanceNameValue(event.target.value) }
                         />
-                    </label>
+                    </MyLabel>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                    <label> שם משפחה
+                    <MyLabel> שם משפחה
                         <TextInput
                           placeholder=""
                           value={selectedDanceNameValue}
                           onChange={ event => this.setDanceNameValue(event.target.value) }
                         />
-                    </label>
+                    </MyLabel>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                     <label>   מס׳ חבר
+                     <MyLabel>   מס׳ חבר
                        <TextInput
                                   placeholder=""
                                   value={selectedDanceNameValue}
                                   onChange={ event => this.setDanceNameValue(event.target.value) }
                           />
-                       </label>
+                       </MyLabel>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
 
-                      <label>  סוג מדריך
+                      <MyLabel>  סוג מדריך
                       <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                           <Select
                               autoFocus
@@ -114,41 +114,41 @@ class EditUserScreen extends React.Component{
                               name="dance-status-select"
                             /> 
                           </SelectBtn>
-                      </label>
+                      </MyLabel>
                       </ButtonsFlexer>
               </FormCol>
 
               <FormCol>
                   <ButtonsFlexer>
-                    <label> אימייל
+                    <MyLabel> אימייל
                     <TextInput
                             placeholder= " "
                             value={selectedDanceNameValue}
                             onChange={ event => this.setDanceNameValue(event.target.value) }
                     />
-                    </label>
+                    </MyLabel>
                   </ButtonsFlexer>
                 
                   <ButtonsFlexer>
-                    <label>  טלפון נוסף
+                    <MyLabel>  טלפון נוסף
                           <TextInput
                                   placeholder=""
                                   value={selectedDanceNameValue}
                                   onChange={ event => this.setDanceNameValue(event.target.value) }
                           />
-                    </label>
+                    </MyLabel>
                   </ButtonsFlexer>   
                   <ButtonsFlexer>
-                     <label> תעודת זהות
+                     <MyLabel> תעודת זהות
                      <TextInput
                             placeholder=""
                             value={selectedDanceNameValue}
                             onChange={ event => this.setDanceNameValue(event.target.value) }
                     />
-                     </label>
+                     </MyLabel>
                   </ButtonsFlexer>
                   <ButtonsFlexer>
-                <label>  מקס הזמנות שנתי
+                <MyLabel>  מקס הזמנות שנתי
                 <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                             <Select
                                 autoFocus
@@ -159,7 +159,7 @@ class EditUserScreen extends React.Component{
                                 name="dance-status-select"
                               /> 
                             </SelectBtn>
-                </label>
+                </MyLabel>
                </ButtonsFlexer>
 
               </FormCol>
@@ -167,28 +167,28 @@ class EditUserScreen extends React.Component{
 
               <FormCol>
               <ButtonsFlexer>
-                      <label> כתובת
+                      <MyLabel> כתובת
                           <TextInput
                                   placeholder=""
                                   value={selectedDanceNameValue}
                                   onChange={ event => this.setDanceNameValue(event.target.value) }
                           />
-                      </label>
+                      </MyLabel>
                     </ButtonsFlexer>
                     <ButtonsFlexer>
-                    <label> מס׳ סלולרי
+                    <MyLabel> מס׳ סלולרי
                     <TextInput
                             placeholder=""
                             value={selectedDanceNameValue}
                             onChange={ event => this.setDanceNameValue(event.target.value) }
                     />
-                    </label>
+                    </MyLabel>
                   </ButtonsFlexer>
                  
 
                
                   <ButtonsFlexer>
-                     <label>   מקס הזמנות במקביל
+                     <MyLabel>   מקס הזמנות במקביל
                      <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                             <Select
                                 autoFocus
@@ -199,7 +199,7 @@ class EditUserScreen extends React.Component{
                                 name="dance-status-select"
                               /> 
                             </SelectBtn>
-                       </label>
+                       </MyLabel>
                   </ButtonsFlexer>
                    
               <ButtonsFlexer>
@@ -268,7 +268,10 @@ const WrapperDiv = styled.div`
     position: absolute;
     left: 0%;
     height: 100vh;
-}
+    @media (max-width: 768px) {
+      top: 35%;
+    }
+
     & h2 {
       text-align: right;
     }
@@ -321,6 +324,9 @@ const FormCol = styled.div`
     display:inline-flex;
     flex-direction:column;
     width:33%;
+    @media (max-width: 768px) {
+      width: auto;
+    }
 
 `; 
 
@@ -328,5 +334,20 @@ const MainRow = styled.div`
 display:inline-flex;
 flex-direction:row-reverse;
 width:55%;
+@media (max-width: 768px) {
+  width:90%;
+  flex-direction:column;
 
+}
+
+`;
+
+const MyLabel = styled.label`
+text-align: right;
+width: auto;
+margin: 5px 0px;
+color: rgb(152,135,152);
+@media (max-width: 768px) {
+  width: 100%;
+}
 `;

@@ -55,44 +55,44 @@ import styled from 'styled-components';
       <MainRow>
          <FormCol>
           <ButtonsFlexer>
-                  <label> שם פרטי
+                  <MyLabel> שם פרטי
                       <TextInput
                         placeholder=""
                         value={name}
                         onChange={ event => this.setDanceNameValue(event.target.value) }
                       />
-                  </label>
+                  </MyLabel>
           </ButtonsFlexer>
           <ButtonsFlexer>
-                  <label>  מס׳ חבר בארגון
+                  <MyLabel>  מס׳ חבר בארגון
                       <TextInput
                         placeholder=""
                         value={memberId}
                         onChange={ event => this.setDanceNameValue(event.target.value) }
                       />
-                  </label>
+                  </MyLabel>
           </ButtonsFlexer>
           <ButtonsFlexer>
-                  <label>  סלולרי
+                  <MyLabel>  סלולרי
                       <TextInput
                         placeholder=""
                         value={cellular}
                         onChange={ event => this.setDanceNameValue(event.target.value) }
                       />
-                  </label>
+                  </MyLabel>
           </ButtonsFlexer>
       </FormCol>
       <FormCol>
           <ButtonsFlexer>
-            <label>  שם משפחה
+            <MyLabel>  שם משפחה
               <TextInput
                   placeholder=""
                   value={lastName}
                 />
-            </label>
+            </MyLabel>
           </ButtonsFlexer>
           <ButtonsFlexer>
-            <label>  סוג מדריך 
+            <MyLabel>  סוג מדריך 
                  <SelectBtn style={{width:"192px", height:'40px', margin:'0'}}>
                             <Select
                                 autoFocus
@@ -103,43 +103,43 @@ import styled from 'styled-components';
                                 name="dance-status-select"
                               /> 
                 </SelectBtn>
-            </label>
+            </MyLabel>
           </ButtonsFlexer>
           <ButtonsFlexer>
-            <label>   טלפון נוסף
+            <MyLabel>   טלפון נוסף
               <TextInput
                   placeholder=""
                   value={phoneNum}
                 />
-            </label>
+            </MyLabel>
           </ButtonsFlexer>
           
       </FormCol>
       <FormCol>
           <ButtonsFlexer>
-            <label>אימייל
+            <MyLabel>אימייל
             <TextInput
                         placeholder=""
                         value={email}
                         onChange={ event => this.setDanceNameValue(event.target.value) }
                       />
-            </label> 
+            </MyLabel> 
           </ButtonsFlexer>
           <ButtonsFlexer>
-            <label> תעודת זהות 
+            <MyLabel> תעודת זהות 
               <TextInput
                   placeholder=""
                   value={id}
                 />
-            </label>
+            </MyLabel>
           </ButtonsFlexer>
           <ButtonsFlexer>
-            <label>  כתובת 
+            <MyLabel>  כתובת 
               <TextInput
                   placeholder=""
                   value={address}
                 />
-            </label>
+            </MyLabel>
           </ButtonsFlexer>
       </FormCol>
    </MainRow>
@@ -227,12 +227,31 @@ const FormCol = styled.div`
     display:inline-flex;
     flex-direction:column;
     width:33%;
+    @media (max-width: 768px) {
+      width: auto;
+    }
 
 `; 
 
 const MainRow = styled.div`
-display:inline-flex;
-flex-direction:row-reverse;
-width:55%;
+  display:inline-flex;
+  flex-direction:row-reverse;
+  width:55%;
+  @media (max-width: 768px) {
+      width:100%;
+      flex-direction:column;
+    }
 
+`;
+
+const MyLabel = styled.label`
+  width:auto;
+  margin:5px 0px;
+  color: rgb(152,135,152);
+  text-align: right;
+
+@media (max-width: 768px) {
+   margin: 0px auto !important;
+    width: 92%;
+    }
 `;
