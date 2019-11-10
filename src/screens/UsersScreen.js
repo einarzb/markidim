@@ -63,9 +63,12 @@ class UsersScreen extends React.Component{
     let {exportButton, customStyles, filterOptions, selectedDanceStatusOption, choreographerType, ordersNum, composerName, selectedOrderNumOption, selectedComposerOption, selectedChoreographerOption , choreographerStatuses} = this.state;
     return(
       <Wrapper> 
-          
+
           <SongsWrapper>
+
               <SelectWrapper>
+              <ButtonsGroup btnsArr={exportButton}></ButtonsGroup>
+
                 <h2>מערכת איתור משתמשים</h2>
                 <SelectRow style={{ alignItems: 'flex-end'}}>
                   <label> &nbsp;
@@ -81,7 +84,7 @@ class UsersScreen extends React.Component{
                       />
                   </SearchSelectBtn>
                   </label>
-                  <ButtonsGroup btnsArr={exportButton}></ButtonsGroup>
+
 
                   </SelectRow>
                   <SelectRow style={{marginTop:'1rem'}}>

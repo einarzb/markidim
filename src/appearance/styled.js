@@ -126,10 +126,11 @@ export const ButtonsFlexer = styled.div`
   position:absolute;
   left: 0%;
   @media (max-width: 768px) {
-    margin: -4rem 0rem;
+    margin: 0px auto;
     font-size: 14px;
-    top: 12%;
+    top: 0%;
     left: 5%;
+    display: block;
   }
 `;
 
