@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { toggleResetAction } from '@state/actions/index.js';
+
 import styled from 'styled-components';
 import { TextInput } from 'grommet';
+import MainScreen from '@screens/MainScreen';
 
 class ResetPasswordScreen extends React.Component{ 
   state = {
     passwordVerification:null,
     password:null
   };
+  passwordReset = () => {
+    let { toggleResetPasswordRedux } = this.props; 
+    let resetPasswordView = !this.props.resetPasswordView;
+    toggleResetPasswordRedux(resetPasswordView);
+  }
   render(){
-    let { password, passwordVerification } = this.state;
+    let {resetPasswordView } = this.props;
+    let { password, passwordVerification } = this.state; 
     return(
+        
+
+   
       <WrapperDiv>
       <div>איפוס ססמא</div>
 
@@ -34,11 +47,27 @@ class ResetPasswordScreen extends React.Component{
       </ButtonsFlexer>
       <SubBtn onClick={this.passwordReset}>איפוס ססמא</SubBtn>
 </WrapperDiv>
+
     )
   }
 }
 
-export default ResetPasswordScreen;
+
+const mapStateToProps = (state) => {
+  let props = {
+    resetPasswordView:state.screensReducer.resetPasswordView
+    }
+  return props;
+};
+
+const mapDispatchToProps = (dispatch) => ({  
+  toggleResetPasswordRedux:(resetPasswordView) => dispatch (toggleResetAction(resetPasswordView))
+});
+
+export default connect( 
+  mapStateToProps,
+  mapDispatchToProps)(ResetPasswordScreen);
+
 
 const ButtonsFlexer = styled.div`
     display: inline-flex;
