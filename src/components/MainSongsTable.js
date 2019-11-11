@@ -28,13 +28,7 @@ class MainSongsTable extends React.Component{
     const editBtn = <button style={{backgroundColor:"transparent", border:"none", padding:"0", margin:"0",cursor:'pointer'}} onClick={this.toggleEdit}> <img src={EDIT} width="15" height="15"/></button>;
     
     this.state = {
-      data : [
-        {id : 1, date : "2014-04-18", total : 121.0, status : "Shipped", name : "A", points: 5, percent : 50},
-        {id : 2, date : "2014-04-21", total : 121.0, status : "Not Shipped", name : "B", points: 10, percent: 60},
-        {id : 3, date : "2014-08-09", total : 121.0, status : "Not Shipped", name : "C", points: 15, percent: 70},
-        {id : 4, date : "2014-04-24", total : 121.0, status : "Shipped", name : "D", points: 20, percent : 80},
-        {id : 5, date : "2014-04-26", total : 121.0, status : "Shipped", name : "E", points: 25, percent : 90},
-    ],
+ 
      expandedRows : [],
       columns: [
         {
@@ -145,14 +139,14 @@ class MainSongsTable extends React.Component{
  
       usersData: [
         {
-          id: 1, owner: 'עינר גל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר',writer:'תרצה אתר', originalSongName:'אני זוכר אותה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', dateOfRegistration:'06/2019', youtubeLink:'https://www.youtube.com/embed/19qoWmBJVRc', shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=975&wrkid=73',danceVideo:''
+          id: 1, owner: 'משה שרון', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר',writer:'תרצה אתר', originalSongName:'אני זוכר אותה', danceType:'זוגות', coChoreographers:'עידן חיל', acumNum:'902568', orderDate:'11/2019', dateOfRegistration:'06/2019', youtubeLink:'https://www.youtube.com/embed/19qoWmBJVRc', shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=975&wrkid=73',danceVideo:''
         },
         {
-          id: 2, owner: 'תמיר שרצר', status: <NotApproved>לא מאושר</NotApproved> , danceName:'לתת ולקחת',performer:'שלמה ארצי, דודו טסה',composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'לתת ולקחת', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', editSong: editBtn, approveSong:approveBtn, dateOfRegistration:'11/2019', youtubeLink:'https://www.youtube.com/embed/C-bAr0i0YAg',
+          id: 2, owner: 'תמיר שרצר', status: <NotApproved>לא מאושר</NotApproved> , danceName:'לתת ולקחת',performer:'שלמה ארצי, דודו טסה',composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'לתת ולקחת', danceType:'זוגות', coChoreographers:'עידן חיל', acumNum:'902568', orderDate:'11/2019', editSong: editBtn, approveSong:approveBtn, dateOfRegistration:'11/2019', youtubeLink:'https://www.youtube.com/embed/C-bAr0i0YAg',
           shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=14541&wrkid=33438',danceVideo:''
         },
         {
-          id: 3, owner: 'עידן חיל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'בליבי עכשיו', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', dateOfRegistration:'02/2019',
+          id: 3, owner: 'עידן חיל', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'בליבי עכשיו', danceType:'זוגות', coChoreographers:'עידן חיל', acumNum:'902568', orderDate:'11/2019', dateOfRegistration:'02/2019',
           shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=975&wrkid=73',danceVideo:''
         }
       ],
@@ -207,13 +201,6 @@ renderItem(item) {
         return itemRows;    
       }
 
-  componentDidMount(){
-    this.refreshData();
-  }
-
-  refreshData = () => {
-      let { sendDataToRedux } = this.props;
-  }
 
   //TODO: make a generic function 
   toggleApprove = () => {
@@ -322,7 +309,6 @@ const mapStateToProps = (state) => {
   let props = {
     editView:state.screensReducer.editView,
     approveView:state.screensReducer.approveView,
-    danceData:state.dancesReducer
     }
     
     console.log('----im props view:----');
