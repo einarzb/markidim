@@ -19,6 +19,12 @@ class LoginScreen extends React.Component{
     loginRedux(loginView);
   }
 
+  toggleMain = () => {
+    let { loginRedux } = this.props; 
+    let loginView = !this.props.loginView;
+    loginRedux(loginView);
+  }
+
   toggleRegisterUser = () => {
     let { toggleRegisterRedux } = this.props; 
     let registerView = !this.props.registerView;
@@ -63,8 +69,13 @@ class LoginScreen extends React.Component{
                       />
                   </label>
             </ButtonsFlexer>
-            <SubBtn onClick={this.toggleLogin}>התחברות</SubBtn>
             <LinkBtn onClick={this.toggleResetPassword}>שכחתי ססמא</LinkBtn>
+
+            <ButtonsFlexer>
+                <SubBtn onClick={this.toggleLogin}>התחברות</SubBtn>
+                <SubBtn onClick={this.toggleMain}>חזרה</SubBtn>
+            </ButtonsFlexer>
+
       </WrapperDiv>
       }
       </div>
