@@ -63,3 +63,13 @@ export const toggleLoginAction = (data) => ({
    }
 });
 
+
+export const TOGGLE_RESET= 'TOGGLE_RESET';
+export const toggleResetAction = (data) => ({
+  type: TOGGLE_RESET,
+  data: {
+    data
+   }
+});
+
+

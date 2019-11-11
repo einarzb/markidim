@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { toggleLoginAction } from '@state/actions/index.js';
+import { toggleLoginAction, toggleUserRegisterAction, toggleResetAction } from '@state/actions/index.js';
 import styled from 'styled-components';
 import { TextInput } from 'grommet';
 
+import ResetPassword from '@screens/ResetPassword';
+import RegisterScreen from '@screens/RegisterScreen';
 
 class LoginScreen extends React.Component{ 
   state = {
@@ -17,42 +19,64 @@ class LoginScreen extends React.Component{
     loginRedux(loginView);
   }
 
+  toggleRegisterUser = () => {
+    let { toggleRegisterRedux } = this.props; 
+    let registerView = !this.props.registerView;
+    toggleRegisterRedux(registerView);
+  }
+
+  toggleResetPassword = () => {
+    let { toggleResetPasswordRedux } = this.props; 
+    let resetPasswordView = !this.props.resetPasswordView;
+    toggleResetPasswordRedux(resetPasswordView);
+  }
+
   render(){
+    let {registerView, resetPasswordView} = this.props;
     let {username, password} = this.state;
     return(
+      <div>
+        { 
+           registerView ? <RegisterScreen toggle={this.toggleRegisterUser}/> : 
+           resetPasswordView ? <ResetPassword toggle={this.resetPasswordView}/> :
       <WrapperDiv>
+            <div>התחברות למערכת (למשתמשים קיימים)</div>
+            <p>עדיין לא רשומים לאתר?
+              <LinkBtn onClick={this.toggleRegisterUser}>הירשמו פה</LinkBtn>
+            </p>
+            <ButtonsFlexer>
+              <label> שם משתמש
+                  <TextInput
+                    placeholder=""
+                    value={username}
+                    onChange={ event => this.setDanceNameValue(event.target.value) }
+                  />
+              </label>
+            </ButtonsFlexer>
 
-      <div>התחברות למערכת (למשתמשים קיימים)</div>
-      <p>עדיין לא רשומים לאתר? <a href="#">הירשמו פה</a></p>
-      <ButtonsFlexer>
-        <label> שם משתמש
-            <TextInput
-              placeholder=""
-              value={username}
-              onChange={ event => this.setDanceNameValue(event.target.value) }
-            />
-        </label>
-      </ButtonsFlexer>
-
-      <ButtonsFlexer>
-            <label>  ססמא
-                <TextInput
-                  placeholder=""
-                  value={password}
-                  onChange={ event => this.setDanceNameValue(event.target.value) }
-                />
-            </label>
-      </ButtonsFlexer>
-      <SubBtn onClick={this.toggleLogin}>התחברות</SubBtn>
-      <a href="#">שכחתי ססמא</a>
-    </WrapperDiv>
+            <ButtonsFlexer>
+                  <label>  ססמא
+                      <TextInput
+                        placeholder=""
+                        value={password}
+                        onChange={ event => this.setDanceNameValue(event.target.value) }
+                      />
+                  </label>
+            </ButtonsFlexer>
+            <SubBtn onClick={this.toggleLogin}>התחברות</SubBtn>
+            <LinkBtn onClick={this.toggleResetPassword}>שכחתי ססמא</LinkBtn>
+      </WrapperDiv>
+      }
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   let props = {
-    loginView:state.screensReducer.loginView
+    loginView:state.screensReducer.loginView,
+    registerView:state.screensReducer.registerView,
+    resetPasswordView:state.screensReducer.resetPasswordView
     }
     
     console.log('----im register view:----');
@@ -63,7 +87,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({  
-  loginRedux: (loginView) => dispatch(toggleLoginAction(loginView))
+  toggleRegisterRedux: (registerView) => dispatch(toggleUserRegisterAction(registerView)),
+  loginRedux: (loginView) => dispatch(toggleLoginAction(loginView)),
+  toggleResetPasswordRedux:(resetPasswordView) => dispatch (toggleResetAction(resetPasswordView))
 });
 
 export default connect( 
@@ -90,6 +116,7 @@ padding-top:0px auto;
 margin: 0px auto;
 background-color:#FFFFFF;
 width: 400px;
+direction: rtl;
 @media (max-width: 768px) {
   width: auto;
 }
@@ -126,4 +153,12 @@ const ButtonsFlexer = styled.div`
       }
     }
   
+`;
+
+const LinkBtn = styled.button`
+    background-color: transparent;
+    text-decoration:underline;
+    box-shadow:none;
+    border:none;
+    cursor:pointer;
 `;

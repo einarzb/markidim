@@ -1,10 +1,11 @@
-import { TOGGLE_EDIT, TOGGLE_APPROVE, TOGGLE_REGISTER, TOGGLE_REGISTER_USER , TOGGLE_LOGIN_USER} from '@state/actions/index.js';
+import { TOGGLE_EDIT, TOGGLE_APPROVE, TOGGLE_REGISTER, TOGGLE_REGISTER_USER , TOGGLE_LOGIN_USER, TOGGLE_RESET} from '@state/actions/index.js';
 
 let editView = false;
 let approveView = false;
 let registerSongView = false;
 let registerView = false;
 let loginView = false;
+let resetPasswordView = false;
 
 const defaultState = {
   dance:null,
@@ -13,7 +14,8 @@ const defaultState = {
   approveView:approveView,
   registerSongView:registerSongView,
   registerView:registerView,
-  loginView:loginView
+  loginView:loginView,
+  resetPasswordView:resetPasswordView
 }
 
 const screensReducer = (state = defaultState,action) => {
@@ -28,6 +30,8 @@ const screensReducer = (state = defaultState,action) => {
       return toggleRegisterUser();
     case TOGGLE_LOGIN_USER:
       return toggleLoginUser();
+      case TOGGLE_RESET:
+        return toggleReset();
   //  case FETCH_DATA:
     //  return fetchData(action.data); 
     default:
@@ -61,4 +65,8 @@ function toggleRegisterView() {
   return {...defaultState}
 }
 
+function toggleReset(){
+  defaultState.resetPasswordView = !defaultState.resetPasswordView;  
+  return {...defaultState}
+}
 export default screensReducer

@@ -43,10 +43,9 @@ class MainScreen extends React.Component{
         loginView ? <LoginScreen toggle={this.toggleLogin}/> :     
 
       <div>
-        <MainButtonsGroup>
-            <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
-       </MainButtonsGroup>
         <MainPageWrapper>
+        <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
+
        <h2>ארגון המדריכים והיוצרים לריקודי עם</h2>
        <h4>ברוכים הבאים למערכת רישום הריקודים של ארגון המדריכים והיוצרים!</h4>
        <p>
@@ -120,13 +119,3 @@ const MainPageWrapper = styled.div`
   }
 `;
 
-const MainButtonsGroup = styled.div`
-@media (max-width: 768px) {
-  margin-top: 0rem;
-  position: absolute;
-  left: -3%;
-  width: 100%;
-  top: 44%;
-  direction:rtl;
-}
-`; 
