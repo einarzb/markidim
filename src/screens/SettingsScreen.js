@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import UsersLog from '@screens/UsersLog';
 import EmailEditor from '@screens/EmailEditor';
 import EmailSettings from '@screens/EmailSettings';
+import EmailDistributor from '@screens/EmailDistributor';
 
 class SettingsScreen extends React.Component{ 
   render(){
@@ -22,7 +23,10 @@ class SettingsScreen extends React.Component{
                       <Link to="/emailsettings">הגדרות</Link>
                     </Tab>
                     <Tab>
-                      <Link to="/emaileditor">עורך הפצת אימיילים</Link>
+                      <Link to="/emaileditor">עריכת  אימיילים</Link>
+                    </Tab>
+                    <Tab>
+                      <Link to="/emaildistributor">עורך הפצת  אימיילים</Link>
                     </Tab>
                 </NavUl>
             </nav>
@@ -30,6 +34,7 @@ class SettingsScreen extends React.Component{
             <Route path="/userslog" component={UsersLog}></Route>
             <Route path="/emailsettings" component={EmailSettings}></Route>
             <Route path="/emaileditor" component={EmailEditor}></Route>
+            <Route path="/emaildistributor" component={EmailDistributor}></Route>
         </Router>
       </Bar>
     </div>
