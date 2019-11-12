@@ -159,6 +159,7 @@ export const SelectBtn = styled.div`
   color:#000000;
   min-width:165px;
   width:auto;
+  direction:rtl;
 
   @media (max-width: 768px) {
     width: 100%;

@@ -118,6 +118,9 @@ const ButtonsFlexer = styled.div`
     direction:rtl;
     align-items:center;
     font-size: 15px;
+    @media (max-width: 768px) {
+      width: 80%;
+    }
     & label {
       text-align:right;
       margin: 5px 0px;
@@ -127,7 +130,7 @@ const ButtonsFlexer = styled.div`
       & input{
         font-weight:100;
       }
-    }
+    
   
 `;
 
@@ -143,4 +146,8 @@ const Button = styled.div`
     width: 120px;
     margin: auto;
     text-align: center;
+    @media (max-width: 768px) {
+       margin: 0 5px;
+    }
+
 `;

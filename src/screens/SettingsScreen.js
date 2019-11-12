@@ -58,9 +58,14 @@ const NavUl = styled.ul`
   flex-direction:row-reverse;
   display:inline-flex;
   align-items:center;
+  list-style-type:none;
 
     @media (max-width: 768px) {
-      margin-left: 0;
+      flex-wrap: nowrap;
+      display: list-item;
+      align-items: center;
+      width: auto;
+
     }
 `;
 
@@ -75,7 +80,7 @@ const Tab = styled.li`
   color:rgb(83,71,103);
   text-align:center;
   @media (max-width: 768px) {
-    width:40px;
+    width:auto;
   }
   & a {
     color:rgb(83,71,103);

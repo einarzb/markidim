@@ -100,4 +100,9 @@ const Button = styled.div`
     margin: 0px 24rem;
     border-radius: 5em;
     cursor:pointer;
+    @media (max-width: 768px) {
+      margin: 0px 16rem 10px;
+      font-size: 1rem;
+      padding: 5px;
+    }
 `;

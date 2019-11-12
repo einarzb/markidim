@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Select from 'react-select';
-import { SelectBtn, SearchSelectBtn } from '@appearance/styled';
+import { SelectBtn } from '@appearance/styled';
 import { Table, TableBody, TableCell, TableHeader, TableRow, Text } from 'grommet';
 
 class UsersLog extends React.Component{ 
@@ -104,7 +104,7 @@ class UsersLog extends React.Component{
                 <Header> לוג משתמשים</Header>
                   <SelectRow style={{marginTop:'1rem'}}>
                     <label> &nbsp;
-                  <SearchSelectBtn style={{width:'300px'}}> 
+                  <SearchSelectBtn> 
                       <Select
                         placeholder='חיפוש חופשי'
                         styles={customStyles} 
@@ -180,8 +180,8 @@ class UsersLog extends React.Component{
                 </SelectRow>
                 <MainTableWrapper>
          
-           
-         <Table responsiveBreakpoint="small" style={{margin:'3rem 0', float:'right', width:'70%'}}>
+        <TableWrapper>
+         <Table responsiveBreakpoint="small" style={{margin:'3rem 0'}}>
             <TableHeader>
               <TableRow style={{backgroundColor:'rgb(152,135,152)'}} align="end" >
                 {columns.map(c => (
@@ -209,6 +209,8 @@ class UsersLog extends React.Component{
             ))}
             </TableBody>
           </Table>
+          </TableWrapper>   
+
  
     </MainTableWrapper>
     </div>
@@ -247,4 +249,30 @@ const MainTableWrapper = styled.div`
   width: 90%;
   display: block;
   margin: 0px auto;
+`;
+
+
+export const SearchSelectBtn = styled.div`
+  width:540px;
+  font-size: 13px;
+  font-weight:300;
+  margin:0px 4px;
+  color:#000000;
+  min-width:165px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+ 
+`;
+
+
+const TableWrapper = styled.div`
+  overflow-x: auto;
+    width: 90%;
+    display: block;
+    margin: 0px auto;
+    @media (max-width: 768px) {
+      width:auto;
+    }
 `;
