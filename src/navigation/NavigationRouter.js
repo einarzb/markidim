@@ -9,7 +9,7 @@ import DropDownLogin from '@components/DropDownLogin';
 
 //screens
 import DancesScreen from '@screens/DancesScreen';
-import AboutScreen from '@screens/AboutScreen';
+import SettingsScreen from '@screens/SettingsScreen';
 import MainScreen from '@screens/MainScreen';
 import UsersScreen from '@screens/UsersScreen';
 
@@ -50,7 +50,7 @@ class NavigationRouter extends React.Component {
                       <Link to="/main">ראשי</Link>
                     </Tab>
                     <Tab>
-                      <Link to="/about">אודות</Link>
+                      <Link to="/settings">הגדרות</Link>
                     </Tab>
                     <Tab>
                       <Link to="/dances">ריקודים</Link>
@@ -69,7 +69,7 @@ class NavigationRouter extends React.Component {
                     </NavUl>
                                     </nav>
               </div>
-              <Route path="/about" component={AboutScreen}></Route>
+              <Route path="/settings" component={SettingsScreen}></Route>
               <Route path="/dances" component={DancesScreen}></Route>
               <Route path="/main" component={MainScreen}></Route>
               <Route path="/users" component={UsersScreen}></Route>

@@ -26,7 +26,7 @@ class UserDanceListScreen extends React.Component{
           id: 1, owner: 'משה שרון', status:<Approved>מאושר</Approved> , danceName:'אהבתיה',performer:'שלמה ארצי', composer:'יעקב הולנדר',writer:'תרצה אתר', originalSongName:'אני זוכר אותה', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', dateOfRegistration:'06/2019', youtubeLink:'https://www.youtube.com/embed/19qoWmBJVRc', shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=975&wrkid=73',danceVideo:''
         },
         {
-          id: 2, owner: 'משה שרון', status: <NotApproved>לא מאושר</NotApproved> , danceName:'לתת ולקחת',performer:'שלמה ארצי, דודו טסה',composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'לתת ולקחת', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019', editSong: editBtn, approveSong:approveBtn, dateOfRegistration:'11/2019', youtubeLink:'https://www.youtube.com/embed/C-bAr0i0YAg',
+          id: 2, owner: 'משה שרון', status: <NotApproved>לא מאושר</NotApproved> , danceName:'לתת ולקחת',performer:'שלמה ארצי, דודו טסה',composer:'יעקב הולנדר', writer:'תרצה אתר', originalSongName:'לתת ולקחת', danceType:'זוגות', coChoreographers:'עידן חיל, עינר גל', acumNum:'902568', orderDate:'11/2019',dateOfRegistration:'11/2019', youtubeLink:'https://www.youtube.com/embed/C-bAr0i0YAg',
           shironet:'https://shironet.mako.co.il/artist?type=lyrics&lang=1&prfid=14541&wrkid=33438',danceVideo:''
         },
         {
@@ -36,25 +36,7 @@ class UserDanceListScreen extends React.Component{
       ],
       expandedRows : [],
       columns: [
-        {
-          property: 'approveSong',
-          label: '',
-          align: 'center',
-          onClick:this.toggleApprove,
-          hidden:false,
-          width:'0px',
-          display:'none'
-        },
-        {
-          property: 'editSong',
-          label: '',
-          align: 'center',
-          onClick:this.toggleEdit,
-          hidden:false,
-          width:'0px',
-          display:'none'
 
-        },
         {
           property: 'orderDate',
           label: 'תאריך הזמנה',
@@ -188,8 +170,6 @@ renderItem(item) {
           whiteSpace: 'normal', width:'112px', display:'inline-table'}}>{item.coChoreographers}</TableCell>
           <TableCell>{item.acumNum}</TableCell>
           <TableCell>{item.orderDate}</TableCell>
-          <TableCell>{item.editSong}</TableCell>
-          <TableCell>{item.approveSong}</TableCell>
       </TableRow>
         ];
         
