@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { SongsWrapper, SelectBtn, SearchSelectBtn, Wrapper, SelectWrapper } from '@appearance/styled';
 import Select from 'react-select';
 import MainUsersTable from '@components/MainUsersTable';
+import UserTableMobileTiles from '@components/UserTableMobileTiles';
 
 
 class UsersScreen extends React.Component{ 
@@ -153,6 +154,7 @@ class UsersScreen extends React.Component{
               </SelectWrapper>
             </SongsWrapper>
           <MainUsersTable></MainUsersTable>
+          <UserTableMobileTiles></UserTableMobileTiles>
         </Wrapper>
     )
   }
@@ -176,3 +178,4 @@ export const SelectRow = styled.div`
     flex-direction:column;
   }
 `;
+
