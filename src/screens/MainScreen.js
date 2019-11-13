@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import styled from 'styled-components';
 import MainButtons from '@components/MainButtons';
+import { Wrapper } from '@appearance/styled';
 
 import RegisterScreen from '@screens/RegisterScreen';
 import LoginScreen from '@screens/LoginScreen';
@@ -41,7 +42,8 @@ class MainScreen extends React.Component{
         {
         registerView ? <RegisterScreen toggle={this.toggleRegisterUser}/> :     
         loginView ? <LoginScreen toggle={this.toggleLogin}/> :     
-        <div>
+        <div style={{marginTop:'-0.8rem'}}>
+        <Wrapper>
 
         <MainPageWrapper>
 
@@ -72,6 +74,8 @@ class MainScreen extends React.Component{
          </ul>
        </p>
      </MainPageWrapper>
+             </Wrapper>
+
      </div>
         }
      </div>

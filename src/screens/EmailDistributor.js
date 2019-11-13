@@ -21,7 +21,7 @@ class EmailDistributor extends React.Component{
     let {mailingList, value, headerEmail} = this.state;
 
     return(
-      <div>
+      <div style={{    height: '100vh'      }}>
                        <Header>הגדרות שליחת אימייל</Header>
 
         <MainRow>

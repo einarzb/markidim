@@ -12,7 +12,7 @@ class EmailEditor extends React.Component{
     let {value} = this.state;
 
     return(
-      <div>
+      <Wrapper>
       <MainRow>
            <MyLabelTextArea>
 הודעה למשתמש על ריקוד מאושר על ידי ההנהלה            <TextArea
@@ -48,7 +48,7 @@ class EmailEditor extends React.Component{
          <Button> עריכת תוכן </Button>
 
 
-    </div>
+    </Wrapper>
 
     )
   }
@@ -101,4 +101,14 @@ const Button = styled.div`
       padding: 5px;
     }
 
+`;
+
+const Wrapper = styled.div`
+height: 100vh;
+display: inline-table;
+width: 100%;
+background-color: #ebebeb;
+@media (max-width: 768px) {
+  display:block;
+}
 `;

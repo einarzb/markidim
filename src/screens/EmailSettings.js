@@ -12,7 +12,7 @@ class EmailSettings extends React.Component{
     let {value} = this.state;
 
     return(
-      <div>
+      <Wrapper>
         <p>משך זמן שמירת שיר/ריקוד למשתמש (חודשים) 
           <span>12</span>
         </p>
@@ -54,13 +54,14 @@ class EmailSettings extends React.Component{
            <Button> עריכת תוכן </Button>
 
 
-      </div>
+      </Wrapper>
 
     )
   }
 }
 
 export default EmailSettings;
+
 const MainRow = styled.div`
 display:inline-flex;
 flex-direction:row-reverse;
@@ -105,4 +106,14 @@ const Button = styled.div`
       font-size: 1rem;
       padding: 5px;
     }
+`;
+
+const Wrapper = styled.div`
+height: 100vh;
+display: inline-table;
+width: 100%;
+background-color: #ebebeb;
+@media (max-width: 768px) {
+  display:block;
+}
 `;

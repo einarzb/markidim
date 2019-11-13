@@ -100,7 +100,8 @@ class UsersLog extends React.Component{
   render(){
     let {actionType, username, userType, dateRange ,filterOptions,customStyles, columns, usersData } = this.state;
     return(
-      <div>
+      <div style={{    height: '100vh'      }}>
+        <Wrap>
                 <Header> לוג משתמשים</Header>
                   <SelectRow style={{marginTop:'1rem'}}>
                     <label> &nbsp;
@@ -178,6 +179,7 @@ class UsersLog extends React.Component{
                   </label>
                 
                 </SelectRow>
+                </Wrap>
                 <MainTableWrapper>
          
         <TableWrapper>
@@ -227,6 +229,13 @@ const Header = styled.h2`
     font-weight: 400;
 `;
 
+const Wrap = styled.div`
+  width: 82%;
+  @media (max-width: 768px) {
+    width: auto;
+  }
+
+`;
  const SelectRow = styled.div`
   display:inline-flex;
   flex-direction:row-reverse;
@@ -249,11 +258,14 @@ const MainTableWrapper = styled.div`
   width: 90%;
   display: block;
   margin: 0px auto;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 
 export const SearchSelectBtn = styled.div`
-  width:540px;
+  width:315px;
   font-size: 13px;
   font-weight:300;
   margin:0px 4px;
@@ -273,6 +285,7 @@ const TableWrapper = styled.div`
     display: block;
     margin: 0px auto;
     @media (max-width: 768px) {
-      width:auto;
+      width:100%;
+      margin-left: 0.5rem;
     }
 `;

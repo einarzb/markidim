@@ -10,7 +10,8 @@ import EmailDistributor from '@screens/EmailDistributor';
 class SettingsScreen extends React.Component{ 
   render(){
     return(
-      <div style={{width:'96%', marginTop:'1rem', backgroundColor: '#ebebeb'}}>
+      <MyWrapper>
+
         <Bar>
         <Router>
             <div>
@@ -37,7 +38,7 @@ class SettingsScreen extends React.Component{
             <Route path="/emaildistributor" component={EmailDistributor}></Route>
         </Router>
       </Bar>
-    </div>
+    </MyWrapper>
 
     )
   }
@@ -45,12 +46,15 @@ class SettingsScreen extends React.Component{
 
 export default SettingsScreen;
 export const Bar = styled.div`
-background-color: #FFFFFF;
-max-height: 55px;
-width: 100%;
-float: right;
+
   `;
 
+  const MyWrapper = styled.div`
+  background-color: #ebebeb;
+    padding: 0rem 0 2rem 0rem;
+    height: 100vh;
+    margin-top: -0.9rem;
+  `;
 const NavUl = styled.ul`
   padding:5px;
   font-size:15px; 
