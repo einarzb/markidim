@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import styled from 'styled-components';
-import ButtonsGroup from '@components/ButtonsGroup';
+import MainButtons from '@components/MainButtons';
 
 import RegisterScreen from '@screens/RegisterScreen';
 import LoginScreen from '@screens/LoginScreen';
@@ -37,16 +37,16 @@ class MainScreen extends React.Component{
     let {registerView, loginView} = this.props;
     let {mainButtons} = this.state;
     return(
-        <div>
+      <div>
         {
         registerView ? <RegisterScreen toggle={this.toggleRegisterUser}/> :     
         loginView ? <LoginScreen toggle={this.toggleLogin}/> :     
+        <div>
 
-      <div>
         <MainPageWrapper>
 
-        <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
-   
+        <MainButtons btnsArr={mainButtons}></MainButtons>
+
 
        <h2>ארגון המדריכים והיוצרים לריקודי עם</h2>
        <h4>ברוכים הבאים למערכת רישום הריקודים של ארגון המדריכים והיוצרים!</h4>
@@ -113,26 +113,10 @@ const MainPageWrapper = styled.div`
   text-align:right;
   direction:rtl;
   width: 80%;
-  display:block;
-  margin: 0px auto;
-  @media (max-width: 768px) {
-    margin-top:6rem;
-
-  }
-`;
-
-
-export const SelectRow = styled.div`
   display:inline-flex;
-  flex-direction:row-reverse;
-  margin: 0;
-  justify-content:space-between;
-  & label {
-    font-size: 12px;
-    text-align:right;
-    color:rgb(152,135,152);
-  }
+  flex-direction:column;
   @media (max-width: 768px) {
-    flex-direction:column;
+    margin-top:2rem;
+
   }
 `;
