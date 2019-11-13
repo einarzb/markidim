@@ -115,6 +115,9 @@ const WrapperDiv = styled.div`
     & h2 {
       text-align: right;
     }
+    @media (max-width: 768px) {
+      top: 39%;
+    }
 `;
 
 const ButtonsFlexer = styled.div`
