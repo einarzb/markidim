@@ -10,6 +10,7 @@ import {CREDIT_CARD, PLUS } from '@assets/index.js';
 import ExpandingButton from '@components/ExpandingButton';
 import ButtonsGroup from '@components/ButtonsGroup';
 import MainSongsTable from '@components/MainSongsTable';
+import MobileTileTable from '@components/MobileTileTable';
 
 import styled from 'styled-components';
 import { SongsWrapper, SelectBtn, SearchSelectBtn, Wrapper, SelectWrapper } from '@appearance/styled';
@@ -291,6 +292,7 @@ class DancesScreen extends React.Component{
             </SongsWrapper>
     
             <MainSongsTable></MainSongsTable>
+            <MobileTileTable></MobileTileTable>
           </Wrapper> 
       }
       </div>

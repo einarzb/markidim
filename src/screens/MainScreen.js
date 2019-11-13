@@ -44,7 +44,9 @@ class MainScreen extends React.Component{
 
       <div>
         <MainPageWrapper>
+
         <ButtonsGroup btnsArr={mainButtons}></ButtonsGroup>
+   
 
        <h2>ארגון המדריכים והיוצרים לריקודי עם</h2>
        <h4>ברוכים הבאים למערכת רישום הריקודים של ארגון המדריכים והיוצרים!</h4>
@@ -119,3 +121,18 @@ const MainPageWrapper = styled.div`
   }
 `;
 
+
+export const SelectRow = styled.div`
+  display:inline-flex;
+  flex-direction:row-reverse;
+  margin: 0;
+  justify-content:space-between;
+  & label {
+    font-size: 12px;
+    text-align:right;
+    color:rgb(152,135,152);
+  }
+  @media (max-width: 768px) {
+    flex-direction:column;
+  }
+`;

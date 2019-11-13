@@ -350,5 +350,8 @@ const MainTableWrapper = styled.div`
   width: 90%;
   display: block;
   margin: 0px auto;
+  @media (max-width: 768px) {
+    display:none;
+  }
 `;
 
