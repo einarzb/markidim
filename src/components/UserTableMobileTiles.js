@@ -5,8 +5,7 @@ import { toggleEditAction, toggleApproveAction, fetchDataAction } from '@state/a
 
 //STYLING
 import styled from 'styled-components';
-import { Table, TableBody, TableCell, TableHeader, TableRow, Text } from 'grommet';
-import { APPROVE, EDIT, DELETE, DANCELIST } from '@assets/index.js';
+import { EDIT, DELETE, DANCELIST } from '@assets/index.js';
 
 //screens
 import EditSongScreen from '@screens/EditSongScreen';
@@ -23,162 +22,8 @@ class UserTableMobileTiles extends React.Component{
 
   
   
-    this.state = {
- 
-     expandedRows : [],
-      columns: [
-        {
-          property: 'approveSong',
-          label: '',
-          align: 'center',
-          onClick:this.toggleApprove,
-          hidden:false,
-          width:'0px',
-          display:'none'
-        },
-        {
-          property: 'editSong',
-          label: '',
-          align: 'center',
-          onClick:this.toggleEdit,
-          hidden:false,
-          width:'0px',
-          display:'none'
-
-        },
-        {
-          property: 'orderDate',
-          label: 'תאריך הזמנה',
-          align: 'center',
-          hidden:false,
-
-        },
-        {
-          property: 'acumNum',
-          label: 'מס׳ אקו״ם',
-          align: 'center',
-          hidden:false,
-
-
-        },
-        {
-          property: 'coChoreographers',
-          label: 'מחברים נוספים',
-          align: 'center',
-          hidden:false,
-          width: '98px'
-
-        },
-        {
-          property: 'danceType',
-          label: 'סוג ריקוד',
-          align: 'center',
-          hidden:false,
-          width: '60px'
-
-        },
-        {
-          property: 'originalSongName',
-          label: 'שם שיר מקורי',
-          align: 'center',
-          hidden:false,
-          width: '100px'
-        },
-        {
-          property: 'writer',
-          label: 'שם משורר',
-          align: 'center',
-          hidden:false,
-          width: '54px'
-
-        },
-        {
-          property: 'composer',
-          label: 'שם מלחין',
-          align: 'center',
-          hidden:false,
-          width: '101px'
-        },
-        {
-          property: 'performer',
-          label: 'שם מבצע',
-          align: 'center',
-          hidden:false,
-          width: '128px'
-
-
-        },
-        {
-          hidden:false,
-          property: 'danceName',
-          label: 'שם ריקוד',
-          align: 'center',
-          width: '74px'
-
-        },
-        {
-          hidden:false,
-          property: 'owner',
-          label: 'מוזמן ע״י',
-          align: 'center',
-          width: '64px'
-        },
-        {
-          hidden:false,
-          property: 'status',
-          label: 'סטטוס',
-          dataScope: 'column',
-          align: 'center',
-          width: '100px'
-        }
-      ],
-      mobileColumns: [
-        {
-          property: 'approveSong',
-          label: '',
-          align: 'center',
-          onClick:this.toggleApprove,
-          hidden:false,
-          width:'0px',
-          display:'none'
-        },
-        {
-          property: 'editSong',
-          label: '',
-          align: 'center',
-          onClick:this.toggleEdit,
-          hidden:false,
-          width:'0px',
-          display:'none'
-
-        },
-        {
-          hidden:false,
-          property: 'danceLink',
-          label: 'לינק',
-          dataScope: 'column',
-          align: 'center',
-          width: '100px'
-        },
-
-        {
-          hidden:false,
-          property: 'status',
-          label: 'סטטוס',
-          dataScope: 'column',
-          align: 'center',
-          width: '100px'
-        }
-      ],
- 
-
-      expandedRowVisible:false,     
-      editButton:''
-     
-    }
+    this.state = {}
   }
-
- 
   //TODO: make a generic function 
   toggleApprove = () => {
     let { toggleApproveRedux } = this.props; 
@@ -191,29 +36,21 @@ class UserTableMobileTiles extends React.Component{
     let editView = !this.props.editView; 
     toggleEditRedux(editView);
   }
-  
-  expandRow = (rowIndex) => {
-    this.setState({
-      expandedRowVisible: rowIndex
-    })  
-  }
 
 
 
   render() {
   
     let {editView, approveView} = this.props;
-    let {editButton} = this.state;
      return(
-
 
       <MainTableWrapper>
           { 
             editView ? <EditSongScreen toggle={this.toggleEdit} /> :
             approveView ? <ConfirmSongScreen toggle={this.toggleApprove}/> : 
-            <div>
+          <div>
      
-     <TileTable>
+           <TileTable>
             <TileHeader>
                 <Tile>
                   <span> שם פרטי:</span>
