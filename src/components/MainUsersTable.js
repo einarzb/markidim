@@ -61,6 +61,12 @@ class MainUsersTable extends React.Component{
           display:'none'
         },
         {
+          property: 'userStatus',
+          label: ' ',
+          align: 'center',
+          hidden:false,
+        },
+        {
           property: 'annualOrdersNum',
           label: 'מקס׳ הזמנות שנתי',
           align: 'center',
@@ -140,13 +146,13 @@ class MainUsersTable extends React.Component{
  
       usersData: [
         {
-          id: 1, firstName: 'משה', lastName:'שרון' , email:'sharon@gmail.com',memberId:'432423', id:'043764382',cellular:'054-7643437', phoneNum:'04-3786298', address:'מגדיאל 2, רמת גן', maxNumOrders:'3', annualOrdersNum:'10', editUser:editBtn, deleteUser:deleteBtn, userDanceList:playlistBtn
+          id: 1, firstName: 'משה', lastName:'שרון' , email:'sharon@gmail.com',memberId:'432423', id:'043764382',cellular:'054-7643437', phoneNum:'04-3786298', address:'מגדיאל 2, רמת גן', maxNumOrders:'3', annualOrdersNum:'10', userStatus:'נעול', editUser:editBtn, deleteUser:deleteBtn, userDanceList:playlistBtn
         },
         {
-          id: 2, firstName: 'משה', lastName:'שרון' , email:'sharon@gmail.com',memberId:'432423', id:'043764382',cellular:'054-7643437', phoneNum:'04-3786298', address:'מגדיאל 2, רמת גן', maxNumOrders:'3', annualOrdersNum:'10', editUser:editBtn, deleteUser:deleteBtn, userDanceList:playlistBtn
+          id: 2, firstName: 'משה', lastName:'שרון' , email:'sharon@gmail.com',memberId:'432423', id:'043764382',cellular:'054-7643437', phoneNum:'04-3786298', address:'מגדיאל 2, רמת גן', maxNumOrders:'3', annualOrdersNum:'10',userStatus:'מושהה', editUser:editBtn, deleteUser:deleteBtn, userDanceList:playlistBtn
         },
         {
-          id: 3, firstName: 'משה', lastName:'שרון' , email:'sharon@gmail.com',memberId:'432423', id:'043764382',cellular:'054-7643437', phoneNum:'04-3786298', address:'מגדיאל 2, רמת גן', maxNumOrders:'3', annualOrdersNum:'10', editUser:editBtn, deleteUser:deleteBtn, userDanceList:playlistBtn
+          id: 3, firstName: 'משה', lastName:'שרון' , email:'sharon@gmail.com',memberId:'432423', id:'043764382',cellular:'054-7643437', phoneNum:'04-3786298', address:'מגדיאל 2, רמת גן', maxNumOrders:'3', annualOrdersNum:'10',userStatus:'אדמין', editUser:editBtn, deleteUser:deleteBtn, userDanceList:playlistBtn
         },
       ]
     }
@@ -214,9 +220,15 @@ class MainUsersTable extends React.Component{
                     <TableRow scope="column" style={{backgroundColor:'#FFFFFF', fontSize:'12px'}} border='bottom' key={user.id}>
                       {columns.map(c => (
                           <TableCell key={c.property} scope={c.dataScope} align={c.align} border='bottom'>
+                            { c.property === 'userStatus' ?  
+                              <Text style={{fontSize:'14px', border:'1px solid grey', padding:'0px 2px'}}>
+                              {user[c.property]}
+                            </Text>
+                            :
                             <Text style={{fontSize:'14px'}}>
                               {user[c.property]}
                             </Text>
+                                 }
                           </TableCell> 
                           
                         ))}
